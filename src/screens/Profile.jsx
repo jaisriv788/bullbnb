@@ -180,7 +180,7 @@ function Profile({ openSidebar }) {
                 <button
                   onClick={() => {
                     navigator.clipboard.writeText(
-                      `http://bullbnb.com/reactdemo/registration/${userId}`
+                      `http://bullbnb.com/registration/${userId}`
                     );
                     dispatch(copyModalVisibilty(true));
                   }}

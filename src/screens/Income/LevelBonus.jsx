@@ -93,7 +93,7 @@ function LevelBonus({ openSidebar }) {
       const totalIncome = incomeInEther.slice(1).reduce((acc, val) => {
         return acc + (parseFloat(val) || 0);
       }, 0);
-      setData(totalIncome);
+      setData(totalIncome.toFixed(4));
     } catch (error) {
       console.error("API Error:", error.response?.data || error.message);
     } finally {

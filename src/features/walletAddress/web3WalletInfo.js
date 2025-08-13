@@ -10,7 +10,7 @@ const initialState = {
   previousContractAddressOne: "0x3e776377f66c92a79ac506f838f95cb5ecc78e4c",
   previousContractAddressTwo: "0x2218A3671708dA22DE2e1b5cE6afc523Bc824118",
   isWalletConnected: false,
-  baseUrl: "https://bullbnb.com/opbullbnb/",
+  baseUrl: "https://bullbnb.com/old_website/opbullbnb/",
 };
 
 const walletAddressSlice = createSlice({

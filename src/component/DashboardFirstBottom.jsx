@@ -88,7 +88,7 @@ function DashboardFirstBottom({
             <div
               onClick={() =>
                 window.open(
-                  `/reactdemo/certificate/${userData?.name}/${
+                  `/certificate/${userData?.name}/${
                     rankOptions[data.rank]
                   }/${totalIncomeInBNB}`,
                   "_blank"

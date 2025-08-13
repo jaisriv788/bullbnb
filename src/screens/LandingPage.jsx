@@ -34,7 +34,7 @@ function LandingPage() {
   }, [location.state]);
 
   return (
-    <div className="h-full">
+    <div className="h-full overflow-x-hidden">
       <Hero />
       <Platform />
       <BuilderPlan />

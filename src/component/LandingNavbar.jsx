@@ -2,7 +2,7 @@ import { useNavigate, useLocation, useMatch } from "react-router";
 import ringSrc from "../assets/logos/ring-text.png";
 import centralImageSrc from "../assets/logos/ring-transparent.png";
 import { useState } from "react";
-
+import Error from "../component/Error";
 //redux
 import { useSelector } from "react-redux";
 
@@ -12,6 +12,8 @@ import mainAbi from "../mainAbi.json";
 function LandingNavbar() {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [msg, setMsg] = useState("");
   const location = useLocation();
 
   const isLoginPage = location.pathname === "/login";
@@ -61,12 +63,20 @@ function LandingNavbar() {
       } catch (error) {
         console.log(error);
       }
+    } else {
+      setMsg("Metamask Wallet Not found");
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+        setMsg("");
+      }, 1800);
     }
   };
 
   return (
     <div className="fixed z-500 backdrop-blur-lg w-full text-white bg-black/80 px-[8%] py-3 flex justify-between items-center">
       {/* Logo / Home Click */}
+      {showError && <Error msg={msg} />}
       <div
         onClick={() => navigate("/")}
         className="absolute cursor-pointer z-50"

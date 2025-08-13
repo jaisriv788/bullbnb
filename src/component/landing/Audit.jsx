@@ -29,10 +29,38 @@ function Audit() {
         </div>
       </div>
       <div className="grid grid-cols-1 px-5 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <img className="w-80 rounded-xl border-2" src={img1} alt="img" />
-        <img className="w-80 rounded-xl border-2" src={img2} alt="img" />
-        <img className="w-80 rounded-xl border-2" src={img3} alt="img" />
-        <img className="w-80 rounded-xl border-2" src={img4} alt="img" />
+        <img
+          onClick={() => {
+            window.open("https://dappradar.com/", "_blank");
+          }}
+          className="w-80 rounded-xl border-2 cursor-pointer"
+          src={img1}
+          alt="img"
+        />
+        <img
+          onClick={() => {
+            window.open("https://hazecrypto.net/", "_blank");
+          }}
+          className="w-80 rounded-xl border-2 cursor-pointer"
+          src={img2}
+          alt="img"
+        />
+        <img
+          onClick={() => {
+            window.open("https://www.interfi.network/", "_blank");
+          }}
+          className="w-80 rounded-xl border-2 cursor-pointer"
+          src={img3}
+          alt="img"
+        />
+        <img
+          onClick={() => {
+            window.open("https://opbnbscan.com/", "_blank");
+          }}
+          className="w-80 rounded-xl border-2 cursor-pointer"
+          src={img4}
+          alt="img"
+        />
       </div>
     </div>
   );

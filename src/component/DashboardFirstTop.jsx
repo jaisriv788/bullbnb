@@ -38,7 +38,7 @@ function DashboardFirstTop({ walletAddress, usersData, id, referer }) {
   }, []);
   const handleCopy = () => {
     navigator.clipboard
-      .writeText(`http://bullbnb.com/reactdemo/registration/${id}`)
+      .writeText(`http://bullbnb.com/registration/${id}`)
       .then(() => {
         dispatch(copyModalVisibilty(true));
       })
