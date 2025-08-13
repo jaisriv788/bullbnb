@@ -1,0 +1,253 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [
+      {
+        "name": "_bullbnbAddress",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "bullbnb",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "value": "0x5F32aED3bb6FFcb914990301A5645F5446b0e24c",
+        "internalType": "contract Ibullbnb"
+      }
+    ],
+    "constant": true,
+    "signature": "0x08f05bee",
+    "stateMutability": "view"
+  },
+  {
+    "name": "getTodayTransactionLogByType",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "txType",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "sumEarning",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "tuple[]",
+        "components": [
+          {
+            "name": "id",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "fromID",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "fromAddress",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "txType",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "amount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "timestamp",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "package",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "addon",
+            "type": "string",
+            "internalType": "string"
+          }
+        ],
+        "internalType": "struct BullBNBLog.Transaction[]"
+      }
+    ],
+    "constant": true,
+    "signature": "0xe0a0fda6",
+    "stateMutability": "view"
+  },
+  {
+    "name": "getTransactionLogByDateAndType",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "txType",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "dateTimestamp",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "sumEarning",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "tuple[]",
+        "components": [
+          {
+            "name": "id",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "fromID",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "fromAddress",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "txType",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "amount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "timestamp",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "package",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "addon",
+            "type": "string",
+            "internalType": "string"
+          }
+        ],
+        "internalType": "struct BullBNBLog.Transaction[]"
+      }
+    ],
+    "constant": true,
+    "signature": "0xb2c8d71f",
+    "stateMutability": "view"
+  },
+  {
+    "name": "getTransactionLogByType",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "txType",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "sumEarning",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "tuple[]",
+        "components": [
+          {
+            "name": "id",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "fromID",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "fromAddress",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "txType",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "amount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "timestamp",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "package",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "addon",
+            "type": "string",
+            "internalType": "string"
+          }
+        ],
+        "internalType": "struct BullBNBLog.Transaction[]"
+      }
+    ],
+    "constant": true,
+    "signature": "0x38fd5b91",
+    "stateMutability": "view"
+  }
+]

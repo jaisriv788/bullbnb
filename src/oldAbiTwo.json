@@ -1,0 +1,1417 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [
+      {
+        "name": "_feeReceiver",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "LevlTransactions",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "amount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "fromAddress",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "level",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "package",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "types",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "timestamp",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "constant": true,
+    "signature": "0xf36d82ec",
+    "stateMutability": "view"
+  },
+  {
+    "name": "NewUser",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "referrer",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "userAddress",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "userId",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "packages",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [],
+    "payable": true,
+    "signature": "0xcb73c146",
+    "stateMutability": "payable"
+  },
+  {
+    "name": "PoolincomeInfo",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "id",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "layer",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "package",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "time",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "constant": true,
+    "signature": "0xd71a36e4",
+    "stateMutability": "view"
+  },
+  {
+    "name": "Upgrade",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "_package",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [],
+    "payable": true,
+    "signature": "0x7f8b9abe",
+    "stateMutability": "payable"
+  },
+  {
+    "name": "_amountWithdrawn",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "constant": true,
+    "signature": "0xb28684db",
+    "stateMutability": "view"
+  },
+  {
+    "name": "_checkRoyaltyAchieved",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "constant": true,
+    "signature": "0xabed4c34",
+    "stateMutability": "view"
+  },
+  {
+    "name": "createUserEnableDisable",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "value": true,
+        "internalType": "bool"
+      }
+    ],
+    "constant": true,
+    "signature": "0x57413865",
+    "stateMutability": "view"
+  },
+  {
+    "name": "createUserEnableDisableAction",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "status",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "outputs": [],
+    "signature": "0x3e7d334e",
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "generateRandomNumber",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "signature": "0x773a1154",
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "generatedNumbers",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "constant": true,
+    "signature": "0x998bde63",
+    "stateMutability": "view"
+  },
+  {
+    "name": "getLevelIncomeTXN",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "userAddress",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple[]",
+        "components": [
+          {
+            "name": "amount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "fromAddress",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "level",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "package",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "types",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "timestamp",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "internalType": "struct opAlpha.LevlTransaction[]"
+      }
+    ],
+    "constant": true,
+    "signature": "0xd33e1a48",
+    "stateMutability": "view"
+  },
+  {
+    "name": "getLevelWiseUsers",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "userAddress",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "level",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple[]",
+        "components": [
+          {
+            "name": "user",
+            "type": "tuple",
+            "components": [
+              {
+                "name": "id",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "account",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "exists",
+                "type": "bool",
+                "internalType": "bool"
+              },
+              {
+                "name": "referrer",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "upline",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "start",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "currentPackage",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "partnercount",
+                "type": "uint8",
+                "internalType": "uint8"
+              },
+              {
+                "name": "totalMatrixTeam",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "levelWiseUsers",
+                "type": "uint256[]",
+                "internalType": "uint256[]"
+              },
+              {
+                "name": "levelWiseUsersIncome",
+                "type": "uint256[]",
+                "internalType": "uint256[]"
+              },
+              {
+                "name": "partners",
+                "type": "address[]",
+                "internalType": "address[]"
+              },
+              {
+                "name": "allTeams",
+                "type": "address[]",
+                "internalType": "address[]"
+              },
+              {
+                "name": "royaltyAchieved",
+                "type": "uint256[]",
+                "internalType": "uint256[]"
+              },
+              {
+                "name": "rankWisePoolIncome",
+                "type": "uint256[]",
+                "internalType": "uint256[]"
+              },
+              {
+                "name": "rankWisePoolIncomeUsers",
+                "type": "uint256[]",
+                "internalType": "uint256[]"
+              },
+              {
+                "name": "royaltyIncome",
+                "type": "uint256[]",
+                "internalType": "uint256[]"
+              }
+            ],
+            "internalType": "struct opAlpha.User"
+          },
+          {
+            "name": "level",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "internalType": "struct opAlpha.UserWithLevel[]"
+      }
+    ],
+    "constant": true,
+    "signature": "0x79f8f5e4",
+    "stateMutability": "view"
+  },
+  {
+    "name": "getMatrixDirect",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "_user",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "_directs",
+        "type": "address[2]",
+        "internalType": "address[2]"
+      }
+    ],
+    "constant": true,
+    "signature": "0xbfa102d0",
+    "stateMutability": "view"
+  },
+  {
+    "name": "getMatrixUsers",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "_user",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_layer",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple[]",
+        "components": [
+          {
+            "name": "id",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "account",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "exists",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "referrer",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "upline",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "start",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "currentPackage",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "partnercount",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "totalMatrixTeam",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "levelWiseUsers",
+            "type": "uint256[]",
+            "internalType": "uint256[]"
+          },
+          {
+            "name": "levelWiseUsersIncome",
+            "type": "uint256[]",
+            "internalType": "uint256[]"
+          },
+          {
+            "name": "partners",
+            "type": "address[]",
+            "internalType": "address[]"
+          },
+          {
+            "name": "allTeams",
+            "type": "address[]",
+            "internalType": "address[]"
+          },
+          {
+            "name": "royaltyAchieved",
+            "type": "uint256[]",
+            "internalType": "uint256[]"
+          },
+          {
+            "name": "rankWisePoolIncome",
+            "type": "uint256[]",
+            "internalType": "uint256[]"
+          },
+          {
+            "name": "rankWisePoolIncomeUsers",
+            "type": "uint256[]",
+            "internalType": "uint256[]"
+          },
+          {
+            "name": "royaltyIncome",
+            "type": "uint256[]",
+            "internalType": "uint256[]"
+          }
+        ],
+        "internalType": "struct opAlpha.User[]"
+      }
+    ],
+    "constant": true,
+    "signature": "0xe8c32856",
+    "stateMutability": "view"
+  },
+  {
+    "name": "getPoolIncomeHistory",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "_user",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple[]",
+        "components": [
+          {
+            "name": "id",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "layer",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "package",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "amount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "time",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "internalType": "struct opAlpha.PoolIncome[]"
+      }
+    ],
+    "constant": true,
+    "signature": "0xfea8b7e8",
+    "stateMutability": "view"
+  },
+  {
+    "name": "getRoyaltyTime",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "value": "1746513003",
+        "internalType": "uint256"
+      }
+    ],
+    "constant": true,
+    "signature": "0x7e4d2293",
+    "stateMutability": "view"
+  },
+  {
+    "name": "getRoyaltyUsers",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "_royalty",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]",
+        "internalType": "address[]"
+      }
+    ],
+    "constant": true,
+    "signature": "0x3bca11ee",
+    "stateMutability": "view"
+  },
+  {
+    "name": "getTransactionLogByType",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "txType",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "sumEarning",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "tuple[]",
+        "components": [
+          {
+            "name": "id",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "fromID",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "fromAddress",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "txType",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "amount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "timestamp",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "package",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "addon",
+            "type": "string",
+            "internalType": "string"
+          }
+        ],
+        "internalType": "struct opAlpha.Transaction[]"
+      }
+    ],
+    "constant": true,
+    "signature": "0x38fd5b91",
+    "stateMutability": "view"
+  },
+  {
+    "name": "globalUsers",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "constant": true,
+    "signature": "0x3ff868ea",
+    "stateMutability": "view"
+  },
+  {
+    "name": "idToAddress",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "constant": true,
+    "signature": "0x2a2d0c47",
+    "stateMutability": "view"
+  },
+  {
+    "name": "isUserExists",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "constant": true,
+    "signature": "0x509222cd",
+    "stateMutability": "view"
+  },
+  {
+    "name": "lapsIncomelogs",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "amount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "types",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "timestamp",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "constant": true,
+    "signature": "0xf54e7909",
+    "stateMutability": "view"
+  },
+  {
+    "name": "levelWiseUsers",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "userAddress",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "constant": true,
+    "signature": "0x5c81d383",
+    "stateMutability": "view"
+  },
+  {
+    "name": "luxury",
+    "type": "function",
+    "inputs": [],
+    "outputs": [],
+    "signature": "0xa84b6b6e",
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "matrixDirect",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "constant": true,
+    "signature": "0x2db304eb",
+    "stateMutability": "view"
+  },
+  {
+    "name": "partners",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "userAddress",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple[]",
+        "components": [
+          {
+            "name": "userData",
+            "type": "tuple",
+            "components": [
+              {
+                "name": "id",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "account",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "exists",
+                "type": "bool",
+                "internalType": "bool"
+              },
+              {
+                "name": "referrer",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "upline",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "start",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "currentPackage",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "partnercount",
+                "type": "uint8",
+                "internalType": "uint8"
+              },
+              {
+                "name": "totalMatrixTeam",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "levelWiseUsers",
+                "type": "uint256[]",
+                "internalType": "uint256[]"
+              },
+              {
+                "name": "levelWiseUsersIncome",
+                "type": "uint256[]",
+                "internalType": "uint256[]"
+              },
+              {
+                "name": "partners",
+                "type": "address[]",
+                "internalType": "address[]"
+              },
+              {
+                "name": "allTeams",
+                "type": "address[]",
+                "internalType": "address[]"
+              },
+              {
+                "name": "royaltyAchieved",
+                "type": "uint256[]",
+                "internalType": "uint256[]"
+              },
+              {
+                "name": "rankWisePoolIncome",
+                "type": "uint256[]",
+                "internalType": "uint256[]"
+              },
+              {
+                "name": "rankWisePoolIncomeUsers",
+                "type": "uint256[]",
+                "internalType": "uint256[]"
+              },
+              {
+                "name": "royaltyIncome",
+                "type": "uint256[]",
+                "internalType": "uint256[]"
+              }
+            ],
+            "internalType": "struct opAlpha.User"
+          },
+          {
+            "name": "userFinancialData",
+            "type": "tuple",
+            "components": [
+              {
+                "name": "myTeamCount",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "totalIncome",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "partnerSponsorBonus",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "partnerDirectKickBonus",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "partnerLevelBonus",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "PoolLevelIncome",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "LuxuryBonus",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "lapsIncome",
+                "type": "uint256",
+                "internalType": "uint256"
+              }
+            ],
+            "internalType": "struct opAlpha.UserDetails"
+          }
+        ],
+        "internalType": "struct opAlpha.PartnerInfo[]"
+      }
+    ],
+    "constant": true,
+    "signature": "0x95c33652",
+    "stateMutability": "view"
+  },
+  {
+    "name": "royalty",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "constant": true,
+    "signature": "0xe814cb71",
+    "stateMutability": "view"
+  },
+  {
+    "name": "royaltyLastDist",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "value": "1746426603",
+        "internalType": "uint256"
+      }
+    ],
+    "constant": true,
+    "signature": "0x9c7a35ce",
+    "stateMutability": "view"
+  },
+  {
+    "name": "royaltyUsers",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "constant": true,
+    "signature": "0x7a3ab2ca",
+    "stateMutability": "view"
+  },
+  {
+    "name": "startTime",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "value": "1746426603",
+        "internalType": "uint256"
+      }
+    ],
+    "constant": true,
+    "signature": "0x78e97925",
+    "stateMutability": "view"
+  },
+  {
+    "name": "teams",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "constant": true,
+    "signature": "0xcdddffcb",
+    "stateMutability": "view"
+  },
+  {
+    "name": "totalRankWisePoolIncome",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "userAddress",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "constant": true,
+    "signature": "0x92e168ff",
+    "stateMutability": "view"
+  },
+  {
+    "name": "totalUsers",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "value": "0",
+        "internalType": "uint256"
+      }
+    ],
+    "constant": true,
+    "signature": "0xbff1f9e1",
+    "stateMutability": "view"
+  },
+  {
+    "name": "totalroyaltyIncome",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "userAddress",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "constant": true,
+    "signature": "0x8dab303f",
+    "stateMutability": "view"
+  },
+  {
+    "name": "transactionLogs",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "id",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "fromID",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "fromAddress",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "txType",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "timestamp",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "package",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "addon",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "constant": true,
+    "signature": "0x430ec005",
+    "stateMutability": "view"
+  },
+  {
+    "name": "transferOwnershipToNullAddress",
+    "type": "function",
+    "inputs": [],
+    "outputs": [],
+    "signature": "0xd042c07c",
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "user_details",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "myTeamCount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalIncome",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "partnerSponsorBonus",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "partnerDirectKickBonus",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "partnerLevelBonus",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "PoolLevelIncome",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "LuxuryBonus",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "lapsIncome",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "constant": true,
+    "signature": "0xe128a991",
+    "stateMutability": "view"
+  },
+  {
+    "name": "users",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "id",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "account",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "exists",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      {
+        "name": "referrer",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "upline",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "start",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "currentPackage",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "partnercount",
+        "type": "uint8",
+        "internalType": "uint8"
+      },
+      {
+        "name": "totalMatrixTeam",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "constant": true,
+    "signature": "0xa87430ba",
+    "stateMutability": "view"
+  },
+  {
+    "type": "receive",
+    "payable": true,
+    "stateMutability": "payable"
+  }
+]
