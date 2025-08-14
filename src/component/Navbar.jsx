@@ -26,11 +26,11 @@ function Navbar({ handleSidebar, openSidebar }) {
     (state) => state.accountDetails.saveMainUserAddress
   );
 
-  const [handleIcon, setHandleIcon] = useState(false);
+  // const [handleIcon, setHandleIcon] = useState(false);
 
-  useEffect(() => {
-    setHandleIcon(openSidebar);
-  }, [openSidebar]);
+  // useEffect(() => {
+  //   setHandleIcon(openSidebar);
+  // }, [openSidebar]);
 
   const disconnectWallet = () => {
     handleSidebar(false);
@@ -49,7 +49,7 @@ function Navbar({ handleSidebar, openSidebar }) {
       } px-[4%] sm:px-[8%] py-3 flex justify-between items-center w-full`}
     >
       <div className="flex items-center gap-1 sm:gap-5">
-        <AnimatePresence mode="wait" initial={false}>
+        {/* <AnimatePresence mode="wait" initial={false}>
           {!handleIcon ? (
             <motion.div
               key="menu"
@@ -58,16 +58,18 @@ function Navbar({ handleSidebar, openSidebar }) {
               exit={{ opacity: 0, rotate: 90 }}
               transition={{ duration: 0.3 }}
               className="h-full cursor-pointer"
-            >
-              <AlignJustify
-                onClick={() => {
-                  setHandleIcon((prev) => !prev);
-                  handleSidebar(true);
-                }}
-                size={30}
-                strokeWidth={1.6}
-              />
-            </motion.div>
+            > */}
+        <AlignJustify
+          className="cursor-pointer"
+          onClick={() => {
+            const newState = !openSidebar;
+            // setHandleIcon(newState);
+            handleSidebar(newState);
+          }}
+          size={30}
+          strokeWidth={1.6}
+        />
+        {/* </motion.div>
           ) : (
             <motion.div
               key="close"
@@ -87,7 +89,7 @@ function Navbar({ handleSidebar, openSidebar }) {
               />
             </motion.div>
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
         <img
           src={iconSrc}
           onClick={() => navigate("/dashboard")}
@@ -102,7 +104,7 @@ function Navbar({ handleSidebar, openSidebar }) {
 
       <OptionalTopDiv css="hidden lg:flex lg:gap-3 xl:gap-10 py-2 px-2" />
 
-      <div className="flex  sm:gap-5 gap-1">
+      <div className="flex sm:gap-5 gap-1">
         <button
           onClick={() => {
             if (ownerAddress) {

@@ -15,13 +15,13 @@ function Faq({ openSidebar }) {
     <div
       className={`absolute inset-0 overflow-auto backdrop-blur-[1px] ${
         walletAddress == backupAddress ? "bg-black/60" : "bg-[#490D0D]/80"
-      }  flex justify-center sm:p-4`}
+      }  flex justify-center sm:py-4 ${openSidebar && "lg:pr-30"}`}
     >
       {" "}
       <div
         className={`${
           openSidebar ? "w-[90%] lg:w-full" : "w-[90%] lg:w-[80%]"
-        } flex flex-col`}
+        } flex flex-col sm:px-5 max-w-[1320px]`}
       >
         <Title title="FAQs" />
 

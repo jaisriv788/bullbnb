@@ -38,7 +38,7 @@ function MyTree({ openSidebar }) {
     if (parentId) {
       setTopId(parentId.toLowerCase());
     } else {
-      alert("You can not go ubove this ID.");
+      alert("You can not go above this ID.");
     }
   };
 
@@ -48,21 +48,22 @@ function MyTree({ openSidebar }) {
         walletAddress == walletCurrentAddress
           ? "bg-black/60"
           : "bg-[#490D0D]/80"
-      }  flex justify-center sm:p-4`}
+      }  flex justify-center sm:py-4 ${openSidebar && "lg:pr-30"}`}
     >
       {" "}
       <div
         className={`${
           openSidebar ? "w-[90%] lg:w-full" : "w-[90%] lg:w-[80%]"
-        } flex flex-col `}
+        } flex flex-col sm:px-5 max-w-[1320px] `}
       >
         <Title title="My Team Tree" />
 
-        <div className="flex-1 pb-6">
-          <label className="input bg-black rounded-full w-full text-white border-2 border-white/40">
+        <div className="flex-1 flex flex-col items-center">
+          {/* Label with input */}
+          <label className="input bg-black rounded-full text-white border-2 border-white/40 flex items-center px-3 w-full max-w-md">
             <input
               type="number"
-              className="grow"
+              className="grow bg-transparent outline-none"
               placeholder="Enter Id"
               min={1}
               value={inputValue}
@@ -85,7 +86,9 @@ function MyTree({ openSidebar }) {
               </g>
             </svg>
           </label>
-          <div className="flex justify-between mt-2">
+
+          {/* Buttons aligned at label ends */}
+          <div className="flex w-full max-w-md justify-between mt-2">
             <button
               onClick={handleTopClick}
               className="border-[#9D66FF] cursor-pointer flex items-center justify-center gap-1 hover:border-blue-600 text-sm bg-gradient-to-r from-[#9A22C5] to-[#5F09D4] w-20 rounded-md border"
@@ -100,15 +103,16 @@ function MyTree({ openSidebar }) {
               <CornerLeftUp size={15} /> Upline
             </button>
           </div>
+        </div>
 
-          <div className="mt-4 h-fit">
-            <FixedTree
-              onParentUpdate={setParentId}
-              topId={topId}
-              setTopId={setTopId}
-              debouncedInputId={debouncedInputId}
-            />
-          </div>
+        <div className="mt-4 h-fit">
+          <FixedTree
+            onParentUpdate={setParentId}
+            topId={topId}
+            setTopId={setTopId}
+            debouncedInputId={debouncedInputId}
+          />
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
             <div className="py-4 px-5 relative rounded-t-3xl flex flex-col items-center gap-3 bg-gradient-to-b from-[#f0b03d59] to-transparent text-center">
               <div className="text-xl">

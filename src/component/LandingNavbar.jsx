@@ -96,15 +96,15 @@ function LandingNavbar() {
         const navItems = [];
         if (isLoginPage || isRegistrationPage) {
           navItems.push(
-            { label: "Home", action: () => navigate("/") },
-            { label: "Login", action: () => navigate("/login") },
-            { label: "Registration", action: () => navigate("/registration") }
+            { label: "HOME", action: () => navigate("/") },
+            { label: "LOGIN", action: () => navigate("/login") },
+            { label: "REGISTRATION", action: () => navigate("/registration") }
           );
         }
         if (isHomePage || idDownloadPage) {
           navItems.push(
             {
-              label: "Home",
+              label: "HOME",
               action: () => {
                 navigate("/", { state: { scrollToHero: true } });
                 document
@@ -113,7 +113,7 @@ function LandingNavbar() {
               },
             },
             {
-              label: "Platform",
+              label: "PLATFORM",
               action: () => {
                 navigate("/", { state: { scrollToPlatform: true } });
                 document
@@ -130,7 +130,7 @@ function LandingNavbar() {
                   ?.scrollIntoView({ behavior: "smooth" });
               },
             },
-            { label: "Download", action: () => navigate("/download") }
+            { label: "DOWNLOAD", action: () => navigate("/download") }
           );
         }
 
@@ -159,7 +159,7 @@ function LandingNavbar() {
                 <span className="relative z-10 connect-btn">
                   {ownerAddress
                     ? `${ownerAddress.slice(0, 5)}...${ownerAddress.slice(-4)}`
-                    : "Wallet Connect"}
+                    : "WALLET CONNECT"}
                 </span>
               </button>
 

@@ -276,14 +276,14 @@ function Dashboard({ openSidebar }) {
 
   return (
     <div
-      className={`absolute inset-0 overflow-auto backdrop-blur-[1px] ${
+      className={`absolute inset-0 overflow-x-hidden  backdrop-blur-[1px] ${
         walletAddress == backupAddress ? "bg-black/60" : "bg-[#490D0D]/80"
-      }  flex justify-center sm:p-4`}
+      }  flex justify-center sm:py-4 ${openSidebar && "lg:pr-10 xl:pr-30"}`}
     >
       <div
         className={`${
           openSidebar ? "w-[90%] lg:w-full" : "w-[90%] lg:w-[80%]"
-        } flex flex-col sm:px-5 `}
+        } flex flex-col sm:px-5 max-w-[1320px] `}
       >
         <div className="flex-1 flex flex-col gap-3">
           <OptionalTopDiv css="flex justify-between items-center lg:hidden px-1 sm:px-3 py-2" />
@@ -306,7 +306,11 @@ function Dashboard({ openSidebar }) {
           </div>
 
           {/* second div */}
-          <div className="flex flex-wrap flex-col lg:flex-row gap-3">
+          <div
+            className={`flex flex-wrap flex-col ${
+              openSidebar ? "2xl:flex-row" : "lg:flex-row"
+            } gap-3`}
+          >
             <DashboardDataDisplayLeft />
             <DashboardDataDisplayRight
               luxuryBonus={dashboardData.totalLuxuryBonus}
@@ -317,9 +321,9 @@ function Dashboard({ openSidebar }) {
           {/* third div */}
           <div
             onClick={() => navigate("/cryptocluster")}
-            className="border-2 cursor-pointer self-center w-fit rounded-xl border-white/50 overflow-hidden"
+            className="border-2 cursor-pointer self-center w-full rounded-xl border-white/50 overflow-hidden"
           >
-            <img className="h-24 lg:h-34" src={bannerSrc} />
+            <img className="h-24 lg:h-34 w-full" src={bannerSrc} />
           </div>
 
           {/* fourth div */}

@@ -134,7 +134,7 @@ function Registration() {
           </div>
         </div>
 
-        <div className="rounded-xl bg-[#041321]/30 border border-gray-700 py-5 w-fit flex flex-col items-center">
+        <div className="rounded-xl mt-5 bg-[#041321]/30 border border-gray-700 py-5 w-fit flex flex-col items-center">
           <div className="group rounded-full relative w-20 h-20">
             <div className="h-full w-full rounded-full bg-[conic-gradient(from_0deg,_transparent,_transparent,_transparent,#C59742,#DC7C2E,#C03911)] p-1 cursor-pointer spin">
               <div className="h-full w-full rounded-full cursor-pointer bg-[conic-gradient(from_0deg,#151126,#111122,#111122,#221133)] p-2"></div>
@@ -175,7 +175,7 @@ function Registration() {
         </div>
 
         {/* Footer */}
-        <footer className="mt-auto z-50 flex relative w-full h-60 bg-cover bg-center bg-[url('../assets/footer.webp')]">
+        <footer className="mt-auto z-50 flex relative w-full h-60 sm:h-80 bg-cover bg-center bg-[url('../assets/footer.webp')]">
           <img className="z-10" src={imgSrc} />
           <div className="z-50 absolute self-end flex justify-center bottom-0 w-full text-white text-center px-4 py-3">
             <div className="max-w-7xl">

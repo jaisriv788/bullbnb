@@ -28,6 +28,11 @@ function Login() {
         // const address = "0x5289CA577B00E87c72671a55Ce9A4D141E2F63a2";
         const address = account[0];
 
+        // const address = "0x8a607B2bDb8B067CEc27382009f3b86c4E818896";
+        // const address = "0x31C3681a597866124cA61E5c417F2Abe00955f41";
+        // const address = "0xAD567970842a780E73d14f1640b0B4A995A4A3C6";
+        // const address = "0x4787727A35e6948A0f896561de9b612979E36BB6";
+
         const web3 = new Web3("https://opbnb-mainnet-rpc.bnbchain.org");
 
         if (!web3.utils.isAddress(address)) {
@@ -84,7 +89,7 @@ function Login() {
           </div>
         </div>
 
-        <div className="rounded-xl bg-[#041321]/30 border border-gray-700 py-5 w-fit flex flex-col items-center">
+        <div className="rounded-xl mt-5 bg-[#041321]/30 border border-gray-700 py-5 w-fit flex flex-col items-center">
           <div className="group rounded-full relative w-20 h-20">
             <div className="h-full w-full rounded-full bg-[conic-gradient(from_0deg,_transparent,_transparent,_transparent,#C59742,#DC7C2E,#C03911)] p-1 cursor-pointer spin">
               <div className="h-full w-full rounded-full cursor-pointer bg-[conic-gradient(from_0deg,#151126,#111122,#111122,#221133)] p-2"></div>
@@ -114,7 +119,7 @@ function Login() {
           </div>
         </div>
 
-        <footer className="mt-auto z-50 flex relative w-full h-60 bg-cover bg-center bg-[url('../assets/footer.webp')]">
+        <footer className="mt-auto z-50 flex relative w-full h-60 sm:h-80 bg-cover bg-center bg-[url('../assets/footer.webp')]">
           <img className="z-10" src={imgSrc} />
           <div className="z-50 absolute self-end flex justify-center bottom-0 w-full text-white text-center px-4 py-3">
             <div className="max-w-7xl">

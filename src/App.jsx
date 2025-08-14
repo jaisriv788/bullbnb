@@ -1,3 +1,4 @@
+// App.jsx
 import { useEffect, useState } from "react";
 import { AnimatePresence } from "motion/react";
 import { Routes, Route } from "react-router";
@@ -11,7 +12,7 @@ import {
 } from "./features/walletAddress/web3WalletInfo";
 import { setUserData } from "./features/dashboardData/dashboardDataInfo";
 import { useDispatch, useSelector } from "react-redux";
-//compoents
+//components
 import Sidebar from "./component/Sidebar";
 import Navbar from "./component/Navbar";
 import ProtectedRoute from "./component/ProtectedRoute";
@@ -60,6 +61,7 @@ function App() {
 
   const dispatch = useDispatch();
   const isCertificatePage = useMatch("/certificate/:name/:rank/:earning");
+
   function handleSidebar(val) {
     setOpenSidebar(val);
   }
@@ -87,14 +89,12 @@ function App() {
     const dashboardData = sessionStorage.getItem("dashboardData");
     const id = sessionStorage.getItem("id");
     if (walletConnected && walletAddress) {
-      // console.log(walletAddress, walletConnected);
       dispatch(setAddress(walletAddress));
       dispatch(saveMainUser(walletConnectedBackup));
       dispatch(isConnected(walletConnected));
       dispatch(setUserData(JSON.parse(dashboardData)));
       dispatch(setId(Number(id)));
     }
-    // console.log(showCopyModal);
     setRehydrated(true);
   }, []);
 
@@ -122,11 +122,14 @@ function App() {
 
       <div className={`flex flex-1 overflow-hidden bgImg`}>
         {isWalletConnected && (
-          <AnimatePresence>{openSidebar && <Sidebar />}</AnimatePresence>
+          <AnimatePresence>
+            {openSidebar && (
+              <Sidebar handleSidebar={handleSidebar} />
+            )}
+          </AnimatePresence>
         )}
 
-        <div className="relative w-full overflow-y-auto h-full text-white">
-          {/* <LogoSpinner /> */}
+        <div className="relative flex-1 overflow-y-auto h-full text-white">
           <Routes>
             <Route element={<PublicRoute />}>
               <Route path="/" element={<LandingPage />} />
@@ -208,7 +211,7 @@ function App() {
                 path="/academy/tutorial"
                 element={<TutorialVideo openSidebar={openSidebar} />}
               />
-              {/* ------------------------ */}
+              {/* Others */}
               <Route
                 path="/promos"
                 element={<PromoPdf openSidebar={openSidebar} />}

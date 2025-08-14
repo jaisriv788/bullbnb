@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { screenLoaderVisibilty } from "../features/copyModal/copyModalVisiblilty";
 import telegram from "../assets/logos/telegram.png";
-
+import imageBack from "../assets/cover.jpg";
 function Profile({ openSidebar }) {
   const userId = useSelector((state) => state.accountDetails.userId);
   const rank = useSelector((state) => state.dashboardData.userData.rank);
@@ -115,15 +115,19 @@ function Profile({ openSidebar }) {
   }, [usersData]);
 
   return (
-    <div className="absolute inset-0 overflow-auto backdrop-blur-[1px] bg-black/60 flex justify-center sm:p-4">
+    <div
+      className={`absolute inset-0 overflow-auto backdrop-blur-[1px] bg-black/60 flex justify-center sm:py-4 ${
+        openSidebar && "lg:pr-30"
+      }`}
+    >
       <div
         className={`${
           openSidebar ? "w-[90%] lg:w-full" : "w-[90%] lg:w-[80%]"
-        } flex flex-col`}
+        } flex flex-col  sm:px-5 max-w-[1320px] `}
       >
         <div className="flex-1 flex flex-col gap-10">
           <div className="w-full relative h-[22rem] rounded-3xl overflow-hidden bg-gradient-to-b from-[#6D5122] to-transparent ">
-            <img src="cover.jpg" className="w-full absolute bottom-3/5" />
+            <img src={imageBack} className="w-full absolute bottom-3/5" />
             <div className="absolute -z-0 top-2/5 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
               <div className="relative w-[150px] flex items-center justify-center aspect-square">
                 <img

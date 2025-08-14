@@ -62,12 +62,12 @@ const renderCardNode = ({ nodeDatum }, onClick) => {
     <foreignObject width={100} height={120} x={-50} y={-30}>
       <div
         onClick={() => onClick(nodeDatum)}
-        className="box-border overflow-hidden w-[100px] h-[100px] bg-white border border-gray-600 rounded-lg shadow-sm flex flex-col items-center justify-between pt-1 cursor-pointer"
+        className="box-border overflow-hidden w-[94px] sm:w-[100px] h-[94px] bg-white border border-gray-600 rounded-lg shadow-sm flex flex-col items-center justify-between pt-1 cursor-pointer"
       >
         <img
           src={img}
           alt="MLM"
-          className="h-12 rounded-full border border-[#09182C] mb-1"
+          className="h-12 rounded-full border border-[#09182C] "
         />
         <span className={`text-sm ${txt}`}>{nodeDatum.name}</span>
         <div className={`${clr} w-full text-center text-white text-xs`}>
@@ -209,16 +209,8 @@ const FixedMLMTree = ({
       const contract = new web3.eth.Contract(abi, contractAddress);
 
       const referer = await contract.methods.users(topId).call();
-      // if (referer?.referrer && onParentUpdate) {
-      //   onParentUpdate(referer.referrer.toLowerCase());
-      // }
 
-      if (walletAddress.toLowerCase() != referer.account.toLowerCase()) {
-        console.log(walletAddress.toLowerCase());
-        console.log(referer.account.toLowerCase());
-        console.log(
-          walletAddress.toLowerCase() != referer.account.toLowerCase()
-        );
+      if (walletAddress.toLowerCase() !== referer.account.toLowerCase()) {
         onParentUpdate(referer?.upline);
       }
 
@@ -227,40 +219,34 @@ const FixedMLMTree = ({
         contract.methods.getMatrixUsers(topId, 1).call(),
       ]);
 
-      // console.log({ referer, refererChild, refererGrandChild });
       const addressesToFetch = [
         referer?.referrer,
         refererChild?.[0]?.referrer,
         refererChild?.[1]?.referrer,
-        refererGrandChild?.[0]?.referrer,
-        refererGrandChild?.[1]?.referrer,
-        refererGrandChild?.[2]?.referrer,
-        refererGrandChild?.[3]?.referrer,
+        ...refererGrandChild.map((gc) => gc?.referrer),
       ];
 
       const [
         topReferer,
         firstChildReferer,
         secondChildReferer,
-        grandchildOne,
-        grandchildTwo,
-        grandchildThree,
-        grandchildFour,
+        ...grandchildReferers
       ] = await Promise.all(
         addressesToFetch.map((addr) =>
           addr ? contract.methods.users(addr).call() : {}
         )
       );
 
-      // console.table([
-      //   topReferer.id,
-      //   firstChildReferer.id,
-      //   secondChildReferer.id,
-      //   grandchildOne.id,
-      //   grandchildTwo.id,
-      //   grandchildThree.id,
-      //   grandchildFour.id,
-      // ]);
+      // helper to match grandchildren to parent
+      const getGrandChildrenFor = (parentAddress) =>
+        refererGrandChild
+          .map((gc, idx) => ({
+            ...gc,
+            refererData: grandchildReferers[idx] || {},
+          }))
+          .filter(
+            (gc) => gc?.upline?.toLowerCase() === parentAddress?.toLowerCase()
+          );
 
       const topNode = {
         name: referer?.id ?? "-",
@@ -277,24 +263,16 @@ const FixedMLMTree = ({
             referrer: firstChildReferer?.id ?? "-",
             team: refererChild?.[0]?.totalMatrixTeam,
             upline: refererChild?.[0]?.upline,
-            children: [
-              {
-                name: refererGrandChild?.[0]?.id ?? "-",
-                package: Number(refererGrandChild?.[0]?.currentPackage ?? 0),
-                address: refererGrandChild?.[0]?.account ?? "-",
-                referrer: grandchildOne?.id ?? "-",
-                team: refererGrandChild?.[0]?.totalMatrixTeam,
-                upline: refererGrandChild?.[0]?.upline,
-              },
-              {
-                name: refererGrandChild?.[1]?.id ?? "-",
-                package: Number(refererGrandChild?.[1]?.currentPackage ?? 0),
-                address: refererGrandChild?.[1]?.account ?? "-",
-                referrer: grandchildTwo?.id ?? "-",
-                team: refererGrandChild?.[1]?.totalMatrixTeam,
-                upline: refererGrandChild?.[1]?.upline,
-              },
-            ],
+            children: getGrandChildrenFor(refererChild?.[0]?.account).map(
+              (gc) => ({
+                name: gc?.id ?? "-",
+                package: Number(gc?.currentPackage ?? 0),
+                address: gc?.account ?? "-",
+                referrer: gc?.refererData?.id ?? "-",
+                team: gc?.totalMatrixTeam,
+                upline: gc?.upline,
+              })
+            ),
           },
           {
             name: refererChild?.[1]?.id ?? "-",
@@ -303,28 +281,21 @@ const FixedMLMTree = ({
             referrer: secondChildReferer?.id ?? "-",
             team: refererChild?.[1]?.totalMatrixTeam,
             upline: refererChild?.[1]?.upline,
-            children: [
-              {
-                name: refererGrandChild?.[2]?.id ?? "-",
-                package: Number(refererGrandChild?.[2]?.currentPackage ?? 0),
-                address: refererGrandChild?.[2]?.account ?? "-",
-                referrer: grandchildThree?.id ?? "-",
-                team: refererGrandChild?.[2]?.totalMatrixTeam,
-                upline: refererGrandChild?.[2]?.upline,
-              },
-              {
-                name: refererGrandChild?.[3]?.id ?? "-",
-                package: Number(refererGrandChild?.[3]?.currentPackage ?? 0),
-                address: refererGrandChild?.[3]?.account ?? "-",
-                referrer: grandchildFour?.id ?? "-",
-                team: refererGrandChild?.[3]?.totalMatrixTeam,
-                upline: refererGrandChild?.[3]?.upline,
-              },
-            ],
+            children: getGrandChildrenFor(refererChild?.[1]?.account).map(
+              (gc) => ({
+                name: gc?.id ?? "-",
+                package: Number(gc?.currentPackage ?? 0),
+                address: gc?.account ?? "-",
+                referrer: gc?.refererData?.id ?? "-",
+                team: gc?.totalMatrixTeam,
+                upline: gc?.upline,
+              })
+            ),
           },
         ],
       };
 
+      console.log(topNode);
       setTreeData(topNode);
     } catch (error) {
       console.error("Error fetching tree data:", error);
@@ -405,7 +376,7 @@ const FixedMLMTree = ({
           renderCustomNodeElement={(rd) => renderCardNode(rd, openModel)}
           collapsible={false}
           zoomable={false}
-          draggable={true}
+          draggable={false}
           pathFunc="elbow"
           nodeSize={nodeSize}
           separation={separation}
