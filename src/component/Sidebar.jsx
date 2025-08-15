@@ -122,7 +122,7 @@ function Sidebar({ handleSidebar }) {
                             e.stopPropagation();
                             handleNavigate(sub.path);
                           }}
-                          className="flex items-center gap-2 text-[14px] font-semibold hover:text-[#E69019] cursor-pointer"
+                          className="flex items-center gap-2 text-[14px] hover:text-[#E69019] cursor-pointer"
                         >
                           <SubIcon size={8} />
                           <span>{sub.name}</span>

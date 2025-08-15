@@ -1,5 +1,6 @@
 import { useState } from "react";
 import logoSrc from "../assets/bnbLogo/transparent.png";
+import { useNavigate } from "react-router";
 import checkSrc from "../assets/logos/checkicon.png";
 import { useSelector } from "react-redux";
 import soildLogoSrc from "../assets/bnbLogo/circle.png";
@@ -52,10 +53,13 @@ function Package() {
   const [selectedUpgradeIndex, setSelectedUpgradeIndex] = useState(null);
   const [modelVisible, setModelVisible] = useState(false);
   const [highest, setHighest] = useState(0);
+
+  const baseUrl = useSelector((state) => state.accountDetails.baseUrl);
   const mainContractAddress = useSelector(
     (state) => state.accountDetails.mainContractAddress
   );
 
+  const navigate = useNavigate();
   const level = useSelector((state) => state.dashboardData.userData?.rank);
   // const level = 6;
 
@@ -72,23 +76,23 @@ function Package() {
   async function handleUpgradeClick() {
     setModelVisible(true);
     if (highest === 0) return;
-    console.log(mainContractAddress);
+    // console.log(mainContractAddress);
     try {
       const web3 = new Web3(window.ethereum);
       const amountInWei = web3.utils.toWei(highest.toString(), "ether");
       const accounts = await web3.eth.requestAccounts();
       const address = accounts[0];
       const contract = new web3.eth.Contract(mainAbi, mainContractAddress);
-      console.log(contract);
-      const user = await contract.methods.isUserExists(accounts[0]).call();
-      if (!user) {
-        return;
-      }
-      // console.log(user);
+      // console.log(contract);
+      // const user = await contract.methods.isUserExists(accounts[0]).call();
+      // if (!user) {
+      //   return;
+      // }
+      // console.log({user});
       const gasPrice = await web3.eth.getGasPrice();
-
-      contract.methods
-        .Upgrade(selectedUpgradeIndex)
+      console.log({ gasPrice });
+      await contract.methods
+        .Upgrade(selectedUpgradeIndex + 1)
         .send({
           value: amountInWei,
           from: address,
@@ -100,7 +104,6 @@ function Package() {
             let pkg = allPackages()[user_details.currentPackage];
 
             try {
-              const baseUrl = document.getElementById("baseurl").value;
               const response = await axios.post(
                 `${baseUrl}user/telegram_notify`,
                 {
@@ -117,7 +120,8 @@ function Package() {
               );
             } finally {
               setTimeout(() => {
-                window.location.href = "index";
+                navigate("/dashboard");
+                window.location.reload();
               }, 2000);
             }
           } catch (error) {

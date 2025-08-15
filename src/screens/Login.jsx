@@ -89,7 +89,7 @@ function Login() {
           </div>
         </div>
 
-        <div className="rounded-xl mt-5 bg-[#041321]/30 border border-gray-700 py-5 w-fit flex flex-col items-center">
+        <div className="rounded-xl mt-5 bg-[#041321]/30 border border-gray-700 py-5 w-fit min-w-[500px]  flex flex-col items-center">
           <div className="group rounded-full relative w-20 h-20">
             <div className="h-full w-full rounded-full bg-[conic-gradient(from_0deg,_transparent,_transparent,_transparent,#C59742,#DC7C2E,#C03911)] p-1 cursor-pointer spin">
               <div className="h-full w-full rounded-full cursor-pointer bg-[conic-gradient(from_0deg,#151126,#111122,#111122,#221133)] p-2"></div>
