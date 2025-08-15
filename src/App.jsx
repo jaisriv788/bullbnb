@@ -100,7 +100,12 @@ function App() {
 
   useEffect(() => {
     if (isWalletConnected && !isCertificatePage) {
-      setOpenSidebar(true);
+      const screenWidth = window.innerWidth;
+      if (screenWidth < 1024) {
+        setOpenSidebar(false);
+      } else if (isWalletConnected) {
+        setOpenSidebar(true);
+      }
     }
   }, [isWalletConnected]);
 
@@ -123,9 +128,7 @@ function App() {
       <div className={`flex flex-1 overflow-hidden bgImg`}>
         {isWalletConnected && (
           <AnimatePresence>
-            {openSidebar && (
-              <Sidebar handleSidebar={handleSidebar} />
-            )}
+            {openSidebar && <Sidebar handleSidebar={handleSidebar} />}
           </AnimatePresence>
         )}
 

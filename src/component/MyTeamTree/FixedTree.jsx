@@ -97,7 +97,12 @@ const ensureTwoChildren = (children) => {
   return filled;
 };
 
-const FixedMLMTree = ({ topId, setTopId, onParentUpdate, debouncedInputId }) => {
+const FixedMLMTree = ({
+  topId,
+  setTopId,
+  onParentUpdate,
+  debouncedInputId,
+}) => {
   const [showModel, setShowModel] = useState(false);
   const [modelData, setModelData] = useState(null);
   const walletAddress = useSelector(
@@ -378,7 +383,7 @@ const FixedMLMTree = ({ topId, setTopId, onParentUpdate, debouncedInputId }) => 
           renderCustomNodeElement={(rd) => renderCardNode(rd, openModel)}
           collapsible={false}
           zoomable={false}
-          draggable={false}
+          draggable={true}
           pathFunc="elbow"
           nodeSize={nodeSize}
           separation={separation}
