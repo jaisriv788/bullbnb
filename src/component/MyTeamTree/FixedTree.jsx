@@ -81,7 +81,7 @@ const renderCardNode = ({ nodeDatum }, onClick) => {
           className="rounded-full border border-[#09182C] 
             h-[28px] sm:h-12"
         />
-        <span className={`text-[10px] sm:text-sm ${txt}`}>
+        <span className={`text-[8.5px] sm:text-sm ${txt}`}>
           {nodeDatum.name}
         </span>
         <div

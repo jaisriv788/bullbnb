@@ -22,7 +22,7 @@ const packages = [
   { label: "TITAN", amount: "1.28" },
   { label: "PLATINUM", amount: "2.56" },
   { label: "DIAMOND", amount: "5.12" },
-  { label: "TITAN", amount: "10.28" },
+  { label: "ICON", amount: "10.28" },
   { label: "LEGEND", amount: "20.48" },
   { label: "AMBASSADOR", amount: "40.36" },
   { label: "PRESIDENT", amount: "81.92" },
@@ -138,7 +138,7 @@ function Package() {
 
   return (
     <>
-      <div className="mt-14 flex gap-5 justify-evenly flex-wrap pt-16 lg:px-20 bg-gradient-to-b from-[#564017] to-transparent rounded-t-xl relative">
+      <div className="mt-14 flex gap-5 justify-evenly flex-wrap pt-16 lg:px-10 bg-gradient-to-b from-[#564017] to-transparent rounded-t-xl relative">
         {modelVisible && (
           <div
             onClick={() => setModelVisible(false)}

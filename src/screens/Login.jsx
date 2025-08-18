@@ -1,4 +1,3 @@
-import LogoSpinner from "../component/LogoSpinner";
 import { useDispatch, useSelector } from "react-redux";
 import mainAbi from "../mainAbi.json";
 import { useNavigate } from "react-router";
@@ -10,6 +9,8 @@ import {
 } from "../features/walletAddress/web3WalletInfo";
 import Error from "../component/Error";
 import FooterTwo from "../component/FooterTwo";
+import ringSrc from "../assets/logos/ring-text.png";
+import centralImageSrc from "../assets/logos/ring-transparent.png";
 
 function Login() {
   const dispatch = useDispatch();
@@ -62,8 +63,18 @@ function Login() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-white bgImg">
-      {/* Main content area */} <LogoSpinner />
+    <div className="min-h-screen overflow-x-hidden flex flex-col bg-white text-white bgImg">
+      <div className="absolute rounded-full  -z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="relative rounded-full w-[200px]  sm:w-[350px] lg:w-[450px] aspect-square">
+          <img className="absolute rounded-full " src={ringSrc} />
+          <img
+            className="absolute rounded-full animate-spin"
+            style={{ animationDuration: "15s" }}
+            src={centralImageSrc}
+          />
+        </div>
+      </div>
+
       <div className="absolute inset-0 flex flex-col gap-10 items-center pt-20 w-full h-full bg-black/60 z-20"></div>
       <div className="flex min-h-screen px-3 flex-col justify-center items-center flex-grow z-50">
         <div className="text-center mt-25 sm:mt-35">
@@ -89,7 +100,7 @@ function Login() {
           </div>
         </div>
 
-        <div className="rounded-xl mt-5 bg-[#041321]/30 border border-gray-700 py-5 w-[500px] min-w-[400px]  flex flex-col items-center">
+        <div className="rounded-xl mt-5 min-w-[200px] bg-[#041321]/30 border max-w-screen border-gray-700 py-5 w-[500px] flex flex-col items-center">
           <div className="group rounded-full relative w-20 h-20">
             <div className="h-full w-full rounded-full bg-[conic-gradient(from_0deg,_transparent,_transparent,_transparent,#C59742,#DC7C2E,#C03911)] p-1 cursor-pointer spin">
               <div className="h-full w-full rounded-full cursor-pointer bg-[conic-gradient(from_0deg,#151126,#111122,#111122,#221133)] p-2"></div>

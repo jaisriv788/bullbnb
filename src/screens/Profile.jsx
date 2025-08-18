@@ -129,7 +129,7 @@ function Profile({ openSidebar }) {
           <div className="w-full relative h-[22rem] rounded-3xl overflow-hidden bg-gradient-to-b from-[#6D5122] to-transparent ">
             <img src={imageBack} className="w-full absolute bottom-3/5" />
             <div className="absolute -z-0 top-2/5 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <div className="relative w-[150px] flex items-center justify-center aspect-square">
+              <div className="relative w-[100px] sm:w-[150px] flex items-center justify-center aspect-square">
                 <img
                   className="h-full rounded-full"
                   src={
@@ -151,7 +151,7 @@ function Profile({ openSidebar }) {
               </div>
               <div className="text-lg font-semibold">ID: {userId}</div>
               <div className="relative inline-block cursor-pointer">
-                <button className="bg-gradient-to-r cursor-pointer px-4 py-1 rounded-xl border-2  from-[#2F0C59] to-[#C40C78]">
+                <button className="bg-gradient-to-r text-nowrap cursor-pointer px-4 py-1 rounded-xl border-2  from-[#2F0C59] to-[#C40C78]">
                   PHOTO UPLOAD
                 </button>
                 <input
@@ -162,9 +162,9 @@ function Profile({ openSidebar }) {
                 />
               </div>
             </div>
-            <div className="absolute top-0 right-10">
+            <div className="absolute top-0 sm:right-10 right-3">
               <div
-                className="w-28 flex-col h-28 bg-white text-black flex justify-start  items-center pt-4 font-semibold"
+                className="w-18 h-18 sm:w-28 flex-col sm:h-28 bg-white text-black flex justify-start pt-2 items-center sm:pt-4 font-semibold"
                 style={{
                   clipPath: "polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%)",
                 }}
