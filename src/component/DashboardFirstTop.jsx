@@ -70,10 +70,10 @@ function DashboardFirstTop({ walletAddress, usersData, id, referer }) {
         </div>
         <div className=" flex flex-col gap-1 justify-center">
           <div className="flex items-center gap-3">
-            <div className="font-semibold lg:text-lg">
+            <div className="wt lg:text-lg">
               {userData?.name ? userData?.name : "Bull BNB"}
             </div>
-            <div className="text-sm px-2 rounded-lg text-[#FFEB3B] bg-[#1F1F1F] font-semibold">
+            <div className="text-sm px-2 rounded-lg text-[#FFEB3B] bg-[#1F1F1F] wt">
               ID {id}
             </div>
           </div>
@@ -93,7 +93,7 @@ function DashboardFirstTop({ walletAddress, usersData, id, referer }) {
           </div>
           <div className="flex text-nowrap items-center gap-3">
             <div className="text-xs">Invited By</div>
-            <div className="text-sm px-2 rounded-lg bg-[#1F1F1F]  font-semibold">
+            <div className="text-sm px-2 rounded-lg bg-[#1F1F1F]  wt">
               ID {!referer || referer == "0" ? "No Referral..." : referer}
             </div>
           </div>
@@ -102,7 +102,7 @@ function DashboardFirstTop({ walletAddress, usersData, id, referer }) {
 
       {/* right */}
       <div className="flex-1 bg-[#432B2B]/80 rounded-xl flex flex-col justify-center gap-3">
-        <div className="font-semibold mx-3">My Referral Id</div>
+        <div className="wt mx-3">My Referral Id</div>
         <div className="mx-3 pb-2 md:pb-0 text-sm flex justify-between">
           <div className="flex gap-2 items-center">
             <img src={iconSrc} style={{ height: "25px" }} />

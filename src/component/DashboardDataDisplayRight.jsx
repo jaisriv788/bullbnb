@@ -7,7 +7,7 @@ import Web3 from "web3";
 import logoSrc from "../assets/bnbLogo/circle.png";
 import ABI from "../mainAbi.json";
 
-function DashboardDataDisplayRight({ luxuryBonus, lapsIncome }) {
+function DashboardDataDisplayRight({ luxuryBonus, lapsIncome, openSidebar }) {
   const [timeLeft, setTimeLeft] = useState(null); // in seconds
   const [claimEnabled, setClaimEnabled] = useState(false);
   const [timerEnded, setTimerEnded] = useState(false);
@@ -87,7 +87,11 @@ function DashboardDataDisplayRight({ luxuryBonus, lapsIncome }) {
   };
 
   return (
-    <div className="flex-1 flex gap-3 flex-col">
+    <div
+      className={`flex-1 flex gap-3 flex-col ${
+        openSidebar ? "xl:w-1/3 w-full" : "lg:w-1/3 w-full"
+      }`}
+    >
       <div className="bg-gradient-to-tr p-2 flex-3 rounded-lg from-[#FA1C1E] via-[#AA113B] to-[#620755]">
         <div className="bg-gradient-to-tr from-[#FFEA3A] to-[#FF9A01] h-full rounded-lg p-1">
           <div className="bg-gradient-to-tr flex flex-col items-center text-center p-2 lg:p-1 from-[#FA1C1E] via-[#AA113B] to-[#620755] rounded-lg h-full">
@@ -104,7 +108,7 @@ function DashboardDataDisplayRight({ luxuryBonus, lapsIncome }) {
             <div className="my-3 border-t-[1px] border-white/30 w-full"></div>
             <div className="text-lg">Next bonus unlock after</div>
             <div
-              className="bg-gradient-to-r rounded-lg border-3 border-[#C675D8] w-full py-1 lg:py-[1px] text-2xl font-semibold from-[#A326C3] via-[#7B15CC] to-[#5706D6]"
+              className="bg-gradient-to-r rounded-lg border-3 border-[#C675D8] w-full py-1 lg:py-[1px] text-nowrap 2xl:text-2xl font-semibold from-[#A326C3] via-[#7B15CC] to-[#5706D6]"
               id="countdown"
             >
               {timeLeft !== null ? formatTime(timeLeft) : "Loading..."}
@@ -127,18 +131,18 @@ function DashboardDataDisplayRight({ luxuryBonus, lapsIncome }) {
 
       <div
         onClick={() => navigate(`/bonus/${lapsIncome}`)}
-        className="flex-1 cursor-pointer flex justify-between py-2 lg:py-0 px-5 rounded-lg bg-gradient-to-r from-[#B6530A] via-[#D0802F] to-[#E2A049]"
+        className="flex-1 cursor-pointer flex justify-between py-2 lg:py-0 px-3 rounded-lg bg-gradient-to-r from-[#B6530A] via-[#D0802F] to-[#E2A049]"
       >
         <div className="flex flex-col">
-          <div className="flex items-center gap-1">
+          <div className="flex text-sm items-center gap-1">
             <TriangleAlert size={16} />
             Total Lost Bonus
           </div>
-          <span className="text-2xl">{lapsIncome ? lapsIncome : "00"} BNB</span>
+          <span className="text-xl">{lapsIncome ? lapsIncome : "00"} BNB</span>
           <span className="text-xs">Take action now to keep your bonus!</span>
         </div>
         <div className="flex items-center">
-          <img className="h-16" src={logoSrc} />
+          <img className="h-16 w-16" src={logoSrc} />
         </div>
       </div>
     </div>

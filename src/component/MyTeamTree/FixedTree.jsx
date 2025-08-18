@@ -59,20 +59,34 @@ const renderCardNode = ({ nodeDatum }, onClick) => {
   }
 
   return (
-    <foreignObject width={100} height={120} x={-50} y={-30}>
+    <foreignObject
+      width={window.innerWidth < 640 ? 100 : 100}
+      height={window.innerWidth < 640 ? 95 : 120}
+      x={-50}
+      y={-30}
+    >
       <div
         onClick={() => {
-          if (nodeDatum.name !== "-") onClick(nodeDatum); // prevent modal on placeholders
+          if (nodeDatum.name !== "-") onClick(nodeDatum);
         }}
-        className="box-border overflow-hidden w-[94px] sm:w-[100px] h-[94px] bg-white border border-gray-600 rounded-lg shadow-sm flex flex-col items-center justify-between pt-1 cursor-pointer"
+        className="box-border overflow-hidden 
+          w-[60px] h-[70px] 
+          sm:w-[100px] sm:h-[94px] 
+          bg-white border border-gray-600 rounded-lg shadow-sm 
+          flex flex-col items-center justify-between pt-1 cursor-pointer mx-auto"
       >
         <img
           src={img}
           alt="MLM"
-          className="h-12 rounded-full border border-[#09182C] "
+          className="rounded-full border border-[#09182C] 
+            h-[28px] sm:h-12"
         />
-        <span className={`text-sm ${txt}`}>{nodeDatum.name}</span>
-        <div className={`${clr} w-full text-center text-white text-xs`}>
+        <span className={`text-[10px] sm:text-sm ${txt}`}>
+          {nodeDatum.name}
+        </span>
+        <div
+          className={`${clr} w-full text-center text-white text-[8px] sm:text-xs`}
+        >
           {Rank[pkg - 1] ?? "-"}
         </div>
       </div>
@@ -183,8 +197,8 @@ const FixedMLMTree = ({
       setTranslate({ x: width / 2, y: 50 });
 
       if (width < 500) {
-        setNodeSize({ x: 100, y: 120 });
-        setSeparation({ siblings: 1.1, nonSiblings: 1.2 });
+        setNodeSize({ x: 60, y: 90 }); // ⬅️ Smaller node size
+        setSeparation({ siblings: 1.2, nonSiblings: 1.3 });
       } else if (width < 768) {
         setNodeSize({ x: 120, y: 130 });
         setSeparation({ siblings: 1.3, nonSiblings: 1.4 });
@@ -376,18 +390,30 @@ const FixedMLMTree = ({
         </div>
       )}
       {treeData && (
-        <Tree
-          data={treeData}
-          translate={translate}
-          orientation="vertical"
-          renderCustomNodeElement={(rd) => renderCardNode(rd, openModel)}
-          collapsible={false}
-          zoomable={false}
-          draggable={true}
-          pathFunc="elbow"
-          nodeSize={nodeSize}
-          separation={separation}
-        />
+        <div className="w-full h-full overflow-x-auto sm:overflow-x-hidden">
+          <div
+            className="h-full"
+            style={{
+              minWidth: "1600px",
+              width: "max-content",
+              // paddingLeft: "1rem",
+              // paddingRight: "1rem",
+            }}
+          >
+            <Tree
+              data={treeData}
+              translate={translate}
+              orientation="vertical"
+              renderCustomNodeElement={(rd) => renderCardNode(rd, openModel)}
+              collapsible={false}
+              zoomable={false}
+              draggable={false}
+              pathFunc="elbow"
+              nodeSize={nodeSize}
+              separation={separation}
+            />
+          </div>
+        </div>
       )}
     </div>
   );

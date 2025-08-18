@@ -46,7 +46,7 @@ function BuilderPlan() {
             </div>
           </div>
         </div>
-        <div className="w-9/12">
+        <div className="sm:w-9/12">
           <div className="flex flex-wrap justify-between gap-x-3">
             {data.map((item, index) => {
               return (
@@ -70,7 +70,7 @@ function BuilderPlan() {
               );
             })}
           </div>
-          <div className="text-center mb-20 py-16 px-14 border-dashed border-x-2 border-b-2 text-lg rounded-4xl relative">
+          <div className="text-center mb-20 py-5 sm:py-16 px-5 sm:px-14 border-dashed border-x-2 border-b-2 sm:text-lg rounded-4xl relative">
             Simultaneous entry into platform one of the Partner Sponsor Bonus,
             Partner Direct Kick Bonus, Partner Level Bonus, Partner Pool Bonus
             and Luxury Bonus matrices occurs automatically upon registration.

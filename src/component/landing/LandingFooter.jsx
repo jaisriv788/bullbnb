@@ -5,7 +5,7 @@ import imgSrc3 from "../../assets/logos/youtube.png";
 function LandingFooter() {
   return (
     <div
-      className="w-full h-3/4 bg-cover relative bg-center pt-10"
+      className="w-full h-full md:h-3/4 bg-cover relative bg-center pt-10"
       style={{
         backgroundImage: "url('footer.webp')",
       }}
@@ -77,11 +77,7 @@ function LandingFooter() {
 
         {/* Icon 3 */}
         <div className="flex flex-col items-center">
-          <a
-            href="https://x.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
             <div className="group rounded-full relative w-16 h-16">
               <div className="h-full w-full rounded-full bg-[conic-gradient(from_0deg,_transparent,_transparent,_transparent,#C59742,#DC7C2E,#C03911)] p-1 cursor-pointer spin">
                 <div className="h-full w-full rounded-full cursor-pointer bg-[conic-gradient(from_0deg,#151126,#111122,#111122,#221133)] p-2"></div>
@@ -117,9 +113,9 @@ function LandingFooter() {
           </div>
         </div>
       </div>
-      <div className="absolute flex flex-col gap-3 items-center bottom-10 sm:bottom-15 w-full text-center text-white text-sm">
+      <div className="absolute flex text-xs flex-col gap-2 bottom-5 md:bottom-15 items-center w-full text-center text-white md:text-sm">
         © 2025. All Rights Reserved. Built with passion ❤️ on opBNB
-        <div className="w-full sm:w-10/12 hidden sm:block">
+        <div className="w-full  sm:w-10/12 ">
           Disclaimer: Participation in this decentralized community smart
           contract program is entirely voluntary. Under no circumstances should
           any information on this website or in any presentation be considered
@@ -132,7 +128,7 @@ function LandingFooter() {
           participation in this smart contract program indicates your acceptance
           of our disclaimer.
         </div>
-      </div>{" "}
+      </div>
     </div>
   );
 }

@@ -111,7 +111,7 @@ function Sidebar({ handleSidebar }) {
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="ml-6 mt-2 flex flex-col gap-1"
+                    className="ml-6 mt-2 flex flex-col gap-3"
                   >
                     {data.subRoute.map((sub) => {
                       const SubIcon = sub.icon;

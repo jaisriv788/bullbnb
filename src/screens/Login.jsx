@@ -9,7 +9,7 @@ import {
   setAddress,
 } from "../features/walletAddress/web3WalletInfo";
 import Error from "../component/Error";
-import imgSrc from "../assets/footer.webp";
+import FooterTwo from "../component/FooterTwo";
 
 function Login() {
   const dispatch = useDispatch();
@@ -66,8 +66,8 @@ function Login() {
       {/* Main content area */} <LogoSpinner />
       <div className="absolute inset-0 flex flex-col gap-10 items-center pt-20 w-full h-full bg-black/60 z-20"></div>
       <div className="flex min-h-screen px-3 flex-col justify-center items-center flex-grow z-50">
-        <div className="text-center mt-20">
-          <div className="text-lg font-bold flex items-center gap-5 text-center text-wrap">
+        <div className="text-center mt-25 sm:mt-35">
+          <div className="text-lg  text-nowrap font-bold flex items-center gap-5 text-center">
             <div
               className="h-[2px] w-20"
               style={{
@@ -89,7 +89,7 @@ function Login() {
           </div>
         </div>
 
-        <div className="rounded-xl mt-5 bg-[#041321]/30 border border-gray-700 py-5 w-fit min-w-[500px]  flex flex-col items-center">
+        <div className="rounded-xl mt-5 bg-[#041321]/30 border border-gray-700 py-5 w-[500px] min-w-[400px]  flex flex-col items-center">
           <div className="group rounded-full relative w-20 h-20">
             <div className="h-full w-full rounded-full bg-[conic-gradient(from_0deg,_transparent,_transparent,_transparent,#C59742,#DC7C2E,#C03911)] p-1 cursor-pointer spin">
               <div className="h-full w-full rounded-full cursor-pointer bg-[conic-gradient(from_0deg,#151126,#111122,#111122,#221133)] p-2"></div>
@@ -119,29 +119,7 @@ function Login() {
           </div>
         </div>
 
-        <footer className="mt-auto z-50 flex relative w-full h-60 sm:h-80 bg-cover bg-center bg-[url('../assets/footer.webp')]">
-          <img className="z-10" src={imgSrc} />
-          <div className="z-50 absolute self-end flex justify-center bottom-0 w-full text-white text-center px-4 py-3">
-            <div className="max-w-7xl">
-              <p className="text-sm md:text-base mb-1">
-                © 2025. All Rights Reserved. Build with passion ❤️ on opBNB.
-              </p>
-              <p className="text-xs hidden sm:block">
-                Disclaimer: Participation in this decentralized community smart
-                contract program is entirely voluntary. Under no circumstances
-                should any information on this website or in any presentation be
-                considered as solicitation, investment advice, or financial
-                guidance. All information provided is for general purposes only
-                and does not take into account your specific personal or
-                financial situation. The decentralized community smart contract
-                program is not a get-rich-quick scheme. We strongly recommend
-                consulting a qualified professional before making any decisions
-                if you are uncertain. Your continued participation in this smart
-                contract program indicates your acceptance of our disclaimer.
-              </p>
-            </div>
-          </div>
-        </footer>
+        <FooterTwo />
       </div>
     </div>
   );

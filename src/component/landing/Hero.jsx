@@ -102,7 +102,7 @@ function Hero() {
         ))}
       </div>
 
-      <div className="absolute pt-30 sm:pt-0 w-11/12 md:w-9/12 lg:w-1/2 flex flex-col gap-5 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
+      <div className="absolute pt-5 sm:pt-0 w-11/12 md:w-9/12 lg:w-1/2 flex flex-col gap-5 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
         {" "}
         <img
           className="self-center w-[500px] md:w-[700px]"

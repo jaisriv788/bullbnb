@@ -76,7 +76,7 @@ function DashboardFirstBottom({
           <div>
             <div className="text-sm ">Total Earning</div>
             <div className=" flex-1 text-nowrap">
-              <span className="font-semibold">
+              <span className="wt">
                 {parseFloat(totalIncomeInBNB).toFixed(4)} BNB
               </span>{" "}
               <span className="text-xs">
@@ -94,7 +94,7 @@ function DashboardFirstBottom({
                   "_blank"
                 )
               }
-              className="btn-theme2 cursor-pointer flex gap-1 items-center "
+              className="btn-theme2 cursor-pointer flex gap-1 items-center mr-2"
             >
               <Download size={15} />
               Certificate
@@ -113,7 +113,7 @@ function DashboardFirstBottom({
           <div>
             <div className="text-sm ">Today Earning</div>
             <div className=" flex-1 text-nowrap">
-              <span className="font-semibold">{todayEarningInBNB} BNB</span>{" "}
+              <span className="wt">{todayEarningInBNB} BNB</span>{" "}
               <span className="text-xs">$ {todayEarningInDollor}</span>
             </div>
           </div>
@@ -122,7 +122,7 @@ function DashboardFirstBottom({
               dispatch(todayEarningVisibility(true));
               // console.log(todayEarningInBNB, todayEarningInDollor);
             }}
-            className="btn-theme2 cursor-pointer flex gap-1 items-center "
+            className="btn-theme2 cursor-pointer flex gap-1 items-center mr-2"
           >
             <Eye size={15} />
             View

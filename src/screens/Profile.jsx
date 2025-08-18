@@ -176,8 +176,8 @@ function Profile({ openSidebar }) {
           </div>
           <div className="flex lg:flex-row flex-col gap-5">
             <div className="flex-1 flex flex-col justify-between gap-5 md:gap-3 ">
-              <div className="flex-1 flex px-5 flex-col justify-evenly flex-wrap py-7 lg:px-20 bg-gradient-to-b from-[#564017] to-transparent rounded-t-xl relative">
-                <div className="absolute px-5 text-lg rounded-2xl border-2 border-[#B96FDB]  -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#A024C3] via-[#7B15CD] to-[#5B07D5] ">
+              <div className="flex-1 flex px-5 flex-col justify-evenly flex-wrap py-7 lg:px-10 bg-gradient-to-b from-[#564017] to-transparent rounded-t-xl relative">
+                <div className="absolute text-nowrap px-5 text-lg rounded-2xl border-2 border-[#B96FDB]  -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#A024C3] via-[#7B15CD] to-[#5B07D5] ">
                   Referal Link
                 </div>
                 <div className="text-center">{userId}</div>
@@ -193,7 +193,7 @@ function Profile({ openSidebar }) {
                   <Copy size={15} /> Copy Link
                 </button>
               </div>
-              <div className="flex-1 px-5 flex flex-col justify-evenly flex-wrap py-7 lg:px-20 bg-gradient-to-b from-[#564017] to-transparent rounded-t-xl relative">
+              <div className="flex-1 px-5 flex flex-col justify-evenly flex-wrap py-7 lg:px-10 bg-gradient-to-b from-[#564017] to-transparent rounded-t-xl relative">
                 <div className="absolute text-nowrap px-5 text-lg rounded-2xl border-2 border-[#B96FDB]  -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#A024C3] via-[#7B15CD] to-[#5B07D5] ">
                   opBNB Wallet Address
                 </div>
@@ -212,12 +212,12 @@ function Profile({ openSidebar }) {
               </div>
             </div>
             <div className="flex-1 h-full ">
-              <div className="px-5 flex flex-col justify-evenly flex-wrap py-7 lg:px-20 bg-gradient-to-b from-[#564017] to-transparent rounded-t-xl relative">
-                <div className="absolute px-5 text-lg rounded-2xl border-2 border-[#B96FDB]  -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#A024C3] via-[#7B15CD] to-[#5B07D5] ">
+              <div className="px-5 flex flex-col justify-evenly flex-wrap py-7 lg:px-10 bg-gradient-to-b from-[#564017] to-transparent rounded-t-xl relative">
+                <div className="absolute text-nowrap px-5 text-lg rounded-2xl border-2 border-[#B96FDB] -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#A024C3] via-[#7B15CD] to-[#5B07D5]">
                   Profile Details
                 </div>
-                <div className="flex gap-5 my-5 flex-col">
-                  <div className="w-full">
+                <div className="flex gap-5 my-5 flex-col min-w-0">
+                  <div className="w-full min-w-0">
                     <label htmlFor="name" className="text-sm">
                       Nick Name
                     </label>
@@ -230,21 +230,23 @@ function Profile({ openSidebar }) {
                       className="bg-gray-800 w-full border border-gray-400 rounded-md px-3 py-1 text-white"
                     />
                   </div>
-                  <div className="w-full">
-                    <label htmlFor="name" className="text-sm">
+
+                  <div className="w-full min-w-0">
+                    <label htmlFor="telegram" className="text-sm">
                       Telegram username
                     </label>
+
                     {usersData?.telegram_username == "" ? (
                       bot ? (
                         <div
-                          id="name"
-                          className="bg-gray-800 flex justify-between gap-3 relative  text-xs items-center w-full border border-gray-400 rounded-md px-3 text-white"
+                          id="telegram"
+                          className="bg-gray-800 flex justify-between gap-3 relative text-xs items-center w-full border border-gray-400 rounded-md px-3 text-white"
                         >
                           <div className="bg-white flex justify-center items-center absolute w-10 h-full left-0">
                             <img className="h-6" src={telegram} />
                           </div>
                           <input
-                            className="ml-10 text-lg w-full focus:outline-none"
+                            className="ml-10 text-lg w-full focus:outline-none bg-transparent"
                             placeholder="Username"
                             onChange={(e) => setUsername(e.target.value)}
                             type="text"
@@ -255,11 +257,11 @@ function Profile({ openSidebar }) {
                         </div>
                       ) : (
                         <div
-                          id="name"
+                          id="telegram"
                           className="bg-gray-800 flex gap-3 py-2 text-xs items-center w-full border border-gray-400 rounded-md px-3 text-white"
                         >
                           To verify your Telegram username, click on the "Start
-                          Bot" button.{" "}
+                          Bot" button.
                           <button
                             onClick={() => {
                               window.open(
@@ -276,17 +278,18 @@ function Profile({ openSidebar }) {
                       )
                     ) : (
                       <div
-                        id="name"
+                        id="telegram"
                         className="bg-gray-800 flex gap-3 py-2 text-xs items-center w-full border border-gray-400 rounded-md px-3 text-white"
                       >
-                        verified
+                        Verified
                       </div>
                     )}
                   </div>
+
                   <select
                     value={selectedCountry}
                     onChange={(e) => setSelectedCountry(e.target.value)}
-                    className="bg-gray-800 cursor-pointer border border-gray-400 rounded-md px-3 py-1 text-white"
+                    className="bg-gray-800 cursor-pointer border border-gray-400 rounded-md px-3 py-1 text-white w-full"
                   >
                     <option value="" disabled>
                       Select a country
@@ -298,9 +301,9 @@ function Profile({ openSidebar }) {
                     ))}
                   </select>
                 </div>
+
                 <button
                   onClick={handleDetailsSave}
-                  // disabled={usersData?.telegram_username == "" && !verified}
                   className="flex cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed mt-2 justify-center items-center gap-1 connect-btn1 bg-gradient-gold"
                 >
                   Save Details

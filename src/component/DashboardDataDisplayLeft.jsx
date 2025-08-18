@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 // import { path } from "motion/react-client";
 
-function DashboardDataDisplayLeft() {
+function DashboardDataDisplayLeft({ openSidebar }) {
   const data = useSelector((state) => state.dashboardData.userData);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -104,10 +104,17 @@ function DashboardDataDisplayLeft() {
   ];
 
   return (
-    <div className="flex-2 flex flex-col gap-3">
+    <div
+      className={`flex-2 flex flex-col gap-3  ${
+        openSidebar ? "xl:w-2/3" : "lg:w-2/3"
+      }`}
+    >
       <div className="flex flex-wrap gap-3 ">
         {groupedCards.map((pair, rowIndex) => (
-          <div key={rowIndex} className="flex sm:flex-row flex-col w-full gap-3 justify-between">
+          <div
+            key={rowIndex}
+            className="flex flex-row   w-full gap-3 justify-between"
+          >
             {pair.map((item, i) => (
               <div
                 key={i}
@@ -118,20 +125,18 @@ function DashboardDataDisplayLeft() {
                     navigate(item.path);
                   }
                 }}
-                className="group flex-1 cursor-pointer hover:text-[#707EF3] sm:min-w-[250px] flex border-2 border-white/40 rounded-lg sm:px-3 sm:py-2 p-1 justify-between"
+                className="group flex-1  cursor-pointer hover:text-[#707EF3] sm:min-w-[220px] flex border-2 border-white/40 rounded-lg sm:px-3 sm:py-2 p-1 justify-between"
               >
                 <div>
-                  <div className="text-sm text-white/40 group-hover:text-[#707EF3]">
+                  <div className="text-xs  sm:text-sm  text-white/40 group-hover:text-[#707EF3]">
                     {item.title}
                   </div>
-                  <div className="text-xl sm:text-2xl font-semibold">
-                    {item.value}
-                  </div>
+                  <div className="text-xl sm:text-2xl wt">{item.value}</div>
                 </div>
                 <div className="sm:w-14 w-10 flex items-center">
                   <img
                     src={item.icon}
-                    className="sm:h-14 sm:w-14 w-10 "
+                    className="sm:h-10 sm:w-10 w-10 "
                     alt="icon"
                   />
                 </div>
@@ -140,20 +145,20 @@ function DashboardDataDisplayLeft() {
           </div>
         ))}
       </div>
-      <div className="flex lg:flex-row flex-col gap-3">
+      <div className="flex flex-row gap-3">
         {cardDataLower.map((item, i) => (
           <div
             key={i}
             onClick={() => {
               navigate(item.path);
             }}
-            className="flex-1 group cursor-pointer sm:min-w-[250px] flex border-2 border-white/40 rounded-lg sm:px-3 sm:py-2 p-1 justify-between"
+            className="flex-1 group cursor-pointer sm:min-w-[220px] flex border-2 border-white/40 rounded-lg sm:px-3 sm:py-2 p-1 justify-between"
           >
             <div>
               <div className="text-sm text-white/40 group-hover:text-[#707EF3]">
                 {item.title}
               </div>
-              <div className="text-xl group-hover:text-[#707EF3] sm:text-2xl font-semibold">
+              <div className="text-xl group-hover:text-[#707EF3] sm:text-2xl wt">
                 {item.value}
               </div>
             </div>

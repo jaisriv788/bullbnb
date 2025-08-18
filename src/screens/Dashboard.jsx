@@ -278,7 +278,7 @@ function Dashboard({ openSidebar }) {
     <div
       className={`absolute inset-0 overflow-x-hidden  backdrop-blur-[1px] ${
         walletAddress == backupAddress ? "bg-black/60" : "bg-[#490D0D]/80"
-      }  flex justify-center sm:py-4 ${openSidebar && "lg:pr-10 xl:pr-30"}`}
+      }  flex justify-center sm:py-4 ${openSidebar && "lg:pr-20 "}`}
     >
       <div
         className={`${
@@ -307,12 +307,13 @@ function Dashboard({ openSidebar }) {
 
           {/* second div */}
           <div
-            className={`flex flex-wrap flex-col ${
-              openSidebar ? "2xl:flex-row" : "lg:flex-row"
+            className={`flex w-full flex-wrap flex-col ${
+              openSidebar ? "xl:flex-row" : "lg:flex-row"
             } gap-3`}
           >
-            <DashboardDataDisplayLeft />
+            <DashboardDataDisplayLeft openSidebar={openSidebar} />
             <DashboardDataDisplayRight
+              openSidebar={openSidebar}
               luxuryBonus={dashboardData.totalLuxuryBonus}
               lapsIncome={dashboardData.totaLapsIncome}
             />

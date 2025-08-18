@@ -81,7 +81,7 @@ function LandingNavbar() {
         onClick={() => navigate("/")}
         className="absolute cursor-pointer z-50"
       >
-        <div className="relative bg-black rounded-full -bottom-8 w-[80px] sm:w-[110px] aspect-square">
+        <div className="relative bg-black rounded-full -bottom-5 sm:-bottom-9 w-[80px] sm:w-[110px] aspect-square">
           <img className="absolute" src={ringSrc} />
           <img
             className="absolute animate-spin"
@@ -137,7 +137,7 @@ function LandingNavbar() {
         return (
           <>
             {/* Desktop Nav */}
-            <div className="md:flex hidden justify-end text-lg font-semibold mr-3 md:mr-5 md:gap-5 w-full gap-3">
+            <div className="md:flex hidden justify-end text-[16px] px-[15px] w-full gap-3">
               {navItems.map((item) => (
                 <button
                   key={item.label}

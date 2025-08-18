@@ -15,7 +15,7 @@ function Platform() {
         backgroundImage: `url(${logo})`,
         transformOrigin: "center",
       }}
-      className="bg-[#02080F] relative md:py-10 bg-center flex flex-col md:flex-row justify-center bg-cover bg-no-repeat h-[130%]"
+      className="bg-[#02080F] relative md:py-10 bg-center flex flex-col md:flex-row justify-center bg-cover bg-no-repeat py-10 md:h-[120%]"
     >
       {/* Top Heading */}
       <div className="flex flex-col justify-between items-center">
@@ -42,7 +42,7 @@ function Platform() {
               Global Decentralized Ecosystem
             </div>
           </div>
-          <div className="text-center hidden sm:block text-sm w-10/12">
+          <div className="text-center hidden md:block text-sm w-10/12">
             Decentralized marketing is driven by cutting-edge smart contract
             technology.* BullBNB’s smart contract code is fully transparent and
             publicly accessible, ensuring both security and the long-term
@@ -50,7 +50,7 @@ function Platform() {
             here.
           </div>
         </div>
-        <div className="hidden sm:block text-white/40 w-10/12 md:w-8/12 text-center">
+        <div className="hidden md:block text-white/40 w-10/12 md:w-8/12 text-center">
           *Smart contract technology is a groundbreaking innovation in the
           modern decentralized economy. It enables the processing and
           distribution of digital asset financial flows according to program
@@ -146,52 +146,71 @@ function Platform() {
         </div>
       </div>
 
-      <div className="md:hidden  mt-10 flex flex-col gap-6  w-full px-6 text-center">
-        <div className="text-md font-semibold">
-          Zero Risk
-          <p className="text-sm font-normal mt-1">
-            The BullBNB team has deployed a self-executing smart contract on the
-            Binance Blockchain, designed to operate permanently and remain
-            unalterable by any entity.
-          </p>
+      <div className="md:hidden min-h-full mt-10 flex flex-col gap-6  w-full px-6 text-left">
+        <div className="flex gap-3">
+          <img className="w-12 h-12 mt-3" src={mainLogo1} alt="img" />
+          <div className="text-md font-semibold">
+            Zero Risk
+            <p className="text-sm font-normal mt-1">
+              The BullBNB team has deployed a self-executing smart contract on
+              the Binance Blockchain, designed to operate permanently and remain
+              unalterable by any entity.
+            </p>
+          </div>
         </div>
-        <div className="text-md font-semibold">
-          Transparency and Anonymity
-          <p className="text-sm font-normal mt-1">
-            The smart contract is fully public, allowing anyone to view the code
-            and complete transaction history. This ensures the system’s
-            integrity and provides accurate project statistics.
-          </p>
+
+        <div className="flex gap-3">
+          <img className="w-12 h-12 mt-3" src={mainLogo1} alt="img" />
+          <div className="text-md font-semibold">
+            Transparency and Anonymity
+            <p className="text-sm font-normal mt-1">
+              The smart contract is fully public, allowing anyone to view the
+              code and complete transaction history. This ensures the system’s
+              integrity and provides accurate project statistics.
+            </p>
+          </div>
         </div>
-        <div className="text-md font-semibold">
-          Instant Transactions
-          <p className="text-sm font-normal mt-1">
-            Profits flow directly from other members into your personal wallet.
-            There is no accumulation within the system—your earnings are
-            entirely yours.
-          </p>
+        <div className="flex gap-3">
+          <img className="w-12 h-12 mt-3" src={mainLogo1} alt="img" />
+          <div className="text-md font-semibold">
+            Instant Transactions
+            <p className="text-sm font-normal mt-1">
+              Profits flow directly from other members into your personal
+              wallet. There is no accumulation within the system—your earnings
+              are entirely yours.
+            </p>
+          </div>
         </div>
-        <div className="text-md font-semibold">
-          Completely Online
-          <p className="text-sm font-normal mt-1">
-            All funds are transferred directly between members, with no hidden
-            fees. The contract balance remains at zero at all times.
-          </p>
+        <div className="flex gap-3">
+          <img className="w-12 h-12 mt-3" src={mainLogo1} alt="img" />
+          <div className="text-md font-semibold">
+            Completely Online
+            <p className="text-sm font-normal mt-1">
+              All funds are transferred directly between members, with no hidden
+              fees. The contract balance remains at zero at all times.
+            </p>
+          </div>
         </div>
-        <div className="text-md font-semibold">
-          Immutability of Conditions
-          <p className="text-sm font-normal mt-1">
-            The BullBNB smart contract serves solely as a payment gateway,
-            enabling seamless peer-to-peer commission payments among its
-            participants.
-          </p>
+        <div className="flex gap-3">
+          <img className="w-12 h-12 mt-3" src={mainLogo1} alt="img" />
+          <div className="text-md font-semibold">
+            Immutability of Conditions
+            <p className="text-sm font-normal mt-1">
+              The BullBNB smart contract serves solely as a payment gateway,
+              enabling seamless peer-to-peer commission payments among its
+              participants.
+            </p>
+          </div>
         </div>
-        <div className="text-md font-semibold">
-          Decentralization
-          <p className="text-sm font-normal mt-1">
-            There are no managers or administrators—only the creators, who are
-            equal participants in the project, just like everyone else.
-          </p>
+        <div className="flex gap-3">
+          <img className="w-12 h-12 mt-3" src={mainLogo1} alt="img" />
+          <div className="text-md font-semibold">
+            Decentralization
+            <p className="text-sm font-normal mt-1">
+              There are no managers or administrators—only the creators, who are
+              equal participants in the project, just like everyone else.
+            </p>
+          </div>
         </div>
       </div>
     </section>
