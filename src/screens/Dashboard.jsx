@@ -277,7 +277,7 @@ function Dashboard({ openSidebar }) {
   return (
     <div
       className={`absolute inset-0 overflow-x-hidden  backdrop-blur-[1px] ${
-        walletAddress == backupAddress ? "bg-black/60" : "bg-[#490D0D]/80"
+        walletAddress == backupAddress ? "bg-black/80" : "bg-[#490D0D]/80"
       }  flex justify-center sm:py-4 ${openSidebar && "lg:pr-20 "}`}
     >
       <div

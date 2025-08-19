@@ -83,7 +83,7 @@ function LuxuryBonusDetails({ openSidebar }) {
         <Title title={title} />
 
         <div className="flex-1 flex flex-col gap-5">
-          <div className="flex gap-1 bg-gradient-to-r from-transparent font-bold via-[#B06F03] to-transparent w-full justify-center items-center">
+          <div className="flex gap-1 bg-gradient-to-r from-transparent via-[#B06F03] to-transparent w-full justify-center items-center">
             <div>
               <img className="h-10 w-10" src={solidLogoSrc} />
             </div>

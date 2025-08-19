@@ -145,13 +145,13 @@ function Profile({ openSidebar }) {
                 />
               </div>
             </div>
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-center">
-              <div className="text-2xl font-bold">
+            <div className="absolute bottom-15 sm:bottom-8 left-1/2 -translate-x-1/2 text-center">
+              <div className="text-xl sm:text-2xl font-bold">
                 {usersData?.name ? usersData.name : "Bull BNB"}
               </div>
-              <div className="text-lg font-semibold">ID: {userId}</div>
-              <div className="relative inline-block cursor-pointer">
-                <button className="bg-gradient-to-r text-nowrap cursor-pointer px-4 py-1 rounded-xl border-2  from-[#2F0C59] to-[#C40C78]">
+              <div className="sm:text-lg font-semibold mb-1">ID: {userId}</div>
+              <div className="relative inline-block cursor-pointer ">
+                <button className="bg-gradient-to-r text-nowrap cursor-pointer px-4 py-1 rounded-full border-2  from-[#2F0C59] to-[#C40C78]">
                   PHOTO UPLOAD
                 </button>
                 <input
@@ -178,7 +178,7 @@ function Profile({ openSidebar }) {
             <div className="flex-1 flex flex-col justify-between gap-5 md:gap-3 ">
               <div className="flex-1 flex px-5 flex-col justify-evenly flex-wrap py-7 lg:px-10 bg-gradient-to-b from-[#564017] to-transparent rounded-t-xl relative">
                 <div className="absolute text-nowrap px-5 text-lg rounded-2xl border-2 border-[#B96FDB]  -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#A024C3] via-[#7B15CD] to-[#5B07D5] ">
-                  Referal Link
+                  Referral Link
                 </div>
                 <div className="text-center">{userId}</div>
                 <button

@@ -72,7 +72,7 @@ const renderCardNode = ({ nodeDatum }, onClick) => {
         className="box-border overflow-hidden 
           w-[60px] h-[70px] 
           sm:w-[100px] sm:h-[94px] 
-          bg-white border border-gray-600 rounded-lg shadow-sm 
+          bg-white rounded-lg shadow-sm 
           flex flex-col items-center justify-between pt-1 cursor-pointer mx-auto"
       >
         <img
@@ -81,13 +81,13 @@ const renderCardNode = ({ nodeDatum }, onClick) => {
           className="rounded-full border border-[#09182C] 
             h-[28px] sm:h-12"
         />
-        <span className={`text-[8.5px] sm:text-sm ${txt}`}>
+        <span className={`text-[8.5px] sm:text-xs ${txt}`}>
           {nodeDatum.name}
         </span>
         <div
           className={`${clr} w-full text-center text-white text-[8px] sm:text-xs`}
         >
-          {Rank[pkg - 1] ?? "-"}
+          {Rank[pkg - 1] ?? "Vacant"}
         </div>
       </div>
     </foreignObject>

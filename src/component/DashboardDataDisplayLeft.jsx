@@ -131,7 +131,7 @@ function DashboardDataDisplayLeft({ openSidebar }) {
                   <div className="text-xs  sm:text-sm  text-white/40 group-hover:text-[#707EF3]">
                     {item.title}
                   </div>
-                  <div className="text-xl sm:text-2xl wt">{item.value}</div>
+                  <div className="text-lg sm:text-2xl wt">{item.value}</div>
                 </div>
                 <div className="sm:w-14 w-10 flex items-center">
                   <img
@@ -155,10 +155,10 @@ function DashboardDataDisplayLeft({ openSidebar }) {
             className="flex-1 group cursor-pointer sm:min-w-[220px] flex border-2 border-white/40 rounded-lg sm:px-3 sm:py-2 p-1 justify-between"
           >
             <div>
-              <div className="text-sm text-white/40 group-hover:text-[#707EF3]">
+              <div className="text-xs text-white/40 group-hover:text-[#707EF3]">
                 {item.title}
               </div>
-              <div className="text-xl group-hover:text-[#707EF3] sm:text-2xl wt">
+              <div className="text-lg group-hover:text-[#707EF3] sm:text-2xl wt">
                 {item.value}
               </div>
             </div>

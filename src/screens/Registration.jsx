@@ -80,14 +80,21 @@ function Registration() {
         .users(user_details["referrer"])
         .call();
 
-      const data = {
-        wallet_address: address,
-        user_id: BigInt(user_details["id"]),
-        referral_id: BigInt(reff_details["id"]),
-      };
+      // const data = {
+      //   wallet_address: address,
+      //   user_id: BigInt(user_details["id"]),
+      //   referral_id: BigInt(reff_details["id"]),
+      // };
+
+      const formData = new FormData();
+      formData.append("wallet_address", address);
+      formData.append("user_id", Number(user_details["id"]));
+      formData.append("referral_id", Number(reff_details["id"]));
 
       try {
-        const response = await axios.post(`${baseUrl}api/save-user`, data);
+        const response = await axios.post(`${baseUrl}api/save-user`, formData);
+        // console.log(data);
+        console.log(response);
         if (response.status === 200) {
           navigate("/login");
         } else {
@@ -120,7 +127,7 @@ function Registration() {
       <div className="absolute inset-0 flex flex-col gap-10 items-center pt-20 w-full h-full bg-black/60 z-20"></div>
 
       {/* Main content */}
-      <div className="flex min-h-screen px-3 flex-col justify-center items-center flex-grow z-50">
+      <div className="flex min-h-screen sm:px-3 flex-col justify-center items-center flex-grow z-50">
         <div className="text-center mt-25 sm:mt-35">
           <div className="text-lg text-nowrap font-bold flex items-center gap-5 text-center">
             <div

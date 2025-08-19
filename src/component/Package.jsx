@@ -181,14 +181,14 @@ function Package() {
         <div
           className={`absolute px-5 text-lg rounded-2xl border-2 border-[#B96FDB] ${
             modelVisible ? "top-0" : "-top-4"
-          }   left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#A024C3] via-[#7B15CD] to-[#5B07D5]`}
+          } text-nowrap  left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#A024C3] via-[#7B15CD] to-[#5B07D5]`}
         >
           Select Package
         </div>
         {packages.slice(1).map((pkg, index) => (
           <div
             key={index}
-            className="relative hover:shadow-[0_0_20px_5px_rgba(56,165,850,0.6)] overflow-hidden cursor-pointer h-40 w-40 rounded-full bg-gradient-to-tr from-[#E21927] via-[#B21238] to-[#790A4D] "
+            className="relative hover:shadow-[0_0_20px_5px_rgba(56,165,850,0.6)] overflow-hidden cursor-pointer w-30 h-30 sm:h-40 sm:w-40 rounded-full bg-gradient-to-tr from-[#E21927] via-[#B21238] to-[#790A4D] "
           >
             {index == level && selectedIndexes.has(index) && (
               <div className="absolute bg-blue-800/80 h-full w-full z-40 rounded-full flex items-center justify-center">
@@ -205,18 +205,20 @@ function Package() {
               onClick={() => handleClick(index, pkg.amount)}
               className="h-full w-full flex flex-col items-center justify-center gap-2"
             >
-              <img className="h-10 w-10 z-20" src={logoSrc} />
-              <div className="text-black w-full text-center font-bold text-lg bg-gradient-to-r from-[#FFE033] to-[#FFA006] z-20">
+              <img className="sm:h-10 h-8 w-8 sm:w-10 z-20" src={logoSrc} />
+              <div className="text-black w-full text-center font-bold sm:text-lg bg-gradient-to-r from-[#FFE033] to-[#FFA006] z-20">
                 {pkg.amount} BNB
               </div>
-              <div className="font-semibold z-20">{pkg.label}</div>
+              <div className="font-semibold text-xs sm:text-base z-20">
+                {pkg.label}
+              </div>
             </div>
           </div>
         ))}
       </div>
 
       <div className="text-black self-center w-fit flex gap-3 items-center p-1 rounded-full bg-white text-center mt-6">
-        <div className="flex items-center text-xl font-bold gap-3">
+        <div className="flex items-center text-nowrap sm:text-xl font-bold gap-1 sm:gap-3">
           <img className="h-8 w-8" src={soildLogoSrc} />
           <div>{highest == 0 ? "00.00" : highest} BNB</div>
         </div>
@@ -225,9 +227,9 @@ function Package() {
             setModelVisible(true);
           }}
           disabled={level >= 15}
-          className="bg-gradient-to-r cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex gap-2 items-center px-5 text-sm rounded-full py-1 text-white from-[#2C0C59] to-[#BF0C77]"
+          className="bg-gradient-to-r text-nowrap cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex sm:gap-2 items-center sm:px-5 px-2 text-sm rounded-full py-1 text-white from-[#2C0C59] to-[#BF0C77]"
         >
-          Proceed to Upgrade <ArrowRight size={17} />
+          Proceed to Upgrade <ArrowRight className="hidden sm:block" size={17} />
         </button>
       </div>
     </>

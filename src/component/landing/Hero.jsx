@@ -130,7 +130,7 @@ function Hero() {
                 .getElementById("introvideo")
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="flex-1  btn-hover color-8"
+            className="flex-1 text-nowrap btn-hover color-8"
           >
             Introduction video
           </button>

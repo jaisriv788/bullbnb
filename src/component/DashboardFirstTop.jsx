@@ -50,7 +50,7 @@ function DashboardFirstTop({ walletAddress, usersData, id, referer }) {
   return (
     <div className="flex flex-wrap gap-5">
       {/* left */}
-      <div className="flex-1 flex justify-between sm:justify-start relative gap-3">
+      <div className="flex-1 flex sm:justify-start relative gap-3">
         <div className="flex items-center">
           <div className="relative flex items-center justify-center w-[70px] aspect-square">
             <img
@@ -101,7 +101,7 @@ function DashboardFirstTop({ walletAddress, usersData, id, referer }) {
       </div>
 
       {/* right */}
-      <div className="flex-1 bg-[#432B2B]/80 rounded-xl flex flex-col justify-center gap-3">
+      <div className="flex-1 bg-[#432B2B]/80 rounded-xl flex flex-col justify-center pt-2 gap-1 sm:gap-3">
         <div className="wt mx-3">My Referral Id</div>
         <div className="mx-3 pb-2 md:pb-0 text-sm flex justify-between">
           <div className="flex gap-2 items-center">
@@ -110,9 +110,9 @@ function DashboardFirstTop({ walletAddress, usersData, id, referer }) {
           </div>
           <div
             onClick={handleCopy}
-            className="flex items-center gap-2 px-2 rounded border-1 hover:border-blue-700 cursor-pointer border-[#b07cbe] bg-gradient-to-r from-[#A225C4] to-[#5D08D4] "
+            className="flex text-[12px] items-center gap-2 px-2 rounded border-1 hover:border-blue-700 cursor-pointer border-[#b07cbe] bg-gradient-to-r from-[#A225C4] to-[#5D08D4] "
           >
-            <Copy size={15} /> Copy
+            <Copy size={12} /> Copy
           </div>
         </div>
       </div>

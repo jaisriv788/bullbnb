@@ -126,7 +126,7 @@ function LuxuryBonus({ openSidebar }) {
         walletAddress == CurrentWalletAddress
           ? "bg-black/60"
           : "bg-[#490D0D]/80"
-      }  flex justify-center sm:py-4 ${openSidebar && "lg:pr-30"}`}
+      }  flex justify-center sm:py-4 ${openSidebar && "lg:pr-10 xl:pr-30"}`}
     >
       {" "}
       <div
@@ -136,7 +136,7 @@ function LuxuryBonus({ openSidebar }) {
       >
         <Title title="Partner Luxury Bonus" />
         <div className=" flex-1 flex flex-col gap-5">
-          <div className="flex gap-1 bg-gradient-to-r from-transparent font-bold via-[#B06F03] to-transparent w-full justify-center items-center">
+          <div className="flex gap-1 bg-gradient-to-r from-transparent via-[#B06F03] to-transparent w-full justify-center items-center">
             <div>
               <img className="h-10 w-10" src={solidLogoSrc} />
             </div>
@@ -145,11 +145,11 @@ function LuxuryBonus({ openSidebar }) {
               <span className="text-xl">{totalIncome.toFixed(5)} BNB</span>
             </div>
           </div>
-          <div className="grid grid-col-1 lg:grid-cols-3 gap-3">
+          <div className="grid md:grid-cols-2 2xl:grid-cols-3 gap-3">
             {Array.from({ length: 7 }).map((_, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-r overflow-hidden relative flex gap-3 flex-col from-[#F01B22] via-[#A0103F] to-[#640753] p-3 rounded-2xl"
+                className="bg-gradient-to-r overflow-hidden relative flex gap-3 flex-col from-[#F01B22] via-[#A0103F] to-[#640753] p-2 rounded-2xl"
               >
                 {royaltyAchived[index] == 0 && (
                   <div className="absolute cursor-not-allowed bg-black/60 w-full h-full top-0 left-0 z-50"></div>
@@ -163,10 +163,10 @@ function LuxuryBonus({ openSidebar }) {
                     />
                   </div>
                   <div className="flex-1">
-                    <h1 className="text-lg">{luxuryData[index].name}</h1>
+                    <h1 className=" text-nowrap">{luxuryData[index].name}</h1>
                     <div>
                       <p className="text-sm">BONUS</p>
-                      <h1 className="text-lg font-semibold">
+                      <h1 className="text-lg">
                         {parseFloat(income[index]).toFixed(5)} BNB
                       </h1>
                     </div>
@@ -185,13 +185,13 @@ function LuxuryBonus({ openSidebar }) {
                   </div>
                 </div>
                 <div className="rounded-lg overflow-hidden">
-                  <table className="table  border-collapse">
+                  <table className="table border-collapse">
                     <thead className="bg-gradient-to-r text-white from-[#A426C3] via-[#8017CC] to-[#5505D6]">
                       <tr>
-                        <th className="border-b border-white/50 w-1/6 min-w-[150px] text-center px-2 py-1">
+                        <th className="border-b border-white/50 w-1/6 min-w-[50px] text-center px-2 py-1">
                           Self Rank
                         </th>
-                        <th className="border-l border-b border-white/50 w-1/6 min-w-[150px] text-center px-2 py-1">
+                        <th className="border-l border-b border-white/50 w-1/6 min-w-[50px] text-center px-2 py-1">
                           Direct Team
                         </th>
                       </tr>

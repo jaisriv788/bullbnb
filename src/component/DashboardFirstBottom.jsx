@@ -105,7 +105,7 @@ function DashboardFirstBottom({
 
       {/* bg-gradient-to-r from-[#EE1A22] via-[#A7103C] to-[#620755]  */}
       {/* right */}
-      <div className="flex-1 p-1 flex gap-3 rounded-lg border-2 border-[#c08c58] bg-gradient-to-r from-[#B6530A] via-[#D0802F] to-[#E2A049] ">
+      <div className="flex-1 p-1 flex gap-1 rounded-lg border-2 border-[#c08c58] bg-gradient-to-r from-[#B6530A] via-[#D0802F] to-[#E2A049] ">
         <div className="flex items-center w-8 sm:w-10">
           <img src={circleSrc} className=" h-8 sm:h-10 w-8 sm:w-10" />
         </div>

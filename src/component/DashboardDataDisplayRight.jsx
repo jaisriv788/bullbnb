@@ -134,15 +134,15 @@ function DashboardDataDisplayRight({ luxuryBonus, lapsIncome, openSidebar }) {
         className="flex-1 cursor-pointer flex justify-between py-2 lg:py-0 px-3 rounded-lg bg-gradient-to-r from-[#B6530A] via-[#D0802F] to-[#E2A049]"
       >
         <div className="flex flex-col">
-          <div className="flex text-sm items-center gap-1">
-            <TriangleAlert size={16} />
+          <div className="flex text-xs items-center gap-1">
+            <TriangleAlert size={13} />
             Total Lost Bonus
           </div>
           <span className="text-xl">{lapsIncome ? lapsIncome : "00"} BNB</span>
           <span className="text-xs">Take action now to keep your bonus!</span>
         </div>
-        <div className="flex items-center">
-          <img className="h-16 w-16" src={logoSrc} />
+        <div className="flex  items-center">
+          <img className="h-13 w-13" src={logoSrc} />
         </div>
       </div>
     </div>

@@ -76,7 +76,7 @@ function Login() {
       </div>
 
       <div className="absolute inset-0 flex flex-col gap-10 items-center pt-20 w-full h-full bg-black/60 z-20"></div>
-      <div className="flex min-h-screen px-3 flex-col justify-center items-center flex-grow z-50">
+      <div className="flex min-h-screen sm:px-3 flex-col justify-center items-center flex-grow z-50">
         <div className="text-center mt-25 sm:mt-35">
           <div className="text-lg  text-nowrap font-bold flex items-center gap-5 text-center">
             <div

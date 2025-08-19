@@ -73,7 +73,7 @@ function OptionalTopDiv({ css }) {
           value={selectedId}
           onChange={handleChange}
           disabled={backupWalletAddress != walletAddress}
-          className="text-xs sm:text-sm bg-white disabled:bg-gray-200 disabled:cursor-not-allowed text-black px-1 rounded-xl sm:w-[200px] lg:w-[130px]"
+          className="text-xs bg-white disabled:bg-gray-200 disabled:cursor-not-allowed text-black px-1 rounded-xl sm:w-[200px] lg:w-[130px]"
         >
           <option value="">Select Direct Id</option>
           {partners.map((item, index) => (

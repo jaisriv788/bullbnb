@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { AlignJustify, X } from "lucide-react";
 import bannerSrc from "../assets/logos/bullbnb.png";
 import { motion, AnimatePresence } from "motion/react";
