@@ -27,7 +27,7 @@ function Dashboard({ openSidebar }) {
   const dispatch = useDispatch();
 
   const txtypes = [
-    "partnerSponsorBonus",
+    "prtnerSponsorBonus",
     "PartnerDirectKickBonusPercent",
     "PartnerLevelBonus",
     "PartnerPoolBonus",
@@ -202,12 +202,12 @@ function Dashboard({ openSidebar }) {
             .call()
         )
       );
-      // console.log("Logs:", logs);
+      console.log("Logs:", logs);
 
       const todayValue = logs.map((value) =>
         parseFloat(web3.utils.fromWei(value[0], "ether")).toFixed(4)
       );
-      // console.log({ todayValue });
+      console.log({ todayValue });
 
       const todayEarningInBnb = logs.reduce((acc, item) => {
         const ethValue = parseFloat(web3.utils.fromWei(item[0], "ether"));
@@ -255,7 +255,7 @@ function Dashboard({ openSidebar }) {
       getWalletAddressDetails().then((data) => {
         // console.log(data);
         if (!data) return;
-        // console.log(data);
+        // console.log({data});
         setDashboardData(data);
         dispatch(setId(Number(data.id)));
         sessionStorage.setItem("id", Number(data.id));

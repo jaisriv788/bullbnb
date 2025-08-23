@@ -11,12 +11,14 @@ import mainAbi from "../mainAbi.json";
 
 function LandingNavbar() {
   const navigate = useNavigate();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [showError, setShowError] = useState(false);
   const [msg, setMsg] = useState("");
   const location = useLocation();
 
   const isLoginPage = location.pathname === "/login";
+  const isAdminPage = location.pathname === "/admin/login";
   const isRegistrationPage =
     useMatch("/registration/:id") || location.pathname === "/registration";
   const idDownloadPage = location.pathname === "/download";
@@ -94,7 +96,7 @@ function LandingNavbar() {
       {/* Dynamic Navigation Items */}
       {(() => {
         const navItems = [];
-        if (isLoginPage || isRegistrationPage) {
+        if (isLoginPage || isRegistrationPage || isAdminPage) {
           navItems.push(
             { label: "HOME", action: () => navigate("/") },
             { label: "LOGIN", action: () => navigate("/login") },
@@ -137,7 +139,7 @@ function LandingNavbar() {
         return (
           <>
             {/* Desktop Nav */}
-            <div className="md:flex hidden justify-end text-[16px] px-[15px] w-full gap-3">
+            <div className="md:flex hidden justify-end text-[16px] px-[15px] w-full pt-2 gap-3">
               {navItems.map((item) => (
                 <button
                   key={item.label}
@@ -152,16 +154,20 @@ function LandingNavbar() {
             {/* Right Section: Wallet + Mobile Menu */}
             <div className="flex w-full md:w-fit justify-end sm:gap-3 items-center relative">
               {/* Wallet Connect Button */}
-              <button
-                onClick={connectWallet}
-                className="relative group overflow-hidden border-[1.8px] border-[#E39B28] rounded-md h-8 text-xs font-semibold text-white cursor-pointer"
-              >
-                <span className="relative z-10 connect-btn">
-                  {ownerAddress
-                    ? `${ownerAddress.slice(0, 5)}...${ownerAddress.slice(-4)}`
-                    : "WALLET CONNECT"}
-                </span>
-              </button>
+              {!isAdminPage && (
+                <button
+                  onClick={connectWallet}
+                  className="relative group overflow-hidden border-[1.8px] border-[#E39B28] rounded-md h-8 text-xs font-semibold text-white cursor-pointer"
+                >
+                  <span className="relative z-10 connect-btn">
+                    {ownerAddress
+                      ? `${ownerAddress.slice(0, 5)}...${ownerAddress.slice(
+                          -4
+                        )}`
+                      : "WALLET CONNECT"}
+                  </span>
+                </button>
+              )}
 
               {/* Mobile Menu Icon */}
               <div className="md:hidden relative">

@@ -12,6 +12,9 @@ import {
   UserRound,
   Users,
   Circle,
+  UserPlus,
+  Award,
+  Menu,
 } from "lucide-react";
 
 export const luxuryData = [
@@ -265,6 +268,72 @@ export const Rank = {
   13: "Ambassador",
   14: "President",
 };
+
+export const AdminSidebar = [
+  { id: 1, icon: LayoutGrid, name: "Dashboard", path: "/admin/dashboard" },
+  { id: 2, icon: UserRound, name: "User List", path: "/admin/userlist" },
+  {
+    id: 3,
+    icon: UserPlus,
+    name: "Top Direct List",
+    path: "/admin/topdirectlist",
+  },
+  {
+    id: 4,
+    icon: Award,
+    name: "Rank Achiever",
+    path: "/admin/rankachiver",
+  },
+  {
+    id: 5,
+    icon: DollarSign,
+    name: "Income",
+    subRoute: [
+      {
+        id: 1,
+        icon: Circle,
+        name: "Partner Sponsor Bonus",
+        path: "/admin/income/sponsor",
+      },
+      {
+        id: 2,
+        icon: Circle,
+        name: "Partner Direct Kick Bonus",
+        path: "/admin/income/direct",
+      },
+      {
+        id: 3,
+        icon: Circle,
+        name: "Partner Level Bonus",
+        path: "/admin/income/level",
+      },
+      {
+        id: 4,
+        icon: Circle,
+        name: "Partner Pool Bonus",
+        path: "/admin/income/pool",
+      },
+      {
+        id: 5,
+        icon: Circle,
+        name: "Partner Luxury Bonus",
+        path: "/admin/income/luxury",
+      },
+    ],
+  },
+  {
+    id: 6,
+    icon: DollarSign,
+    name: "Top Earner List",
+    path: "/admin/topearnerlist",
+  },
+  {
+    id: 7,
+    icon: Menu,
+    name: "Log Activities",
+    path: "/admin/logactivities",
+  },
+];
 
 export const SidebarContent = [
   { id: 1, icon: LayoutGrid, name: "Dashboard", path: "/dashboard" },

@@ -10,6 +10,7 @@ const initialState = {
   previousContractAddressOne: "0x3e776377f66c92a79ac506f838f95cb5ecc78e4c",
   previousContractAddressTwo: "0x2218A3671708dA22DE2e1b5cE6afc523Bc824118",
   isWalletConnected: false,
+  isAdminConnected: false,
   baseUrl: "https://bullbnb.com/old_website/opbullbnb/",
 };
 
@@ -35,6 +36,9 @@ const walletAddressSlice = createSlice({
     saveMainUser: (state, action) => {
       state.saveMainUserAddress = action.payload;
     },
+    isAdmin: (state, action) => {
+      state.isAdminConnected = action.payload;
+    },
   },
 });
 
@@ -45,6 +49,7 @@ export const {
   removeId,
   removeAddress,
   isConnected,
+  isAdmin,
 } = walletAddressSlice.actions;
 
 export default walletAddressSlice.reducer;

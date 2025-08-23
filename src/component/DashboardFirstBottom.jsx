@@ -77,10 +77,10 @@ function DashboardFirstBottom({
             <div className="text-sm ">Total Earning</div>
             <div className=" flex-1 text-nowrap">
               <span className="wt">
-                {parseFloat(totalIncomeInBNB).toFixed(4)} BNB
+                {totalIncomeInBNB ? parseFloat(totalIncomeInBNB).toFixed(4) : "Loading..."} BNB
               </span>{" "}
               <span className="text-xs">
-                $ {parseFloat(incomeInUSD).toFixed(4)}
+                ${incomeInUSD ? parseFloat(incomeInUSD).toFixed(4): "Loading..."}
               </span>
             </div>
           </div>
@@ -113,8 +113,8 @@ function DashboardFirstBottom({
           <div>
             <div className="text-sm ">Today Earning</div>
             <div className=" flex-1 text-nowrap">
-              <span className="wt">{todayEarningInBNB} BNB</span>{" "}
-              <span className="text-xs">$ {todayEarningInDollor}</span>
+              <span className="wt">{todayEarningInBNB ? todayEarningInBNB : "Loading..."} BNB</span>{" "}
+              <span className="text-xs">${todayEarningInDollor ? todayEarningInDollor : "Loading..."}</span>
             </div>
           </div>
           <div

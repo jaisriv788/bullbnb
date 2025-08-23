@@ -74,13 +74,14 @@ function DashboardFirstTop({ walletAddress, usersData, id, referer }) {
               {userData?.name ? userData?.name : "Bull BNB"}
             </div>
             <div className="text-sm px-2 rounded-lg text-[#FFEB3B] bg-[#1F1F1F] wt">
-              ID {id}
+              ID {id ? id : "Loading..."}
             </div>
           </div>
           <div className="flex items-center gap-3">
             <div className="text-sm">
-              {walletAddress &&
-                walletAddress?.slice(0, 5) + "..." + walletAddress?.slice(-4)}
+              {walletAddress
+                ? walletAddress?.slice(0, 5) + "..." + walletAddress?.slice(-4)
+                : "Loading..."}
               {/* {walletAddress.slice(0, 5) + "..." + walletAddress.slice(-4)} */}
             </div>
             <Copy
@@ -106,7 +107,7 @@ function DashboardFirstTop({ walletAddress, usersData, id, referer }) {
         <div className="mx-3 pb-2 md:pb-0 text-sm flex justify-between">
           <div className="flex gap-2 items-center">
             <img src={iconSrc} style={{ height: "25px" }} />
-            {id}
+            {id ? id : "Loading..."}
           </div>
           <div
             onClick={handleCopy}

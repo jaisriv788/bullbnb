@@ -1,9 +1,9 @@
 import { AlignJustify, X } from "lucide-react";
 import bannerSrc from "../assets/logos/bullbnb.png";
-import { motion, AnimatePresence } from "motion/react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import OptionalTopDiv from "../component/OptionalTopDiv";
 import iconSrc from "../assets/bg2.png";
+
 //redux
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -16,6 +16,9 @@ import { clearUserData } from "../features/dashboardData/dashboardDataInfo";
 function Navbar({ handleSidebar, openSidebar }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const isProfilePage = location.pathname === "/profile";
 
   const ownerAddress = useSelector(
     (state) => state.accountDetails.walletAddress
@@ -101,7 +104,9 @@ function Navbar({ handleSidebar, openSidebar }) {
         />
       </div>
 
-      <OptionalTopDiv css="hidden lg:flex lg:gap-3 xl:gap-10 py-2 px-2" />
+      {!isProfilePage && (
+        <OptionalTopDiv css="hidden lg:flex lg:gap-3 xl:gap-10 py-2 px-2" />
+      )}
 
       <div className="flex sm:gap-5 gap-1">
         <button

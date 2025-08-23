@@ -87,7 +87,7 @@ function SponsorBonus({ openSidebar }) {
 
       setTotalEarning(total);
       setData(formatted);
-      setFilteredData(formatted);
+      setFilteredData(formatted.reverse());
       dispatch(screenLoaderVisibilty(false));
     } catch (error) {
       dispatch(screenLoaderVisibilty(false));
@@ -101,12 +101,12 @@ function SponsorBonus({ openSidebar }) {
 
   useEffect(() => {
     if (id === "") {
-      setFilteredData(data);
+      setFilteredData(data.reverse());
     } else {
       const filtered = data.filter((item) =>
         String(item.fromID).includes(String(id))
       );
-      setFilteredData(filtered); // Make sure to set it!
+      setFilteredData(filtered.reverse()); // Make sure to set it!
       console.log("Filtered Data:", filtered);
     }
   }, [id, data]);

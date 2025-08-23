@@ -6,6 +6,10 @@ function PublicRoute() {
     (state) => state.accountDetails.isWalletConnected
   );
 
+  const isAdminConnected = useSelector(
+    (state) => state.accountDetails.isAdminConnected
+  );
+
   // If connected, redirect to dashboard
   if (isWalletConnected) {
     return <Navigate to="/dashboard" replace />;

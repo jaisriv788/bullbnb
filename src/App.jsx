@@ -8,6 +8,7 @@ import {
   isConnected,
   setAddress,
   saveMainUser,
+  isAdmin,
   setId,
 } from "./features/walletAddress/web3WalletInfo";
 import { setUserData } from "./features/dashboardData/dashboardDataInfo";
@@ -15,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 //components
 import Sidebar from "./component/Sidebar";
 import Navbar from "./component/Navbar";
+import AdminNavbar from "./component/AdminNavbar";
 import ProtectedRoute from "./component/ProtectedRoute";
 import PublicRoute from "./component/PublicRoute";
 import LandingNavbar from "./component/LandingNavbar";
@@ -35,6 +37,7 @@ import Faqs from "./screens/Faq";
 import Support from "./screens/Support";
 import LandingPage from "./screens/LandingPage";
 import Login from "./screens/Login";
+import AdminLogin from "./screens/AdminLogin";
 import Registration from "./screens/Registration";
 import Dashboard from "./screens/Dashboard";
 import Download from "./screens/Download";
@@ -54,6 +57,19 @@ import LuxuryBonusDetails from "./screens/Income/LuxuryBonusDetails";
 //academy
 import Calculator from "./screens/Academy/Calculator";
 import TutorialVideo from "./screens/Academy/TutorialVideo";
+//admin
+import AdminDashboard from "./screens/Admin/AdminDashboard";
+import ProtectedAdminRoute from "./component/ProtectedAdminRoute";
+import LogActivities from "./screens/Admin/LogActivities";
+import RankAchiever from "./screens/Admin/RankAchiever";
+import TopDirectList from "./screens/Admin/TopDirectList";
+import TopEarnerList from "./screens/Admin/TopEarnerList";
+import UserList from "./screens/Admin/UserList";
+import PartnerSponsorBonus from "./screens/Admin/Income/PartnerSponsorBonus";
+import PartnerPoolBonus from "./screens/Admin/Income/PartnerPoolBonus";
+import PartnerLuxuryBonus from "./screens/Admin/Income/PartnerLuxuryBonus";
+import PartnerLevelBonus from "./screens/Admin/Income/PartnerLevelBonus";
+import PartnerDirectKickBonus from "./screens/Admin/Income/PartnerDirectKickBonus";
 
 function App() {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -68,6 +84,10 @@ function App() {
 
   const isWalletConnected = useSelector(
     (state) => state.accountDetails.isWalletConnected
+  );
+
+  const isAdminConnected = useSelector(
+    (state) => state.accountDetails.isAdminConnected
   );
 
   const showCopyModal = useSelector(
@@ -88,6 +108,12 @@ function App() {
     const walletAddress = sessionStorage.getItem("walletAddress");
     const dashboardData = sessionStorage.getItem("dashboardData");
     const id = sessionStorage.getItem("id");
+    const isAdminPresent = sessionStorage.getItem("isAdmin");
+    if (isAdminPresent) {
+      dispatch(isAdmin(true));
+      dispatch(setAddress(walletAddress));
+      dispatch(saveMainUser(walletConnectedBackup));
+    }
     if (walletConnected && walletAddress) {
       dispatch(setAddress(walletAddress));
       dispatch(saveMainUser(walletConnectedBackup));
@@ -95,19 +121,30 @@ function App() {
       dispatch(setUserData(JSON.parse(dashboardData)));
       dispatch(setId(Number(id)));
     }
+
     setRehydrated(true);
   }, []);
 
   useEffect(() => {
+    // console.log({ isAdminConnected });
+    // console.log({ isWalletConnected });
+    const screenWidth = window.innerWidth;
     if (isWalletConnected && !isCertificatePage) {
-      const screenWidth = window.innerWidth;
       if (screenWidth < 1024) {
         setOpenSidebar(false);
       } else if (isWalletConnected) {
         setOpenSidebar(true);
       }
     }
-  }, [isWalletConnected]);
+    if (isAdminConnected && !isCertificatePage) {
+      const screenWidth = window.innerWidth;
+      if (screenWidth < 1024) {
+        setOpenSidebar(false);
+      } else if (isAdminConnected) {
+        setOpenSidebar(true);
+      }
+    }
+  }, [isWalletConnected, isAdminConnected]);
 
   if (!rehydrated) {
     return <div className="absolute z-50 bg-black h-full w-full">Loading</div>;
@@ -118,15 +155,18 @@ function App() {
       {showScreenLoader && <ScreenLoader />}
       {showCopyModal && <CopyModel />}
       {showTodayEarnginModal && <TodayEarning />}
-      {!isCertificatePage &&
-        (isWalletConnected ? (
-          <Navbar handleSidebar={handleSidebar} openSidebar={openSidebar} />
-        ) : (
-          <LandingNavbar />
-        ))}
+      {!isCertificatePage && isWalletConnected && (
+        <Navbar handleSidebar={handleSidebar} openSidebar={openSidebar} />
+      )}
+      {!isCertificatePage && isAdminConnected && (
+        <AdminNavbar handleSidebar={handleSidebar} openSidebar={openSidebar} />
+      )}
+      {!isCertificatePage && !isWalletConnected && !isAdminConnected && (
+        <LandingNavbar />
+      )}
 
       <div className={`flex flex-1 overflow-hidden bgImg`}>
-        {isWalletConnected && (
+        {(isWalletConnected || isAdminConnected) && (
           <AnimatePresence>
             {openSidebar && <Sidebar handleSidebar={handleSidebar} />}
           </AnimatePresence>
@@ -137,6 +177,7 @@ function App() {
             <Route element={<PublicRoute />}>
               <Route path="/" element={<LandingPage />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/registration" element={<Registration />} />
               <Route path="/registration/:id" element={<Registration />} />
               <Route path="/download" element={<Download />} />
@@ -246,6 +287,54 @@ function App() {
               <Route
                 path="/matrixtreedetails/:level"
                 element={<DetailsPage openSidebar={openSidebar} />}
+              />
+            </Route>
+
+            <Route element={<ProtectedAdminRoute />}>
+              <Route
+                path="/admin/dashboard"
+                element={<AdminDashboard openSidebar={openSidebar} />}
+              />
+              <Route
+                path="/admin/userlist"
+                element={<UserList openSidebar={openSidebar} />}
+              />
+              <Route
+                path="/admin/logactivities"
+                element={<LogActivities openSidebar={openSidebar} />}
+              />
+              <Route
+                path="/admin/rankachiver"
+                element={<RankAchiever openSidebar={openSidebar} />}
+              />
+              <Route
+                path="/admin/topdirectlist"
+                element={<TopDirectList openSidebar={openSidebar} />}
+              />
+              <Route
+                path="/admin/topearnerlist"
+                element={<TopEarnerList openSidebar={openSidebar} />}
+              />
+
+              <Route
+                path="/admin/income/sponsor"
+                element={<PartnerSponsorBonus openSidebar={openSidebar} />}
+              />
+              <Route
+                path="/admin/income/pool"
+                element={<PartnerPoolBonus openSidebar={openSidebar} />}
+              />
+              <Route
+                path="/admin/income/luxury"
+                element={<PartnerLuxuryBonus openSidebar={openSidebar} />}
+              />
+              <Route
+                path="/admin/income/level"
+                element={<PartnerLevelBonus openSidebar={openSidebar} />}
+              />
+              <Route
+                path="/admin/income/direct"
+                element={<PartnerDirectKickBonus openSidebar={openSidebar} />}
               />
             </Route>
           </Routes>

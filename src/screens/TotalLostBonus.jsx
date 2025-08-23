@@ -96,7 +96,7 @@ function TotalLostBonus({ openSidebar }) {
         }));
       dispatch(screenLoaderVisibilty(false));
       // console.log(mergedArray);
-      setData(mergedArray);
+      setData(mergedArray.reverse());
     } catch (error) {
       dispatch(screenLoaderVisibilty(false));
       console.log(error);

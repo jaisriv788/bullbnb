@@ -3,7 +3,7 @@ import Tree from "react-d3-tree";
 import Web3 from "web3";
 import { useSelector, useDispatch } from "react-redux";
 import { screenLoaderVisibilty } from "../../features/copyModal/copyModalVisiblilty";
-import abi from "../../mainAbi.json";
+import abiMain from "../../mainAbi.json";
 import { Rank } from "../../data/data";
 import green from "../../assets/treeCardIcons/green.jpg";
 import gold from "../../assets/treeCardIcons/gold.jpg";
@@ -78,8 +78,7 @@ const renderCardNode = ({ nodeDatum }, onClick) => {
         <img
           src={img}
           alt="MLM"
-          className="rounded-full border border-[#09182C] 
-            h-[28px] sm:h-12"
+          className="rounded-full h-[28px] sm:h-12"
         />
         <span className={`text-[8.5px] sm:text-xs ${txt}`}>
           {nodeDatum.name}
@@ -134,7 +133,7 @@ const FixedMLMTree = ({
     try {
       dispatch(screenLoaderVisibilty(true));
       const web3 = new Web3("https://opbnb-mainnet-rpc.bnbchain.org");
-      const contract = new web3.eth.Contract(abi, contractAddress);
+      const contract = new web3.eth.Contract(abiMain, contractAddress);
 
       let level = 1;
       const batchSize = 30;
@@ -229,9 +228,11 @@ const FixedMLMTree = ({
     try {
       dispatch(screenLoaderVisibilty(true));
       const web3 = new Web3("https://opbnb-mainnet-rpc.bnbchain.org");
-      const contract = new web3.eth.Contract(abi, contractAddress);
+      const contract = new web3.eth.Contract(abiMain, contractAddress);
 
       const referer = await contract.methods.users(topId).call();
+      const data1 = await contract.methods.user_details(topId).call();
+      console.log(data1.myTeamCount);
 
       if (walletAddress.toLowerCase() !== referer.account.toLowerCase()) {
         onParentUpdate(referer?.upline);
@@ -260,11 +261,25 @@ const FixedMLMTree = ({
         )
       );
 
+      // 🔹 fetch user_details for children + grandchildren
+      const [dataChild1, dataChild2, ...dataGrandChildren] = await Promise.all([
+        refererChild?.[0]?.account
+          ? contract.methods.user_details(refererChild[0].account).call()
+          : {},
+        refererChild?.[1]?.account
+          ? contract.methods.user_details(refererChild[1].account).call()
+          : {},
+        ...refererGrandChild.map((gc) =>
+          gc?.account ? contract.methods.user_details(gc.account).call() : {}
+        ),
+      ]);
+
       const getGrandChildrenFor = (parentAddress) =>
         refererGrandChild
           .map((gc, idx) => ({
             ...gc,
             refererData: grandchildReferers[idx] || {},
+            detailsData: dataGrandChildren[idx] || {},
           }))
           .filter(
             (gc) => gc?.upline?.toLowerCase() === parentAddress?.toLowerCase()
@@ -276,6 +291,7 @@ const FixedMLMTree = ({
         address: referer?.account ?? "-",
         referrer: topReferer?.id ?? "-",
         team: referer?.totalMatrixTeam ?? 0,
+        teamCount: data1?.myTeamCount ?? 0,
         upline: referer?.upline ?? "",
         children: ensureTwoChildren([
           {
@@ -284,6 +300,7 @@ const FixedMLMTree = ({
             address: refererChild?.[0]?.account ?? "-",
             referrer: firstChildReferer?.id ?? "-",
             team: refererChild?.[0]?.totalMatrixTeam ?? 0,
+            teamCount: dataChild1?.myTeamCount ?? 0,
             upline: refererChild?.[0]?.upline ?? "",
             children: ensureTwoChildren(
               getGrandChildrenFor(refererChild?.[0]?.account).map((gc) => ({
@@ -292,6 +309,7 @@ const FixedMLMTree = ({
                 address: gc?.account ?? "-",
                 referrer: gc?.refererData?.id ?? "-",
                 team: gc?.totalMatrixTeam ?? 0,
+                teamCount: gc?.detailsData?.myTeamCount ?? 0,
                 upline: gc?.upline ?? "",
               }))
             ),
@@ -302,6 +320,7 @@ const FixedMLMTree = ({
             address: refererChild?.[1]?.account ?? "-",
             referrer: secondChildReferer?.id ?? "-",
             team: refererChild?.[1]?.totalMatrixTeam ?? 0,
+            teamCount: dataChild2?.myTeamCount ?? 0,
             upline: refererChild?.[1]?.upline ?? "",
             children: ensureTwoChildren(
               getGrandChildrenFor(refererChild?.[1]?.account).map((gc) => ({
@@ -310,6 +329,7 @@ const FixedMLMTree = ({
                 address: gc?.account ?? "-",
                 referrer: gc?.refererData?.id ?? "-",
                 team: gc?.totalMatrixTeam ?? 0,
+                teamCount: gc?.detailsData?.myTeamCount ?? 0,
                 upline: gc?.upline ?? "",
               }))
             ),
@@ -367,7 +387,7 @@ const FixedMLMTree = ({
               </div>
               <div className="border-2 flex justify-between border-gray-400 bg-[#0F192F] rounded-full px-3">
                 <div>Community Size</div>
-                <div>{modelData?.team}</div>
+                <div>{modelData?.teamCount}</div>
               </div>
               <div className="grid grid-cols-2 gap-2 mt-3">
                 <button

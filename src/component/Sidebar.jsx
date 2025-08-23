@@ -1,9 +1,9 @@
 // Sidebar.jsx
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { SidebarContent } from "../data/data";
+import { SidebarContent, AdminSidebar } from "../data/data";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useMatch } from "react-router";
 import youtubeSrc from "../assets/logos/youtube.png";
 import twitter from "../assets/logos/twitter.png";
 import telegram from "../assets/logos/telegram.png";
@@ -16,6 +16,9 @@ function Sidebar({ handleSidebar }) {
   );
   const navigate = useNavigate();
 
+  const match = useMatch("/admin/*");
+
+  const list = match ? AdminSidebar : SidebarContent;
   useEffect(() => {
     const handleResize = () => {
       setSidebarWidth(window.innerWidth >= 1024 ? 450 : 350);
@@ -45,7 +48,7 @@ function Sidebar({ handleSidebar }) {
       animate={{ width: sidebarWidth, opacity: 1 }}
       exit={{ width: 0, opacity: 0 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      className="absolute lg:relative top-16 lg:top-0 left-0 z-50 lg:z-0 h-full"
+      className="absolute border-r border-white/40 lg:relative top-16 lg:top-0 left-0 z-50 lg:z-0 h-full"
     >
       <div
         className={`custom-scrollbar h-full w-full lg:pl-30 overflow-y-auto px-8 py-5 flex flex-col gap-2 backdrop-blur-md ${
@@ -54,7 +57,7 @@ function Sidebar({ handleSidebar }) {
             : "bg-[#232325] lg:bg-[#490D0D]"
         } text-white`}
       >
-        {SidebarContent.map((data) => {
+        {list.map((data) => {
           const Icon = data.icon;
           const isOpen = activeItemId === data.id;
 
