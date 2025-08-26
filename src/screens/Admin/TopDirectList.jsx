@@ -1,3 +1,6 @@
+import Footer from "../../component/Footer";
+import Title from "../../component/Title";
+
 function TopDirectList({ openSidebar }) {
   return (
     <div
@@ -8,9 +11,11 @@ function TopDirectList({ openSidebar }) {
       <div
         className={`${
           openSidebar ? "w-[90%] lg:w-full" : "w-[90%] lg:w-[80%]"
-        } flex flex-col sm:px-5 max-w-[1320px] md:border-l md:border-gray-400`}
+        } flex flex-col sm:px-5 max-w-[1320px]`}
       >
-        TopDirectList
+        <Title title="Top Direct List" />
+        <div className="flex-1"></div>
+        <Footer />
       </div>
     </div>
   );

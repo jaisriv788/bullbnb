@@ -1,9 +1,11 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import mainAbi from "../../mainAbi.json";
 import Web3 from "web3";
 import teamSrc from "../../assets/bnbLogo/my-team.png";
 import Footer from "../../component/Footer";
+import { screenLoaderVisibilty } from "../../features/copyModal/copyModalVisiblilty";
+import axios from "axios";
 
 const packages = [
   { label: "", amount: "" },
@@ -27,17 +29,24 @@ const packages = [
 function AdminDashboard({ openSidebar }) {
   const [users, setUsers] = useState(0);
   const [usersCount, setUsersCount] = useState(null);
+  const [lastSevenDaysUsers, setLastSevenDaysUsers] = useState(0);
+  const [lastThirtyDaysUsers, setLastThirtyDaysUsers] = useState(0);
+
+  const dispatch = useDispatch();
 
   const mainContract = useSelector(
     (state) => state.accountDetails.mainContractAddress
   );
-
+  const baseUrl = useSelector((state) => state.accountDetails.baseUrl);
   const walletAddress = useSelector(
     (state) => state.accountDetails.walletAddress
   );
 
   async function getData() {
     try {
+      const sessionData = sessionStorage.getItem("package_data");
+      // console.log(sessionData);
+      dispatch(screenLoaderVisibilty(true));
       const web3 = new Web3("https://opbnb-mainnet-rpc.bnbchain.org");
 
       if (!web3.utils.isAddress(walletAddress)) {
@@ -50,41 +59,79 @@ function AdminDashboard({ openSidebar }) {
       const totalUsers = await contract.methods.totalUsers().call();
       setUsers(parseInt(totalUsers) + 1);
 
-      const levelCalls = Array.from({ length: 32 }, (_, i) =>
-        contract.methods
-          .getLevelWiseUsers(
-            "0x5289CA577B00E87c72671a55Ce9A4D141E2F63a2",
-            i + 1
-          )
-          .call()
-          .catch(() => null)
-      );
+      if (!sessionData) {
+        const levelCalls = Array.from({ length: 32 }, (_, i) =>
+          contract.methods
+            .getLevelWiseUsers(
+              "0x5289CA577B00E87c72671a55Ce9A4D141E2F63a2",
+              i + 1
+            )
+            .call()
+            .catch(() => null)
+        );
 
-      const results = await Promise.all(levelCalls);
+        const results = await Promise.all(levelCalls);
 
-      const allUsers = results.filter(
-        (res) => Array.isArray(res) && res.length > 0
-      );
+        const allUsers = results.filter(
+          (res) => Array.isArray(res) && res.length > 0
+        );
 
-      const allMergedUsers = allUsers.flat();
+        const allMergedUsers = allUsers.flat();
 
-      for (let i = 0; i < allMergedUsers.length; i++) {
-        package_data[allMergedUsers[i][0][6]]++;
+        for (let i = 0; i < allMergedUsers.length; i++) {
+          package_data[allMergedUsers[i][0][6]]++;
+        }
+        sessionStorage.setItem("package_data", package_data);
+        setUsersCount(package_data);
+        // console.log(typeof package_data);
+      } else {
+        setUsersCount(sessionData.split(","));
+        // console.log(typeof sessionData);
+        // console.log(sessionData.split(","));
       }
-      setUsersCount(package_data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      dispatch(screenLoaderVisibilty(false));
+    }
+  }
+
+  async function getApiData() {
+    try {
+      const userFormData1 = new FormData();
+      userFormData1.append("action", "users_last_7_days");
+      // userFormData.append("value", "total_users");
+
+      const sevenDays = await axios.post(
+        `${baseUrl}api/admin-api`,
+        userFormData1
+      );
+      setLastSevenDaysUsers(sevenDays.data.total_users);
+      // console.log(sevenDays.data);
+
+      const userFormData2 = new FormData();
+      userFormData2.append("action", "users_last_30_days");
+      // userFormData.append("value", "total_users");
+
+      const thirtyDays = await axios.post(
+        `${baseUrl}api/admin-api`,
+        userFormData2
+      );
+      setLastThirtyDaysUsers(thirtyDays.data.total_users);
+      // console.log(thirtyDays.data);
     } catch (error) {
       console.log(error);
     }
   }
-
   useEffect(() => {
     getData();
+    getApiData();
   }, []);
 
   const data = [
     { title: "Today Users", val: 10 },
-    { title: "Last 7 Days", val: 12 },
-    { title: "Last 30 Days", val: 14 },
+    { title: "Last 7 Days", val: lastSevenDaysUsers },
+    { title: "Last 30 Days", val: lastThirtyDaysUsers },
   ];
   return (
     <div
@@ -98,18 +145,18 @@ function AdminDashboard({ openSidebar }) {
         } flex flex-col sm:px-5 max-w-[1320px] justify-between`}
       >
         <div>
-          <div className="flex gap-2 mt-8 flex-wrap">
+          <div className="flex sm:flex-row flex-col gap-2 mt-8 flex-wrap">
             {data.map((item, i) => (
               <div
                 key={i}
                 className="flex-1 group cursor-pointer sm:min-w-[150px] flex border-2 border-white/40 rounded-lg sm:px-3 sm:py-2 p-1 justify-between"
               >
                 <div>
-                  <div className="text-xs text-white/40 group-hover:text-[#707EF3]">
+                  <div className="text-xs text-nowrap text-white/40 group-hover:text-[#707EF3]">
                     {item.title}
                   </div>
                   <div className="text-lg group-hover:text-[#707EF3] sm:text-2xl wt">
-                    {item.val}
+                    {item.val ? item.val : "Loading.."}
                   </div>
                 </div>
                 <div className="sm:w-14 w-10 flex items-center">
@@ -132,12 +179,10 @@ function AdminDashboard({ openSidebar }) {
               {packages.slice(1).map((pkg, index) => (
                 <div
                   key={index}
-                  className="relative hover:shadow-[0_0_20px_5px_rgba(56,165,850,0.6)] overflow-hidden cursor-pointer w-15 h-15 sm:h-20 sm:w-40 rounded-b-full bg-gradient-to-tr from-[#E21927] via-[#B21238] to-[#790A4D] "
+                  className="relative text-sm sm:text-base hover:shadow-[0_0_20px_5px_rgba(56,165,850,0.6)] overflow-hidden cursor-pointer w-30 h-15 sm:h-20 sm:w-40 rounded-b-full bg-gradient-to-tr from-[#E21927] via-[#B21238] to-[#790A4D] "
                 >
-                  <div className="bg-gradient-to-r text-lg text-black font-bold text-center from-[#FFE033] to-[#FFA006]">
-                    {usersCount
-                      ? usersCount[index + 1]
-                      : "Loading..."}
+                  <div className="bg-gradient-to-r sm:text-lg text-black font-bold text-center from-[#FFE033] to-[#FFA006]">
+                    {usersCount ? usersCount[index + 1] : "Loading..."}
                   </div>
                   <div className="text-center font-semibold pt-2">
                     {pkg.label}

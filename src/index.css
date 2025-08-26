@@ -58,7 +58,6 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-
 .connect-btn {
   color: #fff;
   padding: 8px 8px;
@@ -746,3 +745,5 @@ input[type="number"] {
 .animate-pulse-bg {
   animation: pulse-bg 1s steps(1, end) infinite;
 }
+
+

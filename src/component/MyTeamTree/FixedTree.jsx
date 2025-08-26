@@ -75,11 +75,7 @@ const renderCardNode = ({ nodeDatum }, onClick) => {
           bg-white rounded-lg shadow-sm 
           flex flex-col items-center justify-between pt-1 cursor-pointer mx-auto"
       >
-        <img
-          src={img}
-          alt="MLM"
-          className="rounded-full h-[28px] sm:h-12"
-        />
+        <img src={img} alt="MLM" className="rounded-full h-[28px] sm:h-12" />
         <span className={`text-[8.5px] sm:text-xs ${txt}`}>
           {nodeDatum.name}
         </span>
@@ -383,7 +379,9 @@ const FixedMLMTree = ({
               </div>
               <div className="border-2 flex justify-between border-gray-400 bg-[#0F192F] rounded-full px-3">
                 <div>Referred By</div>
-                <div>{modelData.referrer}</div>
+                <div>
+                  {modelData.referrer == 0 ? "Top Id" : modelData.referrer}
+                </div>
               </div>
               <div className="border-2 flex justify-between border-gray-400 bg-[#0F192F] rounded-full px-3">
                 <div>Community Size</div>

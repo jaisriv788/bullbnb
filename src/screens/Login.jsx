@@ -28,6 +28,7 @@ function Login() {
           method: "eth_requestAccounts",
         });
         // const address = "0x5289CA577B00E87c72671a55Ce9A4D141E2F63a2";
+        // const address = "0x25e3f68858dfAFCeb59255a28020E0A8f46d2c6B";
         const address = account[0];
         // const address = "0xCe1C96A56a87282Bae02561bDE5071a37755d101";
         // const address = "0xBcb0633409Be7D1b1A91640e0bB5a17582E8658D";

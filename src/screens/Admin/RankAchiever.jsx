@@ -8,7 +8,7 @@ function RankAchiever({ openSidebar }) {
       <div
         className={`${
           openSidebar ? "w-[90%] lg:w-full" : "w-[90%] lg:w-[80%]"
-        } flex flex-col sm:px-5 max-w-[1320px] md:border-l md:border-gray-400`}
+        } flex flex-col sm:px-5 max-w-[1320px]`}
       >
         RankAchiever
       </div>
