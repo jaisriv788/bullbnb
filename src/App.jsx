@@ -272,10 +272,10 @@ function App() {
                 path="/token"
                 element={<Token openSidebar={openSidebar} />}
               />
-              <Route
+              {/* <Route
                 path="/game"
                 element={<Game openSidebar={openSidebar} />}
-              />
+              /> */}
               <Route
                 path="/faqs"
                 element={<Faqs openSidebar={openSidebar} />}

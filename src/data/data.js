@@ -406,9 +406,9 @@ export const SidebarContent = [
   { id: 7, icon: MessageCircle, name: "Reviews", path: "/reviews" },
   { id: 8, icon: Trophy, name: "Rewardwall", path: "/rewardwall" },
   { id: 9, icon: CircleDollarSign, name: "Token", path: "/token" },
-  { id: 10, icon: Gamepad2, name: "Game", path: "/game" },
-  { id: 11, icon: CircleQuestionMark, name: "Faqs", path: "/faqs" },
-  { id: 12, icon: PersonStanding, name: "Support", path: "/support" },
+  // { id: 10, icon: Gamepad2, name: "Game", path: "/game" },
+  { id: 10, icon: CircleQuestionMark, name: "Faqs", path: "/faqs" },
+  { id: 11, icon: PersonStanding, name: "Support", path: "/support" },
 ];
 
 export const FaqData = [
