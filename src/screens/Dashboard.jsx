@@ -80,6 +80,7 @@ function Dashboard({ openSidebar }) {
   useEffect(() => {
     getData();
   }, [walletAddress]);
+
   async function getWalletAddressDetails() {
     try {
       const web3 = new Web3("https://opbnb-mainnet-rpc.bnbchain.org");
@@ -185,9 +186,9 @@ function Dashboard({ openSidebar }) {
         userDetailMain.status === "fulfilled" ? userDetailMain.value : {};
 
       // console.log("userMain", userMain);
-      const mainIncomeData = incomeResults[0];
+      // const mainIncomeData = incomeResults[0];
       // console.log(
-      //   "mainIncomeData",
+      //   mainIncomeData,
       //   incomeResults[1],
       //   incomeResults[2],
       //   incomeResults[3]
@@ -202,12 +203,12 @@ function Dashboard({ openSidebar }) {
             .call()
         )
       );
-      console.log("Logs:", logs);
+      // console.log("Logs:", logs);
 
       const todayValue = logs.map((value) =>
         parseFloat(web3.utils.fromWei(value[0], "ether")).toFixed(4)
       );
-      console.log({ todayValue });
+      // console.log({ todayValue });
 
       const todayEarningInBnb = logs.reduce((acc, item) => {
         const ethValue = parseFloat(web3.utils.fromWei(item[0], "ether"));
@@ -235,7 +236,8 @@ function Dashboard({ openSidebar }) {
         totaLapsIncome: totals.lapsIncome.toFixed(5),
         rank: userMain.currentPackage,
         myDirectPartner: userMain.partnercount,
-        myNetworkPartner: mainIncomeData.value.myTeamCount.toString(),
+        // myNetworkPartner: mainIncomeData.value.myTeamCount.toString(),
+        myNetworkPartner: userMain.totalMatrixTeam.toString(),
         todayEarningInBnb: todayEarningInBnb.toFixed(4),
         todayEarningInDollor,
         todayPartnerSponsorBonus: todayValue[0],

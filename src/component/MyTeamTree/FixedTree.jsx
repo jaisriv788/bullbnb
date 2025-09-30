@@ -384,8 +384,8 @@ const FixedMLMTree = ({
                 </div>
               </div>
               <div className="border-2 flex justify-between border-gray-400 bg-[#0F192F] rounded-full px-3">
-                <div>Community Size</div>
-                <div>{modelData?.teamCount}</div>
+                <div>Community Size (30 Level)</div>
+                <div>{modelData?.team}</div>
               </div>
               <div className="grid grid-cols-2 gap-2 mt-3">
                 <button
