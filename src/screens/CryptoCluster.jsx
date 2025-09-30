@@ -11,6 +11,10 @@ import book7 from "../assets/cryptocluster/vol-7.jpg";
 import book8 from "../assets/cryptocluster/vol-8.jpg";
 import book9 from "../assets/cryptocluster/vol-9.jpg";
 import book10 from "../assets/cryptocluster/vol-10.jpg";
+import book11 from "../assets/cryptocluster/vol-11.jpg";
+import book12 from "../assets/cryptocluster/vol-12.jpg";
+// import book13 from "../assets/cryptocluster/vol-13.jpg";
+// import book14 from "../assets/cryptocluster/vol-14.jpg";
 
 function CryptoCluster({ openSidebar }) {
   const walletAddress = useSelector(
@@ -31,6 +35,10 @@ function CryptoCluster({ openSidebar }) {
     { img: book8, link: "https://bullbnb.com/cryptocluster/N8X5V4JW8" },
     { img: book9, link: "https://bullbnb.com/cryptocluster/V3R2M6YZ9" },
     { img: book10, link: "https://bullbnb.com/cryptocluster/D5F7W1PU10" },
+    { img: book11, link: "https://bullbnb.com/cryptocluster/Y6K3L9HT11" },
+    { img: book12, link: "https://bullbnb.com/cryptocluster/Z2N4B8QW12" },
+    // { img: book13, link: "https://bullbnb.com/cryptocluster/C1J8U5MP13" },
+    // { img: book14, link: "https://bullbnb.com/cryptocluster/W7E0A2ZR14" },
   ];
 
   return (
