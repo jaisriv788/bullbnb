@@ -241,12 +241,16 @@ const FixedMLMTree = ({
         contract.methods.getMatrixUsers(topId, 1).call(),
       ]);
 
+      console.log({ refererGrandChild });
+
       const addressesToFetch = [
         referer?.referrer,
         refererChild?.[0]?.referrer,
         refererChild?.[1]?.referrer,
         ...refererGrandChild.map((gc) => gc?.referrer),
       ];
+
+      // console.log({ addressesToFetch });
 
       const [
         topReferer,
@@ -259,6 +263,7 @@ const FixedMLMTree = ({
         )
       );
 
+      console.log({ grandchildReferers });
       // 🔹 fetch user_details for children + grandchildren
       const [dataChild1, dataChild2, ...dataGrandChildren] = await Promise.all([
         refererChild?.[0]?.account
@@ -272,16 +277,18 @@ const FixedMLMTree = ({
         ),
       ]);
 
-      const getGrandChildrenFor = (parentAddress) =>
-        refererGrandChild
-          .map((gc, idx) => ({
-            ...gc,
-            refererData: grandchildReferers[idx] || {},
-            detailsData: dataGrandChildren[idx] || {},
-          }))
-          .filter(
-            (gc) => gc?.upline?.toLowerCase() === parentAddress?.toLowerCase()
-          );
+      console.log({ dataGrandChildren });
+
+      // const getGrandChildrenFor = (parentAddress) =>
+      //   refererGrandChild
+      //     .map((gc, idx) => ({
+      //       ...gc,
+      //       refererData: grandchildReferers[idx] || {},
+      //       detailsData: dataGrandChildren[idx] || {},
+      //     }))
+      //     .filter(
+      //       (gc) => gc?.upline?.toLowerCase() === parentAddress?.toLowerCase()
+      //     );
 
       const topNode = {
         name: referer?.id ?? "-",
@@ -300,18 +307,28 @@ const FixedMLMTree = ({
             team: refererChild?.[0]?.totalMatrixTeam ?? 0,
             teamCount: dataChild1?.myTeamCount ?? 0,
             upline: refererChild?.[0]?.upline ?? "",
-            children: ensureTwoChildren(
-              getGrandChildrenFor(refererChild?.[0]?.account).map((gc) => ({
-                name: gc?.id ?? "-",
-                package: Number(gc?.currentPackage ?? 0),
-                address: gc?.account ?? "-",
-                referrer: gc?.refererData?.id ?? "-",
-                team: gc?.totalMatrixTeam ?? 0,
-                teamCount: gc?.detailsData?.myTeamCount ?? 0,
-                upline: gc?.upline ?? "",
-              }))
-            ),
+            children: [
+              {
+                name: refererGrandChild[0]?.id ?? "-",
+                package: Number(refererGrandChild[0]?.currentPackage ?? 0),
+                address: refererGrandChild[0]?.account ?? "-",
+                referrer: grandchildReferers[0]?.id ?? "-",
+                team: refererGrandChild[0]?.totalMatrixTeam ?? 0,
+                teamCount: refererGrandChild[0]?.detailsData?.myTeamCount ?? 0,
+                upline: refererGrandChild[0]?.upline ?? "",
+              },
+              {
+                name: refererGrandChild[1]?.id ?? "-",
+                package: Number(refererGrandChild[1]?.currentPackage ?? 0),
+                address: refererGrandChild[1]?.account ?? "-",
+                referrer: grandchildReferers[1]?.id ?? "-",
+                team: refererGrandChild[1]?.totalMatrixTeam ?? 0,
+                teamCount: refererGrandChild[1]?.detailsData?.myTeamCount ?? 0,
+                upline: refererGrandChild[1]?.upline ?? "",
+              },
+            ],
           },
+
           {
             name: refererChild?.[1]?.id ?? "-",
             package: Number(refererChild?.[1]?.currentPackage ?? 0),
@@ -320,17 +337,26 @@ const FixedMLMTree = ({
             team: refererChild?.[1]?.totalMatrixTeam ?? 0,
             teamCount: dataChild2?.myTeamCount ?? 0,
             upline: refererChild?.[1]?.upline ?? "",
-            children: ensureTwoChildren(
-              getGrandChildrenFor(refererChild?.[1]?.account).map((gc) => ({
-                name: gc?.id ?? "-",
-                package: Number(gc?.currentPackage ?? 0),
-                address: gc?.account ?? "-",
-                referrer: gc?.refererData?.id ?? "-",
-                team: gc?.totalMatrixTeam ?? 0,
-                teamCount: gc?.detailsData?.myTeamCount ?? 0,
-                upline: gc?.upline ?? "",
-              }))
-            ),
+            children: [
+              {
+                name: refererGrandChild[2]?.id ?? "-",
+                package: Number(refererGrandChild[2]?.currentPackage ?? 0),
+                address: refererGrandChild[2]?.account ?? "-",
+                referrer: grandchildReferers[2]?.id ?? "-",
+                team: refererGrandChild[2]?.totalMatrixTeam ?? 0,
+                teamCount: refererGrandChild[2]?.detailsData?.myTeamCount ?? 0,
+                upline: refererGrandChild[2]?.upline ?? "",
+              },
+              {
+                name: refererGrandChild[3]?.id ?? "-",
+                package: Number(refererGrandChild[3]?.currentPackage ?? 0),
+                address: refererGrandChild[3]?.account ?? "-",
+                referrer: grandchildReferers[3]?.id ?? "-",
+                team: refererGrandChild[3]?.totalMatrixTeam ?? 0,
+                teamCount: refererGrandChild[3]?.detailsData?.myTeamCount ?? 0,
+                upline: refererGrandChild[3]?.upline ?? "",
+              },
+            ],
           },
         ]),
       };
