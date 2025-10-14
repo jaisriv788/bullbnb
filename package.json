@@ -24,6 +24,7 @@
     "react-redux": "^9.2.0",
     "react-router": "^7.6.3",
     "react-to-pdf": "^2.0.1",
+    "rollup-plugin-visualizer": "^6.0.4",
     "tailwind": "^2.3.1",
     "tailwindcss": "^4.1.11",
     "web3": "^4.16.0"
