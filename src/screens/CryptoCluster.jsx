@@ -11,6 +11,8 @@ function CryptoCluster({ openSidebar }) {
     (state) => state.accountDetails.walletAddress
   );
 
+  console.log(data);
+  
   return (
     <div
       className={`absolute inset-0 overflow-auto backdrop-blur-[1px] ${
