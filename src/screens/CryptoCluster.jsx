@@ -11,7 +11,7 @@ function CryptoCluster({ openSidebar }) {
     (state) => state.accountDetails.walletAddress
   );
 
-  console.log(data);
+  // console.log(data);
   
   return (
     <div

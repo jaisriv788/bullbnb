@@ -14,9 +14,11 @@ import book13 from "../assets/cryptocluster/vol-13.jpg";
 import book14 from "../assets/cryptocluster/vol-14.jpg";
 import book15 from "../assets/cryptocluster/vol-15.jpg";
 import book16 from "../assets/cryptocluster/vol-16.jpg";
-// import book17 from "../assets/cryptocluster/vol-17.jpg";
+import book17 from "../assets/cryptocluster/vol-17.jpg";
 // import book18 from "../assets/cryptocluster/vol-18.jpg";
 // import book19 from "../assets/cryptocluster/vol-19.jpg";
+// import book20 from "../assets/cryptocluster/vol-20.jpg";
+// import book21 from "../assets/cryptocluster/vol-21.jpg";
 
 export const data = [
   { img: book1, link: "https://bullbnb.com/cryptocluster/A9D3Z7QX1" },
@@ -35,7 +37,9 @@ export const data = [
   { img: book14, link: "https://bullbnb.com/cryptocluster/W7E0A2ZR14" },
   { img: book15, link: "https://bullbnb.com/cryptocluster/G9Q4H6VX15" },
   { img: book16, link: "https://bullbnb.com/cryptocluster/L8M3C7YD16" },
-  // { img: book17, link: "https://bullbnb.com/cryptocluster/L8M3C7YD16" },
-  // { img: book18, link: "https://bullbnb.com/cryptocluster/L8M3C7YD16" },
-  // { img: book19, link: "https://bullbnb.com/cryptocluster/L8M3C7YD16" },
+  { img: book17, link: "https://bullbnb.com/cryptocluster/J5T1P9NW17" },
+  // { img: book18, link: "https://bullbnb.com/cryptocluster/S0X2V3KR18" },
+  // { img: book19, link: "https://bullbnb.com/cryptocluster/" },
+  // { img: book20, link: "https://bullbnb.com/cryptocluster/" },
+  // { img: book21, link: "https://bullbnb.com/cryptocluster/" },
 ];
