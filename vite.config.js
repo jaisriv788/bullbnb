@@ -16,18 +16,4 @@ export default defineConfig({
       filename: "bundle-analysis.html",
     }),
   ],
-  define: {
-    __AUTHOR__: JSON.stringify(
-      "Jai Srivastava (https://github.com/jaisriv788)"
-    ),
-    __BUILD_PROOF__: JSON.stringify("BULLBNB_PROOF_2025_JAI_SRIVASTAVA"),
-  },
-  build: {
-    rollupOptions: {
-      output: {
-        banner:
-          "/*! BullBNB | Developer: Jai Srivastava | GitHub: github.com/jaisriv788 | Contact: jaisrivastava788@gmail.com */",
-      },
-    },
-  },
 });

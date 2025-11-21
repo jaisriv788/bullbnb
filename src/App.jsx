@@ -1,6 +1,6 @@
 // App.jsx
 import { useEffect, useState } from "react";
-import { AnimatePresence } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { Routes, Route } from "react-router";
 import { useMatch } from "react-router";
 //Redux
@@ -74,6 +74,7 @@ import PartnerDirectKickBonus from "./screens/Admin/Income/PartnerDirectKickBonu
 function App() {
   const [openSidebar, setOpenSidebar] = useState(false);
   const [rehydrated, setRehydrated] = useState(false);
+  const [showModel, setShowModel] = useState(true);
 
   const dispatch = useDispatch();
   const isCertificatePage = useMatch("/certificate/:name/:rank/:earning");
@@ -164,6 +165,26 @@ function App() {
       {!isCertificatePage && !isWalletConnected && !isAdminConnected && (
         <LandingNavbar />
       )}
+
+      {isWalletConnected && showModel &&
+        <div className="fixed inset-0 flex px-5 justify-center items-center z-500 bg-black/50 backdrop-blur-sm">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="p-6 bg-[#01051D]/70 sm:w-3/5 lg:w-2/5 rounded-2xl border border-[#E2A049] shadow-[0_0_20px_#E2A049] text-white"
+          >
+            <img src="/banner.jfif" alt="banner" className="rounded-lg w-full" />
+
+            <button
+              onClick={() => setShowModel(false)}
+              className="mt-6 bg-[#E2A049] hover:bg-[#B6540B] w-full py-2 rounded-md cursor-pointer transition ease-in-out duration-300"
+            >
+              Close
+            </button>
+          </motion.div>
+        </div>
+      }
 
       <div className={`flex flex-1 overflow-hidden bgImg`}>
         {(isWalletConnected || isAdminConnected) && (

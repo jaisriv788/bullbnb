@@ -278,14 +278,12 @@ function Dashboard({ openSidebar }) {
 
   return (
     <div
-      className={`absolute inset-0 overflow-x-hidden  backdrop-blur-[1px] ${
-        walletAddress == backupAddress ? "bg-black/80" : "bg-[#490D0D]/80"
-      }  flex justify-center sm:py-4 ${openSidebar && "lg:pr-20 "}`}
+      className={`absolute inset-0 overflow-x-hidden  backdrop-blur-[1px] ${walletAddress == backupAddress ? "bg-black/80" : "bg-[#490D0D]/80"
+        }  flex justify-center sm:py-4 ${openSidebar && "lg:pr-20 "}`}
     >
       <div
-        className={`${
-          openSidebar ? "w-[90%] lg:w-full" : "w-[90%] lg:w-[80%]"
-        } flex flex-col sm:px-5 max-w-[1320px] `}
+        className={`${openSidebar ? "w-[90%] lg:w-full" : "w-[90%] lg:w-[80%]"
+          } flex flex-col sm:px-5 max-w-[1320px] `}
       >
         <div className="flex-1 flex flex-col gap-3">
           <OptionalTopDiv css="flex justify-between items-center lg:hidden px-1 sm:px-3 py-2" />
@@ -309,9 +307,8 @@ function Dashboard({ openSidebar }) {
 
           {/* second div */}
           <div
-            className={`flex w-full flex-wrap flex-col ${
-              openSidebar ? "xl:flex-row" : "lg:flex-row"
-            } gap-3`}
+            className={`flex w-full flex-wrap flex-col ${openSidebar ? "xl:flex-row" : "lg:flex-row"
+              } gap-3`}
           >
             <DashboardDataDisplayLeft openSidebar={openSidebar} />
             <DashboardDataDisplayRight

@@ -3,8 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "author": "Jai Srivastava (https://github.com/jaisriv788)",
-  "buildProof": "BULLBNB_PROOF_2025_JAI_SRIVASTAVA",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
