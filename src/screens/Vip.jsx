@@ -7,6 +7,7 @@ import Web3 from "web3";
 import { useNavigate } from "react-router";
 import mainAbi from "../mainAbi.json"
 import Footer from "../component/Footer";
+import { vipData } from "../data/data";
 
 function Vip({ openSidebar }) {
     const [totalIncome, setTotalIncome] = useState(0);
@@ -37,7 +38,7 @@ function Vip({ openSidebar }) {
             try {
                 const web3 = new Web3("https://opbnb-mainnet-rpc.bnbchain.org");
                 const contract = new web3.eth.Contract(mainAbi, mainContractAddress);
-                const royaltyLastDist = await contract.methods.royaltyLastDist().call();
+                const royaltyLastDist = await contract.methods.vipLastDist().call();
 
                 const futureTimestamp = parseFloat(royaltyLastDist) + 24 * 60 * 60;
 
@@ -74,19 +75,23 @@ function Vip({ openSidebar }) {
             );
 
             const royaltyAchived = await mainContractInstance.methods
-                ._checkRoyaltyAchieved(CurrentWalletAddress)
+                ._checkVipAchieved(CurrentWalletAddress)
                 .call();
 
+            console.log("royaltyAchived:", { royaltyAchived });
             setRoyaltyAchived(royaltyAchived);
 
             const income = await mainContractInstance.methods
                 .totalroyaltyIncome(CurrentWalletAddress)
                 .call();
 
+            console.log("income:", { income });
+
             const incomeInEtherFloat = income.map((v) =>
                 parseFloat(web3.utils.fromWei(v.toString(), "ether"))
             );
 
+            // console.log("incomeInEtherFloat:", { incomeInEtherFloat });
             setIncome(incomeInEtherFloat);
 
             const total = incomeInEtherFloat.reduce((acc, item) => {
@@ -94,6 +99,7 @@ function Vip({ openSidebar }) {
             }, 0);
             setTotalIncome(total);
 
+            // console.log("totalIncome:", { total });
             dispatch(screenLoaderVisibilty(false));
         } catch (error) {
             dispatch(screenLoaderVisibilty(false));
@@ -167,11 +173,11 @@ function Vip({ openSidebar }) {
                                     <div className="grid border-b border-white/20 grid-cols-2 text-center">
 
                                         <div className="py-1 text-white border-r border-white/20">
-                                            Director
+                                            {vipData[index].rank}
                                         </div>
 
                                         <div className="py-1 text-white">
-                                            6 Director
+                                            {vipData[index].refer}
                                         </div>
                                     </div>
 
@@ -197,7 +203,12 @@ function Vip({ openSidebar }) {
                                 </div>
 
                                 {/* Details Button */}
-                                <button className="btn-theme cursor-pointer mt-2">
+                                <button onClick={() => {
+                                    navigate(
+                                        `/income/vip/details/${vipData[index].rank
+                                        }/${parseFloat(income[index]).toFixed(5)}/${index}`
+                                    );
+                                }} className="btn-theme2 cursor-pointer mt-2">
                                     Details
                                 </button>
                             </div>

@@ -43,6 +43,7 @@ import Dashboard from "./screens/Dashboard";
 import Download from "./screens/Download";
 import CryptoCluster from "./screens/CryptoCluster";
 import Vip from "./screens/Vip";
+import VipDetails from "./screens/VipDetails";
 //team
 import MyTree from "./screens/Team/MyTree";
 import DirectPartner from "./screens/Team/DirectPartner";
@@ -268,6 +269,10 @@ function App() {
               <Route
                 path="/income/vip"
                 element={<Vip openSidebar={openSidebar} />}
+              />
+              <Route
+                path="/income/vip/details/:title/:value/:id"
+                element={<VipDetails openSidebar={openSidebar} />}
               />
               <Route
                 path="/income/luxury/details/:title/:value/:id"

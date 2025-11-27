@@ -33,11 +33,10 @@ function DirectPartner({ openSidebar }) {
 
       if (cachedItem) {
         const { timestamp, data: cachedData } = JSON.parse(cachedItem);
-        const cacheValid = Date.now() - timestamp < 5 * 60 * 1000; // 5 minutes
+        const cacheValid = Date.now() - timestamp < 5 * 60 * 1000;
 
         if (cacheValid) {
           setData(cachedData);
-          // console.log("Loaded from cache:", cachedData);
           setIsLoading(false);
           dispatch(screenLoaderVisibilty(false));
           return;
@@ -47,17 +46,32 @@ function DirectPartner({ openSidebar }) {
       const web3 = new Web3("https://opbnb-mainnet-rpc.bnbchain.org");
 
       if (!web3.utils.isAddress(walletAddress)) {
-        console.log("Invalid Ethereum address.");
+        console.log("Invalid address.");
         setIsLoading(false);
         dispatch(screenLoaderVisibilty(false));
         return;
       }
 
       const contract = new web3.eth.Contract(mainAbi, contractAddress);
-      const response = await contract.methods.partners(walletAddress).call();
 
-      // console.log("Raw response from contract:", response);
+      // 1️⃣ Get the list of partner addresses
+      const partnerAddresses = await contract.methods.partners(walletAddress).call();
+      console.log("Partner Address List:", partnerAddresses);
 
+      // 2️⃣ Fetch user data for each partner
+      const userDetails = await Promise.all(
+        partnerAddresses.map(async (addr) => {
+          try {
+            const uData = await contract.methods.users(addr).call();
+            return { address: addr, userData: uData };
+          } catch (err) {
+            console.error("Error loading user data for:", addr, err);
+            return { address: addr, userData: null };
+          }
+        })
+      );
+
+      // 3️⃣ Normalize BigInt values
       const normalizeBigInts = (obj) => {
         if (typeof obj === "bigint") return obj.toString();
         if (Array.isArray(obj)) return obj.map(normalizeBigInts);
@@ -69,22 +83,23 @@ function DirectPartner({ openSidebar }) {
         return obj;
       };
 
-      const normalizedData = normalizeBigInts(
-        Array.isArray(response) ? response : [response]
-      );
+      const normalizedData = normalizeBigInts(userDetails);
+
       setData(normalizedData);
+
       sessionStorage.setItem(
         cacheKey,
         JSON.stringify({ timestamp: Date.now(), data: normalizedData })
       );
-      // console.log("Stored in session:", normalizedData);
+
     } catch (error) {
-      console.error("API Error:", error.response?.data || error.message);
+      console.error("API Error:", error?.message);
     } finally {
       setIsLoading(false);
       dispatch(screenLoaderVisibilty(false));
     }
   };
+
 
   useEffect(() => {
     if (walletAddress) {
@@ -94,17 +109,15 @@ function DirectPartner({ openSidebar }) {
 
   return (
     <div
-      className={`absolute inset-0 overflow-auto backdrop-blur-[1px] ${
-        walletAddress == walletCurrentAddress
-          ? "bg-black/60"
-          : "bg-[#490D0D]/80"
-      }  flex justify-center sm:py-4 ${openSidebar && "lg:pr-30"}`}
+      className={`absolute inset-0 overflow-auto backdrop-blur-[1px] ${walletAddress == walletCurrentAddress
+        ? "bg-black/60"
+        : "bg-[#490D0D]/80"
+        }  flex justify-center sm:py-4 ${openSidebar && "lg:pr-30"}`}
     >
       {" "}
       <div
-        className={`${
-          openSidebar ? "w-[90%] lg:w-full" : "w-[90%] lg:w-[80%]"
-        } flex flex-col sm:px-5 max-w-[1320px] `}
+        className={`${openSidebar ? "w-[90%] lg:w-full" : "w-[90%] lg:w-[80%]"
+          } flex flex-col sm:px-5 max-w-[1320px] `}
       >
         <Title title="My Direct Partner" />
 
@@ -174,9 +187,9 @@ function DirectPartner({ openSidebar }) {
                         <div className="flex items-center gap-2 justify-center">
                           {item.userData?.account
                             ? `${item.userData.account.slice(
-                                0,
-                                3
-                              )}...${item.userData.account.slice(-3)}`
+                              0,
+                              3
+                            )}...${item.userData.account.slice(-3)}`
                             : "-"}
                           <Copy
                             className="cursor-pointer hover:text-white/40 transition ease-in-out duration-300"
@@ -202,7 +215,7 @@ function DirectPartner({ openSidebar }) {
                           className="border border-white/50 text-center px-2 py-1 min-w-[32px]"
                         >
                           {item.userData?.currentPackage?.toString() >=
-                          i + 1 ? (
+                            i + 1 ? (
                             <img
                               className="w-4 h-4 mx-auto"
                               src={checkIcon}

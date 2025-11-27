@@ -17,6 +17,33 @@ import {
   Menu,
 } from "lucide-react";
 
+export const vipData = [
+  {
+    rank: "Director",
+    refer: "6 Director",
+  },
+  {
+    rank: "Star",
+    refer: "5 Star",
+  },
+  {
+    rank: "Champion",
+    refer: "4 Champion",
+  },
+  {
+    rank: "Mentor",
+    refer: "3 Mentor",
+  },
+  {
+    rank: "Titan",
+    refer: "2 Titan",
+  },
+  {
+    rank: "Platinum & above",
+    refer: "1 Platinum & above",
+  },
+];
+
 export const luxuryData = [
   {
     name: "STARTUP FUND",

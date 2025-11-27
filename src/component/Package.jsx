@@ -22,9 +22,9 @@ const packages = [
   { label: "TITAN", amount: "1.28" },
   { label: "PLATINUM", amount: "2.56" },
   { label: "DIAMOND", amount: "5.12" },
-  { label: "ICON", amount: "10.28" },
+  { label: "ICON", amount: "10.24" },
   { label: "LEGEND", amount: "20.48" },
-  { label: "AMBASSADOR", amount: "40.36" },
+  { label: "AMBASSADOR", amount: "40.96" },
   { label: "PRESIDENT", amount: "81.92" },
 ];
 function allPackages() {

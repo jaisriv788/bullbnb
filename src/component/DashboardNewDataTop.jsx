@@ -30,8 +30,8 @@ const rankOptions = [
 const DashboardNewDataTop = ({ luxuryBonus, lapsIncome, vipBonus }) => {
   const [timeLeft, setTimeLeft] = useState(null); // in seconds
   const [timeLeft2, setTimeLeft2] = useState(null); // in seconds
-  const [claimEnabled, setClaimEnabled] = useState(false);
-  const [claimEnabled2, setClaimEnabled2] = useState(false);
+  const [claimEnabled, setClaimEnabled] = useState(true);
+  const [claimEnabled2, setClaimEnabled2] = useState(true);
   const [timerEnded, setTimerEnded] = useState(false);
   const [timerEnded2, setTimerEnded2] = useState(false);
 
