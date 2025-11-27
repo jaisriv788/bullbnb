@@ -5,8 +5,8 @@ import { Rank } from "../../data/data";
 import { useState, useEffect } from "react";
 import { screenLoaderVisibilty } from "../../features/copyModal/copyModalVisiblilty";
 import { useSelector, useDispatch } from "react-redux";
-import abiOne from "../../oldAbiOne.json";
-import abiTwo from "../../oldAbiTwo.json";
+// import abiOne from "../../oldAbiOne.json";
+// import abiTwo from "../../oldAbiTwo.json";
 import mainAbi from "../../mainAbi.json";
 import Web3 from "web3";
 import checkSrc from "../../assets/logos/checkicon.png";
@@ -31,12 +31,12 @@ function PoolBonus({ openSidebar }) {
   const mainContractAddress = useSelector(
     (state) => state.accountDetails.mainContractAddress
   );
-  const previousContractAddressOne = useSelector(
-    (state) => state.accountDetails.previousContractAddressOne
-  );
-  const previousContractAddressTwo = useSelector(
-    (state) => state.accountDetails.previousContractAddressTwo
-  );
+  // const previousContractAddressOne = useSelector(
+  //   (state) => state.accountDetails.previousContractAddressOne
+  // );
+  // const previousContractAddressTwo = useSelector(
+  //   (state) => state.accountDetails.previousContractAddressTwo
+  // );
 
   const fetchData = async () => {
     try {
@@ -52,8 +52,8 @@ function PoolBonus({ openSidebar }) {
 
       const contracts = [
         { abi: mainAbi, address: mainContractAddress },
-        { abi: abiOne, address: previousContractAddressOne },
-        { abi: abiTwo, address: previousContractAddressTwo },
+        // { abi: abiOne, address: previousContractAddressOne },
+        // { abi: abiTwo, address: previousContractAddressTwo },
       ];
 
       const contractInstances = contracts.map(

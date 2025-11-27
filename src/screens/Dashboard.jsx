@@ -5,12 +5,12 @@ import Footer from "../component/Footer";
 import { useEffect, useState } from "react";
 import DashboardFirstTop from "../component/DashboardFirstTop";
 import DashboardFirstBottom from "../component/DashboardFirstBottom";
-import DashboardDataDisplayLeft from "../component/DashboardDataDisplayLeft";
-import DashboardDataDisplayRight from "../component/DashboardDataDisplayRight";
+// import DashboardDataDisplayLeft from "../component/DashboardDataDisplayLeft";
+// import DashboardDataDisplayRight from "../component/DashboardDataDisplayRight";
 import Web3 from "web3";
-import abi from "../abi.json";
-import abiOne from "../oldAbiOne.json";
-import abiTwo from "../oldAbiTwo.json";
+// import abi from "../abi.json";
+// import abiOne from "../oldAbiOne.json";
+// import abiTwo from "../oldAbiTwo.json";
 import logsAbi from "../logsAbi.json";
 import OptionalTopDiv from "../component/OptionalTopDiv";
 import mainAbi from "../mainAbi.json";
@@ -18,6 +18,8 @@ import bannerSrc from "../assets/gifs/book-slide.gif";
 import Package from "../component/Package";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import DashboardNewDataTop from "../component/DashboardNewDataTop";
+import DashboardNewDataBottom from "../component/DashboardNewDataBottom";
 
 function Dashboard({ openSidebar }) {
   const [dashboardData, setDashboardData] = useState({});
@@ -46,15 +48,15 @@ function Dashboard({ openSidebar }) {
   const mainContractAddress = useSelector(
     (state) => state.accountDetails.mainContractAddress
   );
-  const contractAddress = useSelector(
-    (state) => state.accountDetails.contractAddress
-  );
-  const previousContractAddressOne = useSelector(
-    (state) => state.accountDetails.previousContractAddressOne
-  );
-  const previousContractAddressTwo = useSelector(
-    (state) => state.accountDetails.previousContractAddressTwo
-  );
+  // const contractAddress = useSelector(
+  //   (state) => state.accountDetails.contractAddress
+  // );
+  // const previousContractAddressOne = useSelector(
+  //   (state) => state.accountDetails.previousContractAddressOne
+  // );
+  // const previousContractAddressTwo = useSelector(
+  //   (state) => state.accountDetails.previousContractAddressTwo
+  // );
   const isWalletConnected = useSelector(
     (state) => state.accountDetails.isWalletConnected
   );
@@ -87,9 +89,9 @@ function Dashboard({ openSidebar }) {
 
       const contracts = [
         { abi: mainAbi, address: mainContractAddress },
-        { abi, address: contractAddress },
-        { abi: abiOne, address: previousContractAddressOne },
-        { abi: abiTwo, address: previousContractAddressTwo },
+        // { abi, address: contractAddress },
+        // { abi: abiOne, address: previousContractAddressOne },
+        // { abi: abiTwo, address: previousContractAddressTwo },
       ];
 
       if (!web3.utils.isAddress(walletAddress)) {
@@ -133,9 +135,11 @@ function Dashboard({ openSidebar }) {
             PoolLevelIncome: 0,
             myTeamCount: 0,
             lapsIncome: 0,
+            vipBonus: 0
           };
 
         const val = data.value;
+        // console.log({ val })
         const fromWei = (amount) =>
           parseFloat(Web3.utils.fromWei(amount || "0", "ether"));
 
@@ -147,6 +151,7 @@ function Dashboard({ openSidebar }) {
           partnerLevelBonus: fromWei(val.partnerLevelBonus),
           PoolLevelIncome: fromWei(val.PoolLevelIncome),
           lapsIncome: fromWei(val.lapsIncome),
+          vipBonus: fromWei(val.vipBonus),
           myTeamCount: parseInt(val.myTeamCount || 0),
         };
       };
@@ -160,6 +165,7 @@ function Dashboard({ openSidebar }) {
         partnerLevelBonus: 0,
         PoolLevelIncome: 0,
         myTeamCount: 0,
+        vipBonus: 0,
         lapsIncome: 0,
       };
 
@@ -188,10 +194,12 @@ function Dashboard({ openSidebar }) {
       // console.log("userMain", userMain);
       // const mainIncomeData = incomeResults[0];
       // console.log(
-      //   mainIncomeData,
-      //   incomeResults[1],
-      //   incomeResults[2],
-      //   incomeResults[3]
+      //   {
+      //     mainIncomeData,
+      //     i1: incomeResults[1],
+      //     i2: incomeResults[2],
+      //     i3: incomeResults[3]
+      //   }
       // );
 
       const logsContract = new web3.eth.Contract(logsAbi, logsContractAddress);
@@ -222,12 +230,13 @@ function Dashboard({ openSidebar }) {
         .users(userMain.referrer)
         .call();
 
-      // console.log(referrerId);
+      // console.log({ totals });
       return {
         id: userMain.id,
         referrer: referrerId.id.toString(),
         totalIncomeInBNB: overAllTotal,
         incomeInUSD,
+        vipBonus: totals.vipBonus.toFixed(5),
         totalLuxuryBonus: totals.LuxuryBonus.toFixed(5),
         totalPartnerSponsorBonus: totals.partnerSponsorBonus.toFixed(5),
         totalPartnerDirectKickBonus: totals.partnerDirectKickBonus.toFixed(5),
@@ -306,7 +315,7 @@ function Dashboard({ openSidebar }) {
           </div>
 
           {/* second div */}
-          <div
+          {/* <div
             className={`flex w-full flex-wrap flex-col ${openSidebar ? "xl:flex-row" : "lg:flex-row"
               } gap-3`}
           >
@@ -316,6 +325,17 @@ function Dashboard({ openSidebar }) {
               luxuryBonus={dashboardData.totalLuxuryBonus}
               lapsIncome={dashboardData.totaLapsIncome}
             />
+          </div> */}
+
+          {/*Testing Div*/}
+          <div className="flex flex-col gap-3">
+            <DashboardNewDataTop
+              openSidebar={openSidebar}
+              luxuryBonus={dashboardData.totalLuxuryBonus}
+              vipBonus={dashboardData.vipBonus}
+              lapsIncome={dashboardData.totaLapsIncome}
+            />
+            <DashboardNewDataBottom />
           </div>
 
           {/* third div */}

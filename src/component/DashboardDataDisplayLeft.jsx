@@ -43,6 +43,7 @@ function DashboardDataDisplayLeft({ openSidebar }) {
   ];
 
   const rank = rankOptions[data.rank];
+  
   const cardData = [
     {
       title: "Your Current Rank",

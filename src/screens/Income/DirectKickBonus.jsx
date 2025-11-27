@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import Web3 from "web3";
 import { screenLoaderVisibilty } from "../../features/copyModal/copyModalVisiblilty";
 import { useSelector, useDispatch } from "react-redux";
-import abi from "../../abi.json";
-import abiOne from "../../oldAbiOne.json";
-import abiTwo from "../../oldAbiTwo.json";
+// import abi from "../../abi.json";
+// import abiOne from "../../oldAbiOne.json";
+// import abiTwo from "../../oldAbiTwo.json";
 import logsAbi from "../../logsAbi.json";
 import { Rank } from "../../data/data";
 import { Copy, ExternalLink } from "lucide-react";
@@ -29,15 +29,15 @@ function DirectKickBonus({ openSidebar }) {
   const logsContractAddress = useSelector(
     (state) => state.accountDetails.logsContractAddress
   );
-  const contractAddress = useSelector(
-    (state) => state.accountDetails.contractAddress
-  );
-  const previousContractAddressOne = useSelector(
-    (state) => state.accountDetails.previousContractAddressOne
-  );
-  const previousContractAddressTwo = useSelector(
-    (state) => state.accountDetails.previousContractAddressTwo
-  );
+  // const contractAddress = useSelector(
+  //   (state) => state.accountDetails.contractAddress
+  // );
+  // const previousContractAddressOne = useSelector(
+  //   (state) => state.accountDetails.previousContractAddressOne
+  // );
+  // const previousContractAddressTwo = useSelector(
+  //   (state) => state.accountDetails.previousContractAddressTwo
+  // );
 
   const fetchData = async () => {
     try {
@@ -46,9 +46,9 @@ function DirectKickBonus({ openSidebar }) {
 
       const contracts = [
         { abi: logsAbi, address: logsContractAddress },
-        { abi, address: contractAddress },
-        { abi: abiOne, address: previousContractAddressOne },
-        { abi: abiTwo, address: previousContractAddressTwo },
+        // { abi, address: contractAddress },
+        // { abi: abiOne, address: previousContractAddressOne },
+        // { abi: abiTwo, address: previousContractAddressTwo },
       ];
 
       if (!web3.utils.isAddress(CurrentWalletAddress)) {

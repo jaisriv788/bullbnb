@@ -42,6 +42,7 @@ import Registration from "./screens/Registration";
 import Dashboard from "./screens/Dashboard";
 import Download from "./screens/Download";
 import CryptoCluster from "./screens/CryptoCluster";
+import Vip from "./screens/Vip";
 //team
 import MyTree from "./screens/Team/MyTree";
 import DirectPartner from "./screens/Team/DirectPartner";
@@ -225,6 +226,7 @@ function App() {
                 path="/cryptocluster"
                 element={<CryptoCluster openSidebar={openSidebar} />}
               />
+
               {/* Team */}
               <Route
                 path="/team/direct"
@@ -262,6 +264,10 @@ function App() {
               <Route
                 path="/income/luxury"
                 element={<LuxuryBonus openSidebar={openSidebar} />}
+              />
+              <Route
+                path="/income/vip"
+                element={<Vip openSidebar={openSidebar} />}
               />
               <Route
                 path="/income/luxury/details/:title/:value/:id"

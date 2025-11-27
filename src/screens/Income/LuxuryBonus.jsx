@@ -120,6 +120,7 @@ function LuxuryBonus({ openSidebar }) {
   useEffect(() => {
     fetchData();
   }, []);
+  
   return (
     <div
       className={`absolute inset-0 overflow-auto backdrop-blur-[1px] ${

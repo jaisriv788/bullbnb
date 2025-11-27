@@ -55,6 +55,7 @@ function OptionalTopDiv({ css }) {
         const partners = await contract.methods
           .partners(backupWalletAddress)
           .call();
+        // console.log("Fetched partners:", partners);
         const ids = partners.map((item) => item[0].id);
         setPartners([...ids]);
       } catch (error) {
@@ -86,11 +87,10 @@ function OptionalTopDiv({ css }) {
       <div
         onClick={handleBackToDashboard}
         className={`flex justify-center text-center w-18 sm:w-fit items-center gap-1 text-xs cursor-pointer sm:px-2 py-1 rounded-xl 
-    ${
-      backupWalletAddress !== walletAddress
-        ? "animate-pulse-bg"
-        : "bg-[#605476]"
-    }`}
+    ${backupWalletAddress !== walletAddress
+            ? "animate-pulse-bg"
+            : "bg-[#605476]"
+          }`}
       >
         <ArrowLeft size={15} className="hidden sm:block" />
         <span><span className="hidden sm:inline">Back To My</span> Dashboard</span>
