@@ -58,8 +58,12 @@ const DashboardNewDataTop = ({ luxuryBonus, lapsIncome, vipBonus }) => {
       try {
         const web3 = new Web3("https://opbnb-mainnet-rpc.bnbchain.org");
         const contract = new web3.eth.Contract(ABI, mainContractAddress);
-        const royaltyLastDist = await contract.methods.royaltyLastDist().call();
-        const vipLastDist = await contract.methods.vipLastDist().call();
+        const royaltyLastDist_get = await contract.methods.royaltyLastDist().call();
+        const sevenDays = 7n * 24n * 60n * 60n;
+        const royaltyLastDist = BigInt(royaltyLastDist_get) + sevenDays;
+        const vipLastDist_get = await contract.methods.vipLastDist().call();
+        const thirtyDays = 30n * 24n * 60n * 60n; 
+        const vipLastDist = BigInt(vipLastDist_get) + thirtyDays;
 
         const futureTimestamp = parseFloat(royaltyLastDist) + 24 * 60 * 60;
         const futureTimestamp2 = parseFloat(vipLastDist) + 24 * 60 * 60;
@@ -194,6 +198,8 @@ const DashboardNewDataTop = ({ luxuryBonus, lapsIncome, vipBonus }) => {
             />
           </div>
         </div>
+
+        
         <div className="flex flex-row gap-2">
           {cardDataLower.map((item, i) => (
             <div
@@ -214,6 +220,8 @@ const DashboardNewDataTop = ({ luxuryBonus, lapsIncome, vipBonus }) => {
             </div>
           ))}
         </div>
+      
+      
         <div
           onClick={() => navigate(`/bonus/${lapsIncome}`)}
           className="flex-1 cursor-pointer flex justify-between py-2 lg:py-0 px-3 rounded-lg bg-gradient-to-r from-[#B6530A] via-[#D0802F] to-[#E2A049]"
@@ -230,6 +238,8 @@ const DashboardNewDataTop = ({ luxuryBonus, lapsIncome, vipBonus }) => {
             <img className="h-13 w-13" src={logoSrc} />
           </div>
         </div>
+
+
       </div>
 
       <div className="bg-gradient-to-tr p-2 flex-3 rounded-lg from-[#FA1C1E] via-[#AA113B] to-[#620755]">
@@ -255,11 +265,11 @@ const DashboardNewDataTop = ({ luxuryBonus, lapsIncome, vipBonus }) => {
             </div>
             <button
               id="claim-bonus"
-              className={` ${!claimEnabled
+              className={` ${claimEnabled
                 ? "cursor-not-allowed text-white/50 border-2 border-gray-500 bg-gray-700 py-[2px] px-[15px] rounded-[5px] mt-[10px]"
                 : "btn-theme3 cursor-pointer"
                 }`}
-              disabled={!claimEnabled}
+              disabled={claimEnabled}
               onClick={handleClaimBonus}
             >
               Claim Bonus
@@ -291,11 +301,11 @@ const DashboardNewDataTop = ({ luxuryBonus, lapsIncome, vipBonus }) => {
             </div>
             <button
               id="claim-bonus"
-              className={` ${!claimEnabled2
+              className={` ${claimEnabled2
                 ? "cursor-not-allowed text-white/50 border-2 border-gray-500 bg-gray-700 py-[2px] px-[15px] rounded-[5px] mt-[10px]"
                 : "btn-theme3 cursor-pointer"
                 }`}
-              disabled={!claimEnabled2}
+              disabled={claimEnabled2}
               onClick={handleClaimBonus2}
             >
               Claim Bonus

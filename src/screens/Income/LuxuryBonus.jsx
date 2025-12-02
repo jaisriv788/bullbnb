@@ -93,12 +93,14 @@ function LuxuryBonus({ openSidebar }) {
         ._checkRoyaltyAchieved(CurrentWalletAddress)
         .call();
 
+      console.log("royaltyAchived", royaltyAchived);
       setRoyaltyAchived(royaltyAchived);
 
       const income = await mainContractInstance.methods
         .totalroyaltyIncome(CurrentWalletAddress)
         .call();
 
+      console.log("income", income);
       const incomeInEtherFloat = income.map((v) =>
         parseFloat(web3.utils.fromWei(v.toString(), "ether"))
       );
@@ -120,20 +122,18 @@ function LuxuryBonus({ openSidebar }) {
   useEffect(() => {
     fetchData();
   }, []);
-  
+
   return (
     <div
-      className={`absolute inset-0 overflow-auto backdrop-blur-[1px] ${
-        walletAddress == CurrentWalletAddress
+      className={`absolute inset-0 overflow-auto backdrop-blur-[1px] ${walletAddress == CurrentWalletAddress
           ? "bg-black/60"
           : "bg-[#490D0D]/80"
-      }  flex justify-center sm:py-4 ${openSidebar && "lg:pr-10 xl:pr-30"}`}
+        }  flex justify-center sm:py-4 ${openSidebar && "lg:pr-10 xl:pr-30"}`}
     >
       {" "}
       <div
-        className={`${
-          openSidebar ? "w-[90%] lg:w-full" : "w-[90%] lg:w-[80%]"
-        } flex flex-col sm:px-5 max-w-[1320px]`}
+        className={`${openSidebar ? "w-[90%] lg:w-full" : "w-[90%] lg:w-[80%]"
+          } flex flex-col sm:px-5 max-w-[1320px]`}
       >
         <Title title="Partner Luxury Bonus" />
         <div className=" flex-1 flex flex-col gap-5">
@@ -174,8 +174,7 @@ function LuxuryBonus({ openSidebar }) {
                     <button
                       onClick={() => {
                         navigate(
-                          `/income/luxury/details/${
-                            luxuryData[index].name
+                          `/income/luxury/details/${luxuryData[index].name
                           }/${parseFloat(income[index]).toFixed(5)}/${index}`
                         );
                       }}

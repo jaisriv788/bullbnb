@@ -1,116 +1,129 @@
 [
   {
+    "type": "constructor",
     "inputs": [
       {
-        "internalType": "address",
         "name": "_bullbnbAddress",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    "stateMutability": "nonpayable"
   },
   {
-    "inputs": [],
     "name": "bullbnb",
+    "type": "function",
+    "inputs": [],
     "outputs": [
-      { "internalType": "contract Ibullbnb", "name": "", "type": "address" }
+      {
+        "name": "",
+        "type": "address",
+        "value": "0x13d0aB82912F90aD9EF93479a25Ec9872343f2d1",
+        "internalType": "contract Ibullbnb"
+      }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "constant": true,
+    "signature": "0x08f05bee",
+    "stateMutability": "view"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "user", "type": "address" },
-      { "internalType": "string", "name": "txType", "type": "string" }
-    ],
     "name": "getTodayTransactionLogByType",
+    "type": "function",
+    "inputs": [
+      { "name": "user", "type": "address", "internalType": "address" },
+      { "name": "txType", "type": "string", "internalType": "string" }
+    ],
     "outputs": [
-      { "internalType": "uint256", "name": "sumEarning", "type": "uint256" },
+      { "name": "sumEarning", "type": "uint256", "internalType": "uint256" },
       {
-        "components": [
-          { "internalType": "uint256", "name": "id", "type": "uint256" },
-          { "internalType": "uint256", "name": "fromID", "type": "uint256" },
-          {
-            "internalType": "address",
-            "name": "fromAddress",
-            "type": "address"
-          },
-          { "internalType": "string", "name": "txType", "type": "string" },
-          { "internalType": "uint256", "name": "amount", "type": "uint256" },
-          { "internalType": "uint256", "name": "timestamp", "type": "uint256" },
-          { "internalType": "uint256", "name": "package", "type": "uint256" },
-          { "internalType": "string", "name": "addon", "type": "string" }
-        ],
-        "internalType": "struct BullBNBLog.Transaction[]",
         "name": "",
-        "type": "tuple[]"
+        "type": "tuple[]",
+        "components": [
+          { "name": "id", "type": "uint256", "internalType": "uint256" },
+          { "name": "fromID", "type": "uint256", "internalType": "uint256" },
+          {
+            "name": "fromAddress",
+            "type": "address",
+            "internalType": "address"
+          },
+          { "name": "txType", "type": "string", "internalType": "string" },
+          { "name": "amount", "type": "uint256", "internalType": "uint256" },
+          { "name": "timestamp", "type": "uint256", "internalType": "uint256" },
+          { "name": "package", "type": "uint256", "internalType": "uint256" },
+          { "name": "addon", "type": "string", "internalType": "string" }
+        ],
+        "internalType": "struct BullBNBLog.Transaction[]"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "constant": true,
+    "signature": "0xe0a0fda6",
+    "stateMutability": "view"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "user", "type": "address" },
-      { "internalType": "string", "name": "txType", "type": "string" },
-      { "internalType": "uint256", "name": "dateTimestamp", "type": "uint256" }
-    ],
     "name": "getTransactionLogByDateAndType",
+    "type": "function",
+    "inputs": [
+      { "name": "user", "type": "address", "internalType": "address" },
+      { "name": "txType", "type": "string", "internalType": "string" },
+      { "name": "dateTimestamp", "type": "uint256", "internalType": "uint256" }
+    ],
     "outputs": [
-      { "internalType": "uint256", "name": "sumEarning", "type": "uint256" },
+      { "name": "sumEarning", "type": "uint256", "internalType": "uint256" },
       {
-        "components": [
-          { "internalType": "uint256", "name": "id", "type": "uint256" },
-          { "internalType": "uint256", "name": "fromID", "type": "uint256" },
-          {
-            "internalType": "address",
-            "name": "fromAddress",
-            "type": "address"
-          },
-          { "internalType": "string", "name": "txType", "type": "string" },
-          { "internalType": "uint256", "name": "amount", "type": "uint256" },
-          { "internalType": "uint256", "name": "timestamp", "type": "uint256" },
-          { "internalType": "uint256", "name": "package", "type": "uint256" },
-          { "internalType": "string", "name": "addon", "type": "string" }
-        ],
-        "internalType": "struct BullBNBLog.Transaction[]",
         "name": "",
-        "type": "tuple[]"
+        "type": "tuple[]",
+        "components": [
+          { "name": "id", "type": "uint256", "internalType": "uint256" },
+          { "name": "fromID", "type": "uint256", "internalType": "uint256" },
+          {
+            "name": "fromAddress",
+            "type": "address",
+            "internalType": "address"
+          },
+          { "name": "txType", "type": "string", "internalType": "string" },
+          { "name": "amount", "type": "uint256", "internalType": "uint256" },
+          { "name": "timestamp", "type": "uint256", "internalType": "uint256" },
+          { "name": "package", "type": "uint256", "internalType": "uint256" },
+          { "name": "addon", "type": "string", "internalType": "string" }
+        ],
+        "internalType": "struct BullBNBLog.Transaction[]"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "constant": true,
+    "signature": "0xb2c8d71f",
+    "stateMutability": "view"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "user", "type": "address" },
-      { "internalType": "string", "name": "txType", "type": "string" }
-    ],
     "name": "getTransactionLogByType",
+    "type": "function",
+    "inputs": [
+      { "name": "user", "type": "address", "internalType": "address" },
+      { "name": "txType", "type": "string", "internalType": "string" }
+    ],
     "outputs": [
-      { "internalType": "uint256", "name": "sumEarning", "type": "uint256" },
+      { "name": "sumEarning", "type": "uint256", "internalType": "uint256" },
       {
-        "components": [
-          { "internalType": "uint256", "name": "id", "type": "uint256" },
-          { "internalType": "uint256", "name": "fromID", "type": "uint256" },
-          {
-            "internalType": "address",
-            "name": "fromAddress",
-            "type": "address"
-          },
-          { "internalType": "string", "name": "txType", "type": "string" },
-          { "internalType": "uint256", "name": "amount", "type": "uint256" },
-          { "internalType": "uint256", "name": "timestamp", "type": "uint256" },
-          { "internalType": "uint256", "name": "package", "type": "uint256" },
-          { "internalType": "string", "name": "addon", "type": "string" }
-        ],
-        "internalType": "struct BullBNBLog.Transaction[]",
         "name": "",
-        "type": "tuple[]"
+        "type": "tuple[]",
+        "components": [
+          { "name": "id", "type": "uint256", "internalType": "uint256" },
+          { "name": "fromID", "type": "uint256", "internalType": "uint256" },
+          {
+            "name": "fromAddress",
+            "type": "address",
+            "internalType": "address"
+          },
+          { "name": "txType", "type": "string", "internalType": "string" },
+          { "name": "amount", "type": "uint256", "internalType": "uint256" },
+          { "name": "timestamp", "type": "uint256", "internalType": "uint256" },
+          { "name": "package", "type": "uint256", "internalType": "uint256" },
+          { "name": "addon", "type": "string", "internalType": "string" }
+        ],
+        "internalType": "struct BullBNBLog.Transaction[]"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "constant": true,
+    "signature": "0x38fd5b91",
+    "stateMutability": "view"
   }
 ]

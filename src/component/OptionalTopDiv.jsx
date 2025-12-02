@@ -55,9 +55,28 @@ function OptionalTopDiv({ css }) {
         const partners = await contract.methods
           .partners(backupWalletAddress)
           .call();
-        // console.log("Fetched partners:", partners);
-        const ids = partners.map((item) => item[0].id);
-        setPartners([...ids]);
+        console.log("Fetched partners:", partners);
+        // const ids = partners.map((item) => item[0].id);
+        // const partnerAddresses = partners.map((item) => item.user || item[0]);
+
+        const userDetails = await Promise.all(
+        partners.map(async (addr) => {
+          try {
+            const uData = await contract.methods.users(addr).call();
+            return { address: addr, id: uData.id };
+          } catch (err) {
+            console.error("Error loading user data for:", addr, err);
+            return { address: addr, id: null };
+          }
+        })
+      );
+
+      // 3️⃣ Extract valid IDs
+      const ids = userDetails
+        .filter((u) => u.id && u.id !== "0")
+        .map((u) => u.id);
+      setPartners(ids);
+        // setPartners([...ids]);
       } catch (error) {
         console.log("Error fetching partners:", error);
       }

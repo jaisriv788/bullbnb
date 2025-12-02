@@ -413,6 +413,14 @@ export const SidebarContent = [
         name: "Partner Luxury Bonus",
         path: "/income/luxury",
       },
+
+   {
+        id: 6,
+        icon: Circle,
+        name: "Partner VIP Bonus",
+        path: "/income/vip",
+      },
+
     ],
   },
   {

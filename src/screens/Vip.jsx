@@ -146,8 +146,8 @@ function Vip({ openSidebar }) {
                             <div key={index} className="w-full bg-white/10 border-2 border-white/30 rounded-xl p-4 flex flex-col items-center backdrop-blur-sm">
 
                                 {/* Top Value */}
-                                <div className="text-white text-2xl font-semibold mb-3">
-                                    0.1452 BNB
+                                <div className="text-white text-2xl font-[500] mb-3">
+                                    0.00 BNB
                                 </div>
 
                                 {/* Rank Boxes */}
@@ -157,13 +157,13 @@ function Vip({ openSidebar }) {
                                     <div className="grid grid-cols-2 text-center">
 
                                         {/* Self Rank */}
-                                        <div className="py-2 font-semibold text-sm text-white border-r border-white/20
+                                        <div className="py-2 font-semibold text-xs text-white border-r border-white/20
                 bg-gradient-to-r from-[#A426C2] to-[#8218CB]">
                                             Self Rank
                                         </div>
 
                                         {/* Direct Refer */}
-                                        <div className="py-2 font-semibold text-sm text-white
+                                        <div className="py-2 font-semibold text-xs text-white
                 bg-gradient-to-r from-[#8218CB] to-[#5605D7]">
                                             Direct Refer
                                         </div>
@@ -172,11 +172,11 @@ function Vip({ openSidebar }) {
                                     {/* Value Row */}
                                     <div className="grid border-b border-white/20 grid-cols-2 text-center">
 
-                                        <div className="py-1 text-white border-r border-white/20">
+                                        <div className="py-1 text-white text-xs border-r border-white/20">
                                             {vipData[index].rank}
                                         </div>
 
-                                        <div className="py-1 text-white">
+                                        <div className="py-1 text-white text-xs">
                                             {vipData[index].refer}
                                         </div>
                                     </div>
@@ -185,29 +185,35 @@ function Vip({ openSidebar }) {
                                     <div className="grid grid-cols-2 text-center">
 
                                         <div className="py-2 border-r border-white/20 flex justify-center">
-                                            <img
+                                            {/* <img
                                                 src="https://cdn-icons-png.flaticon.com/512/845/845646.png"
-                                                className="w-5 h-5"
+                                                className="w-[15px] h-[15px]"
                                                 alt="check"
-                                            />
+                                            /> */}
+                                            --
                                         </div>
 
                                         <div className="py-2 flex justify-center">
-                                            <img
+                                            {/* <img
                                                 src="https://cdn-icons-png.flaticon.com/512/845/845646.png"
-                                                className="w-5 h-5"
+                                                className="w-[15px] h-[15px]"
                                                 alt="check"
-                                            />
+                                            /> */}
+                                            --
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Details Button */}
                                 <button onClick={() => {
+                                    // navigate(
+                                    //     `/income/vip/details/${vipData[index].rank
+                                    //     }/${parseFloat(income[index]).toFixed(5)}/${index}`
+                                    // );
                                     navigate(
-                                        `/income/vip/details/${vipData[index].rank
-                                        }/${parseFloat(income[index]).toFixed(5)}/${index}`
+                                        `/income/vip/details/${encodeURIComponent("VIP Bonus History")}/${parseFloat(income[index]).toFixed(5)}/${index}`
                                     );
+
                                 }} className="btn-theme2 cursor-pointer mt-2">
                                     Details
                                 </button>

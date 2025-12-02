@@ -36,10 +36,10 @@ function Registration() {
     }
 
     try {
-      // if (!refId || refId == 808520741) {
-      //   alert("Enter a valid referral ID");
-      //   return;
-      // }
+      if (!refId || refId == 808520741) {
+        alert("Enter a valid referral ID");
+        return;
+      }
 
       const web3 = new Web3(window.ethereum);
       const accounts = await web3.eth.requestAccounts();
