@@ -8,13 +8,26 @@ import { useNavigate } from "react-router";
 import mainAbi from "../mainAbi.json"
 import Footer from "../component/Footer";
 import { vipData } from "../data/data";
+import Loader from "../assets/logos/loader.gif"
+import { Rank } from "../data/data";
 
+const arr = [4, 5, 6, 7, 8, 9];
+const arr2 = [6, 5, 4, 3, 2, 1]
+const arr3 = ["directorAndBelow", "Star", "Champion", "Mentor", "Titan", "platinumAndAbove"]
 function Vip({ openSidebar }) {
     const [totalIncome, setTotalIncome] = useState(0);
     const [royaltyAchived, setRoyaltyAchived] = useState([]);
     const [income, setIncome] = useState([]);
     const [timeLeft, setTimeLeft] = useState(null);
     const [timerEnded, setTimerEnded] = useState(false);
+    const [rankCount, setRankCount] = useState({
+        directorAndBelow: 0,
+        platinumAndAbove: 0,
+        Star: 0,
+        Champion: 0,
+        Mentor: 0,
+        Titan: 0
+    })
 
     const CurrentWalletAddress = useSelector(
         (state) => state.accountDetails.walletAddress
@@ -25,9 +38,21 @@ function Vip({ openSidebar }) {
     const mainContractAddress = useSelector(
         (state) => state.accountDetails.mainContractAddress
     );
-
+    const userData = useSelector(
+        (state) => state.dashboardData.userData
+    );
+    const backupWalletAddress = useSelector(
+        (state) => state.accountDetails.saveMainUserAddress
+    );
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    // Contract 
+
+    const web3 = new Web3("https://opbnb-mainnet-rpc.bnbchain.org");
+    const contract = new web3.eth.Contract(mainAbi, mainContractAddress);
+
+
 
     useEffect(() => {
         if (!mainContractAddress || timerEnded) return;
@@ -78,11 +103,11 @@ function Vip({ openSidebar }) {
                 ._checkVipAchieved(CurrentWalletAddress)
                 .call();
 
-            console.log("royaltyAchived:", { royaltyAchived });
+            // console.log("royaltyAchived:", { royaltyAchived });
             setRoyaltyAchived(royaltyAchived);
 
             const income = await mainContractInstance.methods
-                .totalroyaltyIncome(CurrentWalletAddress)
+                .totalvipIncome(CurrentWalletAddress)
                 .call();
 
             console.log("income:", { income });
@@ -118,6 +143,105 @@ function Vip({ openSidebar }) {
         return `${hrs}h : ${mins}m : ${secs}s`;
     };
 
+
+
+
+
+
+    // Get partners
+
+
+
+    useEffect(() => {
+
+        const fetchPartners = async () => {
+            try {
+
+
+                if (!web3.utils.isAddress(walletAddress)) {
+                    console.log("Invalid Ethereum address.");
+                    return;
+                }
+
+                const partners = await contract.methods
+                    .partners(backupWalletAddress)
+                    .call();
+                // console.log("Fetched partners:", partners);
+                // const ids = partners.map((item) => item[0].id);
+                // const partnerAddresses = partners.map((item) => item.user || item[0]);
+
+                const userDetails = await Promise.all(
+                    partners.map(async (addr) => {
+                        try {
+                            const uData = await contract.methods.users(addr).call();
+                            // console.log(uData);
+                            return { rank: parseInt(uData.currentPackage) };
+                        } catch (err) {
+                            console.error("Error loading user data for:", addr, err);
+                            return { address: addr, id: null };
+                        }
+                    })
+                );
+
+                console.log({ userDetails, Rank });
+
+                const rankCount = {
+                    directorAndBelow: 0,
+                    platinumAndAbove: 0,
+                    Star: 0,
+                    Champion: 0,
+                    Mentor: 0,
+                    Titan: 0
+                };
+
+                userDetails.forEach(user => {
+                    // Adjust because user.rank is +1
+                    const r = user.rank - 1;
+
+                    // 1️⃣ Director & Below (0–4)
+                    if (r <= 4) {
+                        rankCount.directorAndBelow++;
+                    }
+
+                    // 2️⃣ Platinum & Above (9–14)
+                    else if (r >= 9) {
+                        rankCount.platinumAndAbove++;
+                    }
+
+                    // 3️⃣ Middle ranks → individually
+                    else if (r === 5) {
+                        rankCount.Star++;
+                    }
+                    else if (r === 6) {
+                        rankCount.Champion++;
+                    }
+                    else if (r === 7) {
+                        rankCount.Mentor++;
+                    }
+                    else if (r === 8) {
+                        rankCount.Titan++;
+                    }
+                });
+
+                console.log(rankCount)
+                setRankCount(rankCount);
+
+            } catch (error) {
+                console.log("Error fetching partners:", error);
+            }
+        };
+
+        fetchPartners();
+    }, [walletAddress, mainContractAddress]);
+
+
+
+    // get partners end
+
+
+
+
+
     return (
         <div
             className={`absolute inset-0 overflow-auto backdrop-blur-[1px] ${walletAddress == CurrentWalletAddress
@@ -147,7 +271,7 @@ function Vip({ openSidebar }) {
 
                                 {/* Top Value */}
                                 <div className="text-white text-2xl font-[500] mb-3">
-                                    0.00 BNB
+                                    {parseFloat(income[index]).toFixed(5)} BNB
                                 </div>
 
                                 {/* Rank Boxes */}
@@ -185,21 +309,35 @@ function Vip({ openSidebar }) {
                                     <div className="grid grid-cols-2 text-center">
 
                                         <div className="py-2 border-r border-white/20 flex justify-center">
-                                            {/* <img
-                                                src="https://cdn-icons-png.flaticon.com/512/845/845646.png"
+                                            {/* {userData.rank}{arr[index]} */}
+                                            {userData.rank >= arr[index] + 1 ? <div className="py-2 flex justify-center">
+                                                <img
+                                                    src="https://cdn-icons-png.flaticon.com/512/845/845646.png"
+                                                    className="w-[15px] h-[15px]"
+                                                    alt="check"
+                                                />
+
+                                            </div> : <img
+                                                src={Loader}
                                                 className="w-[15px] h-[15px]"
                                                 alt="check"
-                                            /> */}
-                                            --
+                                            />}
+
                                         </div>
 
-                                        <div className="py-2 flex justify-center">
-                                            {/* <img
+                                        <div className="py-2 flex justify-center items-center">
+                                            {/* {arr2[index]} {rankCount[arr3[index]]} */}
+                                            {arr2[index] <= rankCount[arr3[index]] ? <img
                                                 src="https://cdn-icons-png.flaticon.com/512/845/845646.png"
                                                 className="w-[15px] h-[15px]"
                                                 alt="check"
-                                            /> */}
-                                            --
+                                            /> : <img
+                                                src={Loader}
+                                                className="w-[15px] h-[15px]"
+                                                alt="check"
+                                            />}
+
+
                                         </div>
                                     </div>
                                 </div>

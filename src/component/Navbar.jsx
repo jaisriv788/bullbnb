@@ -46,9 +46,8 @@ function Navbar({ handleSidebar, openSidebar }) {
 
   return (
     <div
-      className={`text-white ${
-        ownerAddress == ownerBackupAddress ? "bg-[#01051D]" : "bg-[#791610]"
-      } px-[4%] sm:px-[8%] py-3 flex justify-between items-center w-full`}
+      className={`text-white ${ownerAddress == ownerBackupAddress ? "bg-[#01051D]" : "bg-[#791610]"
+        } px-[4%] sm:px-[8%] py-3 flex justify-between items-center w-full`}
     >
       <div className="flex items-center gap-1 sm:gap-5">
         {/* <AnimatePresence mode="wait" initial={false}>
