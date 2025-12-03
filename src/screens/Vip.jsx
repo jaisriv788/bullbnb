@@ -63,9 +63,10 @@ function Vip({ openSidebar }) {
             try {
                 const web3 = new Web3("https://opbnb-mainnet-rpc.bnbchain.org");
                 const contract = new web3.eth.Contract(mainAbi, mainContractAddress);
+                const thirtyDays = 30n * 24n * 60n * 60n;
                 const royaltyLastDist = await contract.methods.vipLastDist().call();
-
-                const futureTimestamp = parseFloat(royaltyLastDist) + 24 * 60 * 60;
+                const vipLastDist = BigInt(royaltyLastDist) + thirtyDays;
+                const futureTimestamp = parseFloat(vipLastDist) + 24 * 60 * 60;
 
                 function updateCountdown() {
                     const now = Date.now() / 1000;
