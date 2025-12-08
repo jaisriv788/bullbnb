@@ -90,7 +90,7 @@ function TotalEarning() {
                     <div className="w-11/12 overflow-hidden flex rounded-full  border-3 bg-gradient-to-r from-[#951FC6] to-[#5806D6] border-[#BA70DB]">
                         <img className="h-14" src={circleIconSrc} />
                         <div className=" text-center flex-1">
-                            <div className="text-xl font-semibold">Today Earning 123</div>
+                            <div className="text-xl font-semibold">Today Earning</div>
                             <div className="text-lg font-semibold">
                                 {todayEarnings.todayEarningInBnb} BNB ($ {money})
                             </div>
