@@ -17,6 +17,7 @@ function TodayEarning() {
       "https://min-api.cryptocompare.com/data/price?fsym=BNB&tsyms=USD"
     );
 
+    console.log({ todayEarnings })
     const bnbPriceData = await bnbPriceRes.json();
     const bnbPriceUSD = bnbPriceData?.USD || 0;
 
@@ -28,6 +29,7 @@ function TodayEarning() {
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
     <div
       onClick={() => {
@@ -37,7 +39,7 @@ function TodayEarning() {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative border-[#DEBC57] p-2 border-3 text-white rounded-3xl shadow-lg flex flex-col h-[340px] w-[380px] items-center gap-4"
+        className="relative border-[#DEBC57] sm:p-2 border-3 text-white rounded-3xl shadow-lg flex flex-col h-[370px] w-[320px] sm:w-[380px] items-center gap-2 sm:gap-4"
         style={{
           backgroundImage: "radial-gradient(circle, #9f1308 0%, #280902 100%)",
         }}
@@ -76,9 +78,13 @@ function TodayEarning() {
               <div>Partner Pool Bonus</div>
               <div>{todayEarnings.todayPartnerPoolBonus} BNB</div>
             </div>
-            <div className="flex justify-between w-full">
+            <div className="flex justify-between w-full border-b border-white/40 py-1">
               <div>Partner Luxury Bonus</div>
               <div>{todayEarnings.todayLuxuryBonus} BNB</div>
+            </div>
+            <div className="flex justify-between w-full">
+              <div>Partner Vip Bonus</div>
+              <div>{todayEarnings.todayVipBonus} BNB</div>
             </div>
           </div>
           <div className="w-11/12 overflow-hidden flex rounded-full  border-3 bg-gradient-to-r from-[#951FC6] to-[#5806D6] border-[#BA70DB]">

@@ -4,6 +4,7 @@ const initialState = {
   isCopyModalVisible: false,
   isScreenLoaderVisible: false,
   isTodayEarningModalVisible: false,
+  isTotalEarningModalVisible: false,
 };
 
 const modalVisibilitySlice = createSlice({
@@ -19,6 +20,9 @@ const modalVisibilitySlice = createSlice({
     todayEarningVisibility: (state, action) => {
       state.isTodayEarningModalVisible = action.payload;
     },
+    totalEarningVisibility: (state, action) => {
+      state.isTotalEarningModalVisible = action.payload;
+    },
   },
 });
 
@@ -26,6 +30,7 @@ export const {
   copyModalVisibilty,
   screenLoaderVisibilty,
   todayEarningVisibility,
+  totalEarningVisibility,
 } = modalVisibilitySlice.actions;
 
 export default modalVisibilitySlice.reducer;

@@ -55,7 +55,7 @@ function OptionalTopDiv({ css }) {
         const partners = await contract.methods
           .partners(backupWalletAddress)
           .call();
-        console.log("Fetched partners:", partners);
+        // console.log("Fetched partners:", partners);
         // const ids = partners.map((item) => item[0].id);
         // const partnerAddresses = partners.map((item) => item.user || item[0]);
 

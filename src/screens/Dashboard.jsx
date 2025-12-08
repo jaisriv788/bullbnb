@@ -34,6 +34,7 @@ function Dashboard({ openSidebar }) {
     "PartnerLevelBonus",
     "PartnerPoolBonus",
     "luxuryBonus",
+    "vipBonus"
   ];
 
   const walletAddress = useSelector(
@@ -254,6 +255,7 @@ function Dashboard({ openSidebar }) {
         todayPartnerLevelBonus: todayValue[2],
         todayPartnerPoolBonus: todayValue[3],
         todayLuxuryBonus: todayValue[4],
+        todayVipBonus: todayValue[5],
       };
     } catch (error) {
       console.error("Error fetching wallet details:", error);

@@ -16,4 +16,7 @@ export default defineConfig({
       filename: "bundle-analysis.html",
     }),
   ],
+   server: {
+    port: 1000, // 👈 change to any port you want
+  },
 });

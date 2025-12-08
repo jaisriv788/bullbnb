@@ -23,6 +23,7 @@ import LandingNavbar from "./component/LandingNavbar";
 import CopyModel from "./component/CopyModel";
 import ScreenLoader from "./component/ScreenLoader";
 import TodayEarning from "./component/TodayEarning";
+import TotalEarning from "./component/TotalEarning";
 import DetailsPage from "./component/matrixTree/DetailsPage";
 //screens
 import Profile from "./screens/Profile";
@@ -105,6 +106,10 @@ function App() {
     (state) => state.modalVisibility.isTodayEarningModalVisible
   );
 
+  const showTotalEarnginModal = useSelector(
+    (state) => state.modalVisibility.isTotalEarningModalVisible
+  );
+
   useEffect(() => {
     const walletConnected = sessionStorage.getItem("walletConnected");
     const walletConnectedBackup = sessionStorage.getItem("walletAddressBackup");
@@ -158,6 +163,8 @@ function App() {
       {showScreenLoader && <ScreenLoader />}
       {showCopyModal && <CopyModel />}
       {showTodayEarnginModal && <TodayEarning />}
+      {showTotalEarnginModal && <TotalEarning />}
+      
       {!isCertificatePage && isWalletConnected && (
         <Navbar handleSidebar={handleSidebar} openSidebar={openSidebar} />
       )}

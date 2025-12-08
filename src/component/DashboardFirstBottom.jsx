@@ -1,28 +1,28 @@
-import { Download, Eye } from "lucide-react";
+import { Eye } from "lucide-react";
 import circleSrc from "../assets/bnbLogo/circle.png";
-import { useDispatch, useSelector } from "react-redux";
-import { todayEarningVisibility } from "../features/copyModal/copyModalVisiblilty";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { todayEarningVisibility, totalEarningVisibility } from "../features/copyModal/copyModalVisiblilty";
+// import axios from "axios";
+// import { useEffect, useState } from "react";
 
-const rankOptions = [
-  "",
-  "Starter",
-  "Executive",
-  "Achiever",
-  "Pioneer",
-  "Director",
-  "Star",
-  "Champion",
-  "Mentor",
-  "Titan",
-  "Platinum",
-  "Diamond",
-  "Icon",
-  "Legend",
-  "Ambassador",
-  "President",
-];
+// const rankOptions = [
+//   "",
+//   "Starter",
+//   "Executive",
+//   "Achiever",
+//   "Pioneer",
+//   "Director",
+//   "Star",
+//   "Champion",
+//   "Mentor",
+//   "Titan",
+//   "Platinum",
+//   "Diamond",
+//   "Icon",
+//   "Legend",
+//   "Ambassador",
+//   "President",
+// ];
 
 function DashboardFirstBottom({
   totalIncomeInBNB,
@@ -31,39 +31,39 @@ function DashboardFirstBottom({
   todayEarningInBNB,
 }) {
   const dispatch = useDispatch();
-  const currentWalletAddress = useSelector(
-    (state) => state.accountDetails.walletAddress
-  );
-  const data = useSelector((state) => state.dashboardData.userData);
-  const loggedInWallet = useSelector(
-    (state) => state.accountDetails.saveMainUserAddress
-  );
-  const baseUrl = useSelector((state) => state.accountDetails.baseUrl);
-  const [userData, setUserData] = useState();
+  // const currentWalletAddress = useSelector(
+  //   (state) => state.accountDetails.walletAddress
+  // );
+  // const data = useSelector((state) => state.dashboardData.userData);
+  // const loggedInWallet = useSelector(
+  //   (state) => state.accountDetails.saveMainUserAddress
+  // );
+  // const baseUrl = useSelector((state) => state.accountDetails.baseUrl);
+  // const [userData, setUserData] = useState();
 
-  const address = useSelector(
-    (state) => state.accountDetails.saveMainUserAddress
-  );
+  // const address = useSelector(
+  //   (state) => state.accountDetails.saveMainUserAddress
+  // );
 
-  async function fetchData() {
-    try {
-      const userFormData = new FormData();
-      userFormData.append("action", "get_user_info");
-      userFormData.append("original_wallet_address", address);
+  // async function fetchData() {
+  //   try {
+  //     const userFormData = new FormData();
+  //     userFormData.append("action", "get_user_info");
+  //     userFormData.append("original_wallet_address", address);
 
-      const userResponse = await axios.post(
-        `${baseUrl}api/get-user-data`,
-        userFormData
-      );
-      // console.log(userResponse.data.data);
-      setUserData(userResponse.data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  useEffect(() => {
-    fetchData();
-  }, []);
+  //     const userResponse = await axios.post(
+  //       `${baseUrl}api/get-user-data`,
+  //       userFormData
+  //     );
+  //     // console.log(userResponse.data.data);
+  //     setUserData(userResponse.data.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
   return (
     <div className="flex flex-wrap gap-3">
@@ -80,11 +80,11 @@ function DashboardFirstBottom({
                 {totalIncomeInBNB ? parseFloat(totalIncomeInBNB).toFixed(4) : "Loading..."} BNB
               </span>{" "}
               <span className="text-xs">
-                ${incomeInUSD ? parseFloat(incomeInUSD).toFixed(4): "Loading..."}
+                ${incomeInUSD ? parseFloat(incomeInUSD).toFixed(4) : "Loading..."}
               </span>
             </div>
           </div>
-          {loggedInWallet == currentWalletAddress && (
+          {/* {loggedInWallet == currentWalletAddress && (
             <div
               onClick={() =>
                 window.open(
@@ -99,7 +99,17 @@ function DashboardFirstBottom({
               <Download size={15} />
               Certificate
             </div>
-          )}
+          )} */}
+          <button
+            onClick={() => {
+              dispatch(totalEarningVisibility(true));
+              // console.log(todayEarningInBNB, todayEarningInDollor);
+            }}
+            className="btn-theme2 cursor-pointer flex gap-1 items-center mr-2"
+          >
+            <Eye size={15} />
+            View
+          </button>
         </div>
       </div>
 
@@ -117,7 +127,7 @@ function DashboardFirstBottom({
               <span className="text-xs">${todayEarningInDollor ? todayEarningInDollor : "Loading..."}</span>
             </div>
           </div>
-          <div
+          <button
             onClick={() => {
               dispatch(todayEarningVisibility(true));
               // console.log(todayEarningInBNB, todayEarningInDollor);
@@ -126,7 +136,7 @@ function DashboardFirstBottom({
           >
             <Eye size={15} />
             View
-          </div>
+          </button>
         </div>
       </div>
     </div>
